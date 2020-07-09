@@ -1,0 +1,26 @@
+extends Position2D
+class_name Weapon
+
+export var bullet_scene: PackedScene
+
+var can_shot := true
+
+onready var cooldown := $Cooldown
+
+
+func shot() -> void:
+	if not can_shot:
+		return
+	
+	var bullet: Bullet = bullet_scene.instance()
+	add_child(bullet)
+	bullet.set_as_toplevel(true)
+	bullet.global_position = global_position
+	bullet.direction = bullet.direction.rotated(rotation)
+	
+	cooldown.start()
+	can_shot = false
+
+
+func _on_Cooldown_timeout() -> void:
+	can_shot = true
