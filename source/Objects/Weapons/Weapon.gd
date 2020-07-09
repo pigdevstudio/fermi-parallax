@@ -3,9 +3,11 @@ class_name Weapon
 
 export var bullet_scene: PackedScene
 
+export var cooldown := 1.0
+
 var can_shot := true
 
-onready var cooldown := $Cooldown
+onready var _cooldown := $Cooldown
 
 
 func shot() -> void:
@@ -18,7 +20,7 @@ func shot() -> void:
 	bullet.global_position = global_position
 	bullet.direction = bullet.direction.rotated(rotation)
 	
-	cooldown.start()
+	_cooldown.start(cooldown)
 	can_shot = false
 
 
