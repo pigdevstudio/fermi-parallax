@@ -9,6 +9,8 @@ export var clamp_right := 640.0 - 32
 onready var velocity: = direction * speed
 onready var weapon := $Weapon
 
+onready var health := $Health
+onready var hurtbox := $HurtBox
 
 func _process(delta: float) -> void:
 	move(delta)
@@ -29,3 +31,12 @@ func update_direction() -> void:
 
 func update_velocity() -> void:
 	velocity = direction * speed
+
+
+func die() -> void:
+	queue_free()
+
+
+func _on_HurtBox_area_entered(area: Area2D) -> void:
+	if not area.is_in_group("player"):
+		health.current -= area.damage
