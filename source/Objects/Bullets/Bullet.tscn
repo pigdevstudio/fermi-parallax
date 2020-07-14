@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Objects/Bullets/Bullet.gd" type="Script" id=1]
 [ext_resource path="res://Objects/Bullets/projectile-player.svg" type="Texture" id=2]
-[ext_resource path="res://Objects/DamageArea/HitBox.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Objects/HitBox/HitBox.tscn" type="PackedScene" id=3]
 
 [node name="Bullet" type="Node2D"]
 script = ExtResource( 1 )

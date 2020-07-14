@@ -23,4 +23,5 @@ func _on_VisibilityNotifier2D_screen_exited() -> void:
 
 
 func _on_HitBox_area_entered(area: Area2D) -> void:
-	queue_free()
+	if not is_in_group(area.team):
+		queue_free()

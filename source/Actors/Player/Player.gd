@@ -11,6 +11,7 @@ onready var weapon := $Weapon
 
 onready var health := $Health
 onready var hurtbox := $HurtBox
+onready var sprite_anim := $Sprite/AnimationPlayer
 
 func _process(delta: float) -> void:
 	move(delta)
@@ -37,6 +38,6 @@ func die() -> void:
 	queue_free()
 
 
-func _on_HurtBox_area_entered(area: Area2D) -> void:
-	if not area.is_in_group("player"):
-		health.current -= area.damage
+func _on_HurtBox_damage_taken(damage: float) -> void:
+	health.current -= damage
+	sprite_anim.play("damage")
