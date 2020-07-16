@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Actors/Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Actors/Enemies/EnemyOne/EnemyOne.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Areas/ParallaxBackground.tscn" type="PackedScene" id=3]
 
 [node name="TestLevel" type="Node2D"]
 
@@ -9,3 +10,11 @@
 position = Vector2( 32, 960 )
 
 [node name="EnemyPath" parent="." instance=ExtResource( 2 )]
+
+[node name="EnemyPath2" parent="." instance=ExtResource( 2 )]
+position = Vector2( 176, 0 )
+
+[node name="EnemyPath3" parent="." instance=ExtResource( 2 )]
+position = Vector2( -176, 0 )
+
+[node name="ParallaxBackground" parent="." instance=ExtResource( 3 )]

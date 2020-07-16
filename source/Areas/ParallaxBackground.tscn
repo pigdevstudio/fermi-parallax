@@ -1,0 +1,65 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Areas/planets.svg" type="Texture" id=1]
+[ext_resource path="res://Areas/star.svg" type="Texture" id=2]
+[ext_resource path="res://Areas/ParallaxBackground.gd" type="Script" id=3]
+
+[sub_resource type="Curve" id=1]
+_data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.5, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=2]
+curve = SubResource( 1 )
+
+[sub_resource type="ParticlesMaterial" id=3]
+emission_shape = 2
+emission_box_extents = Vector3( 320, 540, 1 )
+flag_disable_z = true
+gravity = Vector3( 0, 0, 0 )
+angular_velocity = 20.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+angle = 360.0
+angle_random = 1.0
+scale = 0.5
+scale_random = 0.76
+scale_curve = SubResource( 2 )
+
+[node name="ParallaxBackground" type="ParallaxBackground"]
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_vertical_guides_": [ 640.0 ]
+}
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="."]
+motion_scale = Vector2( 0.3, 0.3 )
+motion_mirroring = Vector2( 0, 1080 )
+
+[node name="StarField" type="Particles2D" parent="ParallaxLayer2"]
+modulate = Color( 1.1, 1.1, 1.1, 1 )
+position = Vector2( 320, 540 )
+amount = 16
+lifetime = 10.0
+preprocess = 10.0
+visibility_rect = Rect2( -320, -540, 640, 1080 )
+process_material = SubResource( 3 )
+texture = ExtResource( 2 )
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="."]
+motion_scale = Vector2( 0.5, 0.5 )
+motion_mirroring = Vector2( 0, 2160 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxLayer"]
+position = Vector2( 456, 1080 )
+rotation = 0.263499
+scale = Vector2( 0.494398, 0.494398 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 138, 483, 745, 357 )
+
+[node name="Sprite2" type="Sprite" parent="ParallaxLayer"]
+position = Vector2( 104, -0.00012207 )
+rotation = -0.203016
+scale = Vector2( 0.494398, 0.494398 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 36, 22, 356, 356 )
