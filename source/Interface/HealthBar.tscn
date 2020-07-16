@@ -26,7 +26,7 @@ corner_radius_top_right = 7
 corner_radius_bottom_right = 7
 corner_radius_bottom_left = 7
 
-[node name="ProgressBar" type="ProgressBar"]
+[node name="HealthBar" type="ProgressBar"]
 margin_top = 0.440125
 margin_right = 284.0
 margin_bottom = 25.4401
