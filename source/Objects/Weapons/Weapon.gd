@@ -4,6 +4,7 @@ class_name Weapon
 export var bullet_scene: PackedScene
 
 export var cooldown := 1.0
+export var disabled := false
 
 var can_shot := true
 
@@ -11,6 +12,8 @@ onready var _cooldown := $Cooldown
 
 
 func shot() -> void:
+	if disabled:
+		return
 	if not can_shot:
 		return
 	
