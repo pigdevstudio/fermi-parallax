@@ -1,7 +1,25 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Objects/Weapons/Weapon.gd" type="Script" id=1]
 [ext_resource path="res://Objects/Bullets/Bullet.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Objects/Weapons/flash.svg" type="Texture" id=3]
+
+[sub_resource type="Animation" id=1]
+resource_name = "flash"
+length = 0.1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Flash:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
 
 [node name="Weapon" type="Position2D"]
 script = ExtResource( 1 )
@@ -10,4 +28,11 @@ bullet_scene = ExtResource( 2 )
 [node name="Cooldown" type="Timer" parent="."]
 wait_time = 0.3
 one_shot = true
-[connection signal="timeout" from="Cooldown" to="." method="_on_Cooldown_timeout"]
+
+[node name="Flash" type="Sprite" parent="."]
+visible = false
+modulate = Color( 1.2, 1.2, 1.2, 1 )
+texture = ExtResource( 3 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/flash = SubResource( 1 )

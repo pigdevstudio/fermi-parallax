@@ -235,7 +235,7 @@ texture = ExtResource( 3 )
 [node name="FireTrails" type="Node2D" parent="."]
 
 [node name="FireTrailParticles2D" type="Particles2D" parent="FireTrails"]
-modulate = Color( 1.2, 1.2, 1.2, 1 )
+modulate = Color( 1.5, 1.5, 1.5, 1 )
 emitting = false
 amount = 50
 lifetime = 0.3
@@ -246,7 +246,7 @@ process_material = SubResource( 8 )
 texture = ExtResource( 3 )
 
 [node name="FireTrailParticles2D2" type="Particles2D" parent="FireTrails"]
-modulate = Color( 1.2, 1.2, 1.2, 1 )
+modulate = Color( 1.5, 1.5, 1.5, 1 )
 emitting = false
 amount = 50
 lifetime = 0.3
@@ -258,7 +258,7 @@ process_material = SubResource( 8 )
 texture = ExtResource( 3 )
 
 [node name="FireTrailParticles2D3" type="Particles2D" parent="FireTrails"]
-modulate = Color( 1.2, 1.2, 1.2, 1 )
+modulate = Color( 1.5, 1.5, 1.5, 1 )
 emitting = false
 amount = 50
 lifetime = 0.3
@@ -270,7 +270,7 @@ process_material = SubResource( 8 )
 texture = ExtResource( 3 )
 
 [node name="FireTrailParticles2D4" type="Particles2D" parent="FireTrails"]
-modulate = Color( 1.2, 1.2, 1.2, 1 )
+modulate = Color( 1.5, 1.5, 1.5, 1 )
 emitting = false
 amount = 50
 lifetime = 0.3
@@ -282,7 +282,7 @@ process_material = SubResource( 8 )
 texture = ExtResource( 3 )
 
 [node name="FireTrailParticles2D5" type="Particles2D" parent="FireTrails"]
-modulate = Color( 1.2, 1.2, 1.2, 1 )
+modulate = Color( 1.5, 1.5, 1.5, 1 )
 emitting = false
 amount = 50
 lifetime = 0.3
@@ -294,7 +294,7 @@ process_material = SubResource( 8 )
 texture = ExtResource( 3 )
 
 [node name="FireBurstParticles2D" type="Particles2D" parent="."]
-modulate = Color( 1.2, 1.2, 1.2, 1 )
+modulate = Color( 1.5, 1.5, 1.5, 1 )
 emitting = false
 amount = 64
 lifetime = 0.25
@@ -307,7 +307,7 @@ process_material = SubResource( 11 )
 texture = ExtResource( 3 )
 
 [node name="SparkleParticles2D" type="Particles2D" parent="."]
-modulate = Color( 1.2, 1.2, 1.2, 1 )
+modulate = Color( 1.5, 1.5, 1.5, 1 )
 emitting = false
 amount = 32
 lifetime = 0.5
