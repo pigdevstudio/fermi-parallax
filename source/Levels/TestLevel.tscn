@@ -18,3 +18,5 @@ position = Vector2( 176, 0 )
 position = Vector2( -176, 0 )
 
 [node name="ParallaxBackground" parent="." instance=ExtResource( 3 )]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
