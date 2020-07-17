@@ -9,10 +9,25 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Node",
+"class": "Action",
+"language": "GDScript",
+"path": "res://Actors/Actions/Action.gd"
+}, {
+"base": "Node",
+"class": "ActionResource",
+"language": "GDScript",
+"path": "res://Actors/Resources/Resource.gd"
+}, {
 "base": "Node2D",
 "class": "Bullet",
 "language": "GDScript",
 "path": "res://Objects/Bullets/Bullet.gd"
+}, {
+"base": "Node2D",
+"class": "Player",
+"language": "GDScript",
+"path": "res://Actors/Player/Player.gd"
 }, {
 "base": "Position2D",
 "class": "Weapon",
@@ -20,7 +35,10 @@ _global_script_classes=[ {
 "path": "res://Objects/Weapons/Weapon.gd"
 } ]
 _global_script_class_icons={
+"Action": "",
+"ActionResource": "",
 "Bullet": "",
+"Player": "",
 "Weapon": ""
 }
 

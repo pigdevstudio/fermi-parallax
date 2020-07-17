@@ -8,7 +8,6 @@
 rotation = 1.57079
 script = ExtResource( 1 )
 speed = 2000.0
-spread = 0.0
 
 [node name="Sprite" type="Sprite" parent="."]
 modulate = Color( 1.2, 1.2, 1.2, 1 )

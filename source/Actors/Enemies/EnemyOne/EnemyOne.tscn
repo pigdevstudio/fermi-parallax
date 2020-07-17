@@ -122,16 +122,16 @@ tracks/4/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "values": [ {
 "args": [  ],
-"method": "shot"
+"method": "fire"
 }, {
 "args": [  ],
-"method": "shot"
+"method": "fire"
 }, {
 "args": [  ],
-"method": "shot"
+"method": "fire"
 }, {
 "args": [  ],
-"method": "shot"
+"method": "fire"
 } ]
 }
 
@@ -144,9 +144,8 @@ __meta__ = {
 }
 
 [node name="PathFollow2D" type="PathFollow2D" parent="."]
-position = Vector2( 133.204, 242.053 )
-rotation = 1.34162
-offset = 353.48
+position = Vector2( 320, 0 )
+rotation = 3.08486
 loop = false
 
 [node name="Enemy" parent="PathFollow2D" instance=ExtResource( 1 )]

@@ -1,4 +1,5 @@
 extends Node
+class_name ActionResource
 
 signal max_changed(new_max)
 signal changed(new_amount)

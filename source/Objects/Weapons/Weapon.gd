@@ -1,6 +1,8 @@
 extends Position2D
 class_name Weapon
 
+signal fired
+
 export var bullet_scene: PackedScene
 
 export var cooldown := 1.0
@@ -12,7 +14,7 @@ onready var animator := $AnimationPlayer
 onready var _cooldown := $Cooldown
 
 
-func shot() -> void:
+func fire() -> void:
 	if disabled:
 		return
 	if not _cooldown.is_stopped():
@@ -26,3 +28,4 @@ func shot() -> void:
 	
 	_cooldown.start(cooldown)
 	animator.play("flash")
+	emit_signal("fired")
