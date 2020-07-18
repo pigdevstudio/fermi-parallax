@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Interfaces/label_font.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Interfaces/ResourceBar.tscn" type="PackedScene" id=2]
 
 [node name="PlayScreen" type="Control"]
 anchor_right = 1.0
@@ -27,22 +28,20 @@ custom_constants/margin_top = 20
 custom_constants/margin_left = 20
 custom_constants/margin_bottom = 20
 
-[node name="Control" type="Control" parent="HBoxContainer/Left"]
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/Left"]
 margin_left = 20.0
 margin_top = 20.0
 margin_right = 620.0
 margin_bottom = 1060.0
+custom_constants/separation = 14
 
-[node name="Label" type="Label" parent="HBoxContainer/Left/Control"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-custom_fonts/font = ExtResource( 1 )
-text = "Some interface elements go here."
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="PlayerHealthBar" parent="HBoxContainer/Left/VBoxContainer" instance=ExtResource( 2 )]
+margin_right = 600.0
+
+[node name="PlayerEnergyBar" parent="HBoxContainer/Left/VBoxContainer" instance=ExtResource( 2 )]
+margin_top = 46.0
+margin_right = 600.0
+margin_bottom = 78.0
 
 [node name="Center" type="ReferenceRect" parent="HBoxContainer"]
 margin_left = 640.0

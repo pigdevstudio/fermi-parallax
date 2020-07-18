@@ -102,7 +102,6 @@ anims/dash = SubResource( 5 )
 cost = 3.0
 
 [node name="Shoot" parent="Actions" instance=ExtResource( 10 )]
-cost = 1.0
 weapon_path = NodePath("../../Weapon")
 [connection signal="damage_taken" from="HurtBox" to="." method="_on_HurtBox_damage_taken"]
 [connection signal="depleted" from="Health" to="." method="die"]

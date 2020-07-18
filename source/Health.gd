@@ -8,7 +8,7 @@ export (int) var max_amount = 10 setget set_max
 onready var current = max_amount setget set_current
 
 func _ready():
-	_initializer()
+	initialize()
 	
 func set_max(new_max):
 	max_amount = new_max
@@ -23,6 +23,6 @@ func set_current(new_value):
 	if current == 0:
 		emit_signal("depleted")
 		
-func _initializer(): 
+func initialize(): 
 	emit_signal("max_changed", max_amount)
 	emit_signal("changed", current)

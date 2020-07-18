@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Interfaces/ResourceBar.gd" type="Script" id=1]
 
 [sub_resource type="StyleBoxFlat" id=1]
-bg_color = Color( 0.294118, 0.356863, 0.670588, 1 )
+bg_color = Color( 0.192157, 0.192157, 1, 1 )
 border_width_left = 3
 border_width_top = 3
 border_width_right = 3
@@ -24,14 +26,15 @@ corner_radius_top_right = 7
 corner_radius_bottom_right = 7
 corner_radius_bottom_left = 7
 
-[node name="HealthBar" type="ProgressBar"]
-margin_top = 0.440125
+[node name="ResourceBar" type="ProgressBar"]
 margin_right = 284.0
-margin_bottom = 25.4401
+margin_bottom = 32.0
+rect_min_size = Vector2( 0, 32 )
 custom_styles/fg = SubResource( 1 )
 custom_styles/bg = SubResource( 2 )
 value = 50.0
 percent_visible = false
+script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
