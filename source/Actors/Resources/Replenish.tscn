@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Actors/Resources/Replenish.gd" type="Script" id=1]
+
+[node name="Replenish" type="Timer"]
+one_shot = true
+script = ExtResource( 1 )
+[connection signal="timeout" from="." to="." method="_on_timeout"]

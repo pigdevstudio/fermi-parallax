@@ -29,15 +29,21 @@ func _process(delta: float) -> void:
 	move(delta)
 	if Input.is_action_pressed("shoot"):
 		shoot.execute()
+	handle_input()
 
 
-func _input(event: InputEvent) -> void:
-	if event.is_action("move_left") or event.is_action("move_right"):
+func handle_input() -> void:
+	var update_movement := false
+	update_movement = Input.is_action_just_pressed("move_left")
+	update_movement = update_movement or Input.is_action_just_pressed("move_right")
+	update_movement = update_movement or Input.is_action_just_released("move_left")
+	update_movement = update_movement or Input.is_action_just_released("move_right")
+	if update_movement:
 		update_direction()
 		update_velocity()
-	if event.is_action_pressed("dash"):
+	if Input.is_action_just_pressed("dash"):
 		dash()
-	elif event.is_action_released("dash"):
+	elif Input.is_action_just_released("dash"):
 		stop_dash()
 
 
