@@ -35,13 +35,30 @@ margin_right = 620.0
 margin_bottom = 1060.0
 custom_constants/separation = 14
 
-[node name="PlayerHealthBar" parent="HBoxContainer/Left/VBoxContainer" instance=ExtResource( 2 )]
+[node name="Label" type="Label" parent="HBoxContainer/Left/VBoxContainer"]
 margin_right = 600.0
+margin_bottom = 26.0
+custom_fonts/font = ExtResource( 1 )
+text = "Health"
+align = 1
+
+[node name="PlayerHealthBar" parent="HBoxContainer/Left/VBoxContainer" instance=ExtResource( 2 )]
+margin_top = 40.0
+margin_right = 600.0
+margin_bottom = 72.0
+
+[node name="Label2" type="Label" parent="HBoxContainer/Left/VBoxContainer"]
+margin_top = 86.0
+margin_right = 600.0
+margin_bottom = 112.0
+custom_fonts/font = ExtResource( 1 )
+text = "Energy"
+align = 1
 
 [node name="PlayerEnergyBar" parent="HBoxContainer/Left/VBoxContainer" instance=ExtResource( 2 )]
-margin_top = 46.0
+margin_top = 126.0
 margin_right = 600.0
-margin_bottom = 78.0
+margin_bottom = 158.0
 
 [node name="Center" type="ReferenceRect" parent="HBoxContainer"]
 margin_left = 640.0

@@ -110,5 +110,7 @@ weapon_path = NodePath("../../Weapon")
 [connection signal="damage_taken" from="HurtBox" to="." method="_on_HurtBox_damage_taken"]
 [connection signal="depleted" from="Health" to="." method="die"]
 [connection signal="depleted" from="Energy" to="EnergyReplenish" method="start"]
+[connection signal="replenished" from="EnergyReplenish" to="Weapon" method="set" binds= [ "disabled", false ]]
+[connection signal="started" from="EnergyReplenish" to="Weapon" method="set" binds= [ "disabled", true ]]
 
 [editable path="Weapon"]

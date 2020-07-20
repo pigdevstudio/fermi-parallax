@@ -1,5 +1,7 @@
 extends Timer
 
+signal started
+signal replenished
 
 export var resource_path: NodePath
 export var recharge_per_second := 10.0
@@ -13,8 +15,10 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	resource.current += recharge_per_second * delta
 	if resource.current >= resource.max_amount:
+		emit_signal("replenished")
 		set_process(false)
 
 
 func _on_timeout() -> void:
+	emit_signal("started")
 	set_process(true)

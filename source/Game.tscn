@@ -18,10 +18,10 @@ render_target_update_mode = 3
 
 [node name="PlayScreen" parent="." instance=ExtResource( 1 )]
 
-[node name="PlayerHealthBar" parent="PlayScreen/HBoxContainer/Left/VBoxContainer" index="0"]
+[node name="PlayerHealthBar" parent="PlayScreen/HBoxContainer/Left/VBoxContainer" index="1"]
 resource_path = NodePath("../../../../../Viewport/TestLevel/Player/Health")
 
-[node name="PlayerEnergyBar" parent="PlayScreen/HBoxContainer/Left/VBoxContainer" index="1"]
+[node name="PlayerEnergyBar" parent="PlayScreen/HBoxContainer/Left/VBoxContainer" index="3"]
 resource_path = NodePath("../../../../../Viewport/TestLevel/Player/Energy")
 
 [node name="TextureRect" parent="PlayScreen/HBoxContainer/Center" index="0"]

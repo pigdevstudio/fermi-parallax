@@ -1,5 +1,6 @@
 extends ProgressBar
 
+
 export var resource_path: NodePath
 
 onready var resource: ActionResource = get_node(resource_path) setget set_resource

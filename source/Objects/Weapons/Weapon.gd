@@ -8,8 +8,6 @@ export var bullet_scene: PackedScene
 export var cooldown := 1.0
 export var disabled := false
 
-var can_shot := true
-
 onready var animator := $AnimationPlayer
 onready var _cooldown := $Cooldown
 
