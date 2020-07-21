@@ -3,7 +3,7 @@ extends Action
 
 export var weapon_path: NodePath
 
-onready var weapon: Weapon = get_node(weapon_path)
+onready var weapon: Weapon = get_node_or_null(weapon_path)
 
 func _ready() -> void:
 	weapon.connect("fired", self, "_on_Weapon_fired")

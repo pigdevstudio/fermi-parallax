@@ -4,7 +4,7 @@ extends Timer
 export var resource_path: NodePath
 export var recharge_per_second := 10.0
 
-onready var resource: ActionResource = get_node(resource_path)
+onready var resource: ActionResource = get_node_or_null(resource_path)
 
 func _ready() -> void:
 	set_process(false)
