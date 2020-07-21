@@ -10,8 +10,6 @@
 [ext_resource path="res://Actors/topdown-damaged-character.svg" type="Texture" id=8]
 [ext_resource path="res://Objects/Weapons/flash_enemy.svg" type="Texture" id=9]
 
-
-
 [sub_resource type="Animation" id=1]
 resource_name = "damage"
 length = 0.25
@@ -131,7 +129,9 @@ tracks/3/keys = {
 "values": [ false ]
 }
 
-[node name="Enemy" type="Node2D"]
+[node name="Enemy" type="Node2D" groups=[
+"enemy",
+]]
 z_index = 1
 script = ExtResource( 6 )
 

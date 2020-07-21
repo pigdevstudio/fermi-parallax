@@ -1,6 +1,7 @@
 extends Node2D
 
 signal died
+signal damaged(health)
 
 onready var animator := $AnimationPlayer
 onready var health := $Health
@@ -22,3 +23,4 @@ func die() -> void:
 func _on_HurtBox_damage_taken(damage) -> void:
 	health.current -= damage
 	sprite_animator.play("damage")
+	emit_signal("damaged", health)
