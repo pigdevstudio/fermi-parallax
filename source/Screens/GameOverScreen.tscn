@@ -1,0 +1,64 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Interfaces/title_font.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Interfaces/label_font.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Interfaces/SceneTransitionRect.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Screens/GameOverScreen.gd" type="Script" id=4]
+
+[node name="GameOverScreen" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 20
+custom_constants/margin_top = 20
+custom_constants/margin_left = 20
+custom_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 1900.0
+margin_bottom = 1060.0
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+margin_right = 1880.0
+margin_bottom = 518.0
+size_flags_horizontal = 3
+size_flags_vertical = 7
+custom_fonts/font = ExtResource( 1 )
+text = "Game Over"
+align = 1
+valign = 1
+
+[node name="MarginContainer" type="Control" parent="MarginContainer/VBoxContainer"]
+margin_top = 522.0
+margin_right = 1880.0
+margin_bottom = 1040.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="RetryButton" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -200.0
+margin_top = -55.0
+margin_right = 199.0
+margin_bottom = 55.0
+custom_fonts/font = ExtResource( 2 )
+text = "Retry"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SceneTransitionRect" parent="." instance=ExtResource( 3 )]
+next_scene_path = "res://Game.tscn"
+[connection signal="pressed" from="MarginContainer/VBoxContainer/MarginContainer/RetryButton" to="." method="_on_RetryButton_pressed"]
