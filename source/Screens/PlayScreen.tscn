@@ -88,6 +88,7 @@ custom_constants/margin_left = 20
 custom_constants/margin_bottom = 20
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/Right"]
+visible = false
 margin_left = 20.0
 margin_top = 20.0
 margin_right = 620.0
@@ -105,3 +106,4 @@ align = 1
 margin_top = 40.0
 margin_right = 600.0
 margin_bottom = 72.0
+value = 100.0
