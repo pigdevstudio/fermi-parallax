@@ -8,7 +8,7 @@ var resource: ActionResource
 var player: Player
 
 func execute() -> void:
-	if resource.current - cost >= 0.0:
+	if resource.current - cost >= 0.0 and not resource.depleted:
 		_execute()
 
 

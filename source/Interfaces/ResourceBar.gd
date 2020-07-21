@@ -7,7 +7,8 @@ onready var resource: ActionResource = get_node(resource_path) setget set_resour
 
 
 func _ready() -> void:
-	link_resource()
+	if resource:
+		link_resource()
 
 
 func set_resource(new_resource: ActionResource) -> void:

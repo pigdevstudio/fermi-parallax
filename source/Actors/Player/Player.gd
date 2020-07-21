@@ -1,6 +1,8 @@
 extends Node2D
 class_name Player
 
+signal died
+
 export var speed := 600.0
 export var direction := Vector2.ZERO
 export var dash_speed := 1800.0
@@ -61,7 +63,7 @@ func update_velocity() -> void:
 
 
 func die() -> void:
-	queue_free()
+	emit_signal("died")
 
 
 func dash() -> void:
