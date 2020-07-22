@@ -17,6 +17,8 @@ func set_resource(new_resource: ActionResource) -> void:
 
 
 func link_resource() -> void:
-	resource.connect("changed", self, "set_value")
-	resource.connect("max_changed", self, "set_max")
+	if not resource.is_connected("changed", self, "set_value"):
+		resource.connect("changed", self, "set_value")
+	if not resource.is_connected("max_changed", self, "set_max"):
+		resource.connect("max_changed", self, "set_max")
 	resource.initialize()

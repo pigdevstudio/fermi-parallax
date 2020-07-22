@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Interfaces/label_font.tres" type="DynamicFont" id=1]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends CheckButton
+
+
+func _toggled(button_pressed: bool) -> void:
+	OS.window_fullscreen = button_pressed
+
+
+func _on_draw() -> void:
+	pressed = OS.window_fullscreen
+"
+
+[node name="FullscreenButton" type="CheckButton"]
+margin_right = 258.0
+margin_bottom = 48.0
+custom_fonts/font = ExtResource( 1 )
+text = "Fullscreen"
+script = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="draw" from="." to="." method="_on_draw"]

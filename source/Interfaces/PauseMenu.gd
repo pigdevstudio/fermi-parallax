@@ -1,7 +1,8 @@
 extends Control
 
-onready var _resume_button := $MarginContainer/VBoxContainer/HBoxContainer/Center/VBoxContainer/ResumeButton
-
+onready var _resume_button := $PauseMenu/HBoxContainer/Center/MarginContainer/VBoxContainer/ResumeButton
+onready var _pause_menu := $PauseMenu
+onready var _options_menu := $OptionsMenu
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("pause"):
@@ -13,6 +14,7 @@ func _input(event: InputEvent) -> void:
 
 func pause() -> void:
 	show()
+	_pause_menu.show()
 	_resume_button.grab_focus()
 	get_tree().paused = true
 
@@ -28,3 +30,13 @@ func _on_ResumeButton_pressed() -> void:
 
 func _on_QuitButton_pressed() -> void:
 	get_tree().quit()
+
+
+func _on_OptionsButton_pressed() -> void:
+	_pause_menu.hide()
+	_options_menu.show()
+
+
+func _on_OptionsCloseButton_pressed() -> void:
+	_pause_menu.show()
+	_options_menu.hide()

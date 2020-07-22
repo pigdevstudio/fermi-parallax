@@ -12,8 +12,7 @@ func _on_PlayButton_pressed() -> void:
 
 
 func _on_OptionsButton_pressed() -> void:
-#	_transition_rect.transit(options_screen_path)
-	pass
+	_transition_rect.transit(options_screen_path)
 
 
 func _on_QuitButton_pressed() -> void:
