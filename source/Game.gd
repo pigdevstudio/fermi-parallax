@@ -4,7 +4,7 @@ extends Node
 export(String, FILE, "*.tscn") var game_over_screen_path
 
 
-onready var _level := $Viewport/Level
+onready var _level := $Level
 onready var _transit_rect := $Interface/SceneTransitionRect
 
 func _ready() -> void:

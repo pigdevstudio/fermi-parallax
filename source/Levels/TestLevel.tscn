@@ -15,15 +15,17 @@ glow_bicubic_upscale = true
 script = ExtResource( 4 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 32, 960 )
+position = Vector2( 672, 960 )
+clamp_right = 1888.0
 
 [node name="EnemyPath" parent="." instance=ExtResource( 2 )]
+position = Vector2( 640, 0 )
 
 [node name="EnemyPath2" parent="." instance=ExtResource( 2 )]
-position = Vector2( 176, 0 )
+position = Vector2( 816, 0 )
 
 [node name="EnemyPath3" parent="." instance=ExtResource( 2 )]
-position = Vector2( -176, 0 )
+position = Vector2( 464, 0 )
 
 [node name="ParallaxBackground" parent="." instance=ExtResource( 3 )]
 
