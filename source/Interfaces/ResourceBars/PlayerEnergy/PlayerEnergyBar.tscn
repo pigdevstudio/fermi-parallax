@@ -1,0 +1,46 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Interfaces/ResourceBar.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Interfaces/ResourceBars/PlayerEnergy/player_energy_flatbox.tres" type="StyleBox" id=2]
+[ext_resource path="res://Interfaces/ResourceBars/PlayerEnergy/PlayerEnergyBar.gd" type="Script" id=3]
+
+[sub_resource type="Animation" id=1]
+resource_name = "depleted"
+length = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:custom_styles/fg:bg_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0.376471, 0.376471, 0.439216, 1 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+length = 0.12
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:custom_styles/fg:bg_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.12 ),
+"transitions": PoolRealArray( 1, 1, 0 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 0.294118, 0.356863, 0.670588, 1 ) ]
+}
+
+[node name="PlayerEnergyBar" instance=ExtResource( 1 )]
+custom_styles/fg = ExtResource( 2 )
+value = 80.0
+script = ExtResource( 3 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="0"]
+anims/depleted = SubResource( 1 )
+anims/flashing = SubResource( 2 )

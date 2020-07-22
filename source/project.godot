@@ -29,6 +29,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Actors/Player/Player.gd"
 }, {
+"base": "ProgressBar",
+"class": "ResourceBar",
+"language": "GDScript",
+"path": "res://Interfaces/ResourceBar.gd"
+}, {
 "base": "Position2D",
 "class": "Weapon",
 "language": "GDScript",
@@ -39,6 +44,7 @@ _global_script_class_icons={
 "ActionResource": "",
 "Bullet": "",
 "Player": "",
+"ResourceBar": "",
 "Weapon": ""
 }
 

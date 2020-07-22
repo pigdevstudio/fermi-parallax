@@ -19,3 +19,4 @@ game_over_screen_path = "res://Screens/GameOverScreen.tscn"
 [node name="PauseMenu" parent="Interface" instance=ExtResource( 5 )]
 
 [node name="SceneTransitionRect" parent="Interface" instance=ExtResource( 4 )]
+visible = false

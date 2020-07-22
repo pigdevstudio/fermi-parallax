@@ -1,4 +1,5 @@
 extends ProgressBar
+class_name ResourceBar
 
 
 export var resource_path: NodePath
@@ -16,9 +17,17 @@ func set_resource(new_resource: ActionResource) -> void:
 	link_resource()
 
 
+func _on_Resource_value_changed(new_value: float) -> void:
+	value = new_value
+
+
+func _on_Resource_max_changed(new_max: float) -> void:
+	max_value = new_max
+
+
 func link_resource() -> void:
-	if not resource.is_connected("changed", self, "set_value"):
-		resource.connect("changed", self, "set_value")
-	if not resource.is_connected("max_changed", self, "set_max"):
-		resource.connect("max_changed", self, "set_max")
+	if not resource.is_connected("changed", self, "_on_Resource_value_changed"):
+		resource.connect("changed", self, "_on_Resource_value_changed")
+	if not resource.is_connected("max_changed", self, "_on_Resource_max_changed"):
+		resource.connect("max_changed", self, "_on_Resource_max_changed")
 	resource.initialize()
