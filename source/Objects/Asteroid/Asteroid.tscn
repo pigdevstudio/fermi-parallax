@@ -4,7 +4,8 @@
 [ext_resource path="res://Objects/Asteroid/asteroid-small.svg" type="Texture" id=2]
 [ext_resource path="res://Objects/Asteroid/Asteroid.gd" type="Script" id=3]
 [ext_resource path="res://Objects/HitBox/HitBox.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Actors/HurtBox/HurtBox.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Objects/HurtBox/HurtBox.tscn" type="PackedScene" id=5]
+
 
 [sub_resource type="Animation" id=1]
 resource_name = "explode"
