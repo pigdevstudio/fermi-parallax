@@ -182,7 +182,9 @@ disabled = true
 [node name="Flash" parent="Weapon" index="1"]
 texture = ExtResource( 9 )
 
-[node name="Health" parent="." instance=ExtResource( 4 )]
+[node name="Health" parent="." groups=[
+"enemy_health",
+] instance=ExtResource( 4 )]
 
 [node name="HurtBox" parent="." instance=ExtResource( 2 )]
 monitoring = false
