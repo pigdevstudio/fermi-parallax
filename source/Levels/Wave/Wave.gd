@@ -9,7 +9,5 @@ func _ready() -> void:
 
 func _on_Child_tree_exited():
 	if get_child_count() < 1:
-		if name == "Wavet6":
-			pass
 		emit_signal("finished")
 		queue_free()
