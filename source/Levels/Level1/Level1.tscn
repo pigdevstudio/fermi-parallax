@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://Actors/Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Objects/Spawner/Spawner2D.tscn" type="PackedScene" id=2]
@@ -13,6 +13,8 @@
 [ext_resource path="res://Levels/Level1/Waves/Wave7.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Levels/Level1/Waves/Wave8.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Levels/Level1/Juhani Junkala [Retro Game Music Pack] Level 1.ogg" type="AudioStream" id=13]
+[ext_resource path="res://Levels/Level1/sfx_sound_depressurizing.wav" type="AudioStream" id=14]
+[ext_resource path="res://Levels/Level1/Juhani Junkala [Retro Game Music Pack] Ending.ogg" type="AudioStream" id=15]
 
 [sub_resource type="Environment" id=1]
 background_mode = 4
@@ -60,6 +62,18 @@ tracks/2/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ 100.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath(".:background_music")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 15 ) ]
 }
 
 [sub_resource type="Animation" id=3]
@@ -283,6 +297,46 @@ tracks/2/keys = {
 "update": 0,
 "values": [ 100.0, 5000.0 ]
 }
+tracks/3/type = "audio"
+tracks/3/path = NodePath("SFX")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 14 )
+} ],
+"times": PoolRealArray( 0 )
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath(".:background_music")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 13 ) ]
+}
+tracks/5/type = "method"
+tracks/5/path = NodePath(".")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "update_background_music"
+} ]
+}
 
 [sub_resource type="Animation" id=10]
 resource_name = "08"
@@ -328,7 +382,7 @@ clamp_right = 1888.0
 environment = SubResource( 1 )
 
 [node name="WaveSpawner2D" parent="." instance=ExtResource( 2 )]
-spawn_scene = ExtResource( 5 )
+spawn_scene = ExtResource( 12 )
 
 [node name="EventsPlayer" type="AnimationPlayer" parent="."]
 autoplay = "00"
@@ -341,4 +395,10 @@ anims/05 = SubResource( 7 )
 anims/06 = SubResource( 8 )
 anims/07 = SubResource( 9 )
 anims/08 = SubResource( 10 )
+
+[node name="SFX" type="AudioStreamPlayer2D" parent="."]
+position = Vector2( 960, 960 )
+stream = ExtResource( 14 )
+volume_db = -16.0
+bus = "SFX"
 [connection signal="spawned" from="WaveSpawner2D" to="." method="_on_WaveSpawner2D_spawned"]

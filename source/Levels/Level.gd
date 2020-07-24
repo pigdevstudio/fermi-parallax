@@ -10,6 +10,10 @@ var _current_event := 0
 
 
 func _ready() -> void:
+	update_background_music()
+
+
+func update_background_music() -> void:
 	BackgroundMusic.crossfade_to(background_music)
 
 

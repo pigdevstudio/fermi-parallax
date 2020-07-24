@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Juhani Junkala [Retro Game Music Pack] Ending.ogg-13b83502d5c8a884e2b3d5849a842207.oggstr"
+
+[deps]
+
+source_file="res://Levels/Level1/Juhani Junkala [Retro Game Music Pack] Ending.ogg"
+dest_files=[ "res://.import/Juhani Junkala [Retro Game Music Pack] Ending.ogg-13b83502d5c8a884e2b3d5849a842207.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

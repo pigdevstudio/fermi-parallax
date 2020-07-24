@@ -10,6 +10,7 @@
 [sub_resource type="Animation" id=1]
 resource_name = "spin"
 length = 3.0
+loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:rotation_degrees")
 tracks/0/interp = 1
@@ -245,6 +246,7 @@ script = ExtResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="."]
 visible = false
+rotation = -6.28319
 texture = ExtResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite"]
