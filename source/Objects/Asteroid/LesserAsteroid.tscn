@@ -6,10 +6,15 @@
 radius = 48.0
 
 [node name="LesserAsteroid" instance=ExtResource( 1 )]
+speed = 600.0
 
 [node name="Sprite" parent="." index="0"]
 visible = true
 scale = Vector2( 1.75, 1.75 )
+
+[node name="AnimationPlayer" parent="Sprite" index="0"]
+min_spin_speed = -1.0
+max_spin_speed = 1.0
 
 [node name="Health" parent="." index="1"]
 max_amount = 3.0
@@ -17,6 +22,7 @@ max_amount = 3.0
 [node name="HitBox2D" parent="." index="4"]
 monitoring = true
 monitorable = true
+damage = 3.0
 
 [node name="CollisionShape2D" parent="HitBox2D" index="0"]
 shape = SubResource( 1 )
@@ -26,6 +32,9 @@ monitoring = true
 monitorable = true
 
 [node name="CollisionShape2D" parent="HurtBox" index="0"]
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D" parent="PlayerCollisionDetector" index="0"]
 shape = SubResource( 1 )
 
 [editable path="HitBox2D"]

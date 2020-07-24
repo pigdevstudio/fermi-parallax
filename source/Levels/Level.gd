@@ -1,10 +1,17 @@
 extends Node2D
 
 
+export var background_music: AudioStream
+
 onready var player := $Player
 onready var _events_player := $EventsPlayer
 
 var _current_event := 0
+
+
+func _ready() -> void:
+	BackgroundMusic.crossfade_to(background_music)
+
 
 func _on_WaveSpawner2D_spawned(spawn) -> void:
 	spawn.connect("finished", self, "_on_Wave_finished")

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/sfx_sound_depressurizing.wav-c07e61a059c86d76979647a92e74f4b8.sample"
+
+[deps]
+
+source_file="res://Levels/Level1/sfx_sound_depressurizing.wav"
+dest_files=[ "res://.import/sfx_sound_depressurizing.wav-c07e61a059c86d76979647a92e74f4b8.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

@@ -10,11 +10,15 @@ radius = 24.0
 [node name="Sprite" parent="." index="0"]
 visible = true
 
+[node name="AnimationPlayer" parent="Sprite" index="0"]
+min_spin_speed = -2.0
+
 [node name="HitBox2D" parent="." index="4" groups=[
 "enemy",
 ]]
 monitoring = true
 monitorable = true
+damage = 1.0
 
 [node name="HurtBox" parent="." index="5"]
 monitoring = true

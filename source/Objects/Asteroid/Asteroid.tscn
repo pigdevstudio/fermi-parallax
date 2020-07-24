@@ -1,13 +1,41 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Actors/Resources/Resource.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Objects/Asteroid/asteroid-small.svg" type="Texture" id=2]
 [ext_resource path="res://Objects/Asteroid/Asteroid.gd" type="Script" id=3]
 [ext_resource path="res://Objects/HitBox/HitBox.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Objects/HurtBox/HurtBox.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Objects/Asteroid/random_pitch_asteroid_sfx.tres" type="AudioStream" id=6]
 
 [sub_resource type="Animation" id=1]
-resource_name = "explode"
+resource_name = "spin"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -360.0, 0.0 ]
+}
+
+[sub_resource type="GDScript" id=2]
+script/source = "extends AnimationPlayer
+
+
+export var min_spin_speed := -0.5
+export var max_spin_speed := 2.0
+
+
+func _ready() -> void:
+	play(\"spin\", rand_range(min_spin_speed, max_spin_speed))
+"
+
+[sub_resource type="Animation" id=3]
 length = 0.5
 step = 0.05
 tracks/0/type = "value"
@@ -96,9 +124,22 @@ tracks/6/keys = {
 "update": 1,
 "values": [ false ]
 }
+tracks/7/type = "audio"
+tracks/7/path = NodePath("SFX")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 6 )
+} ],
+"times": PoolRealArray( 0 )
+}
 
-[sub_resource type="Animation" id=2]
-resource_name = "setup"
+[sub_resource type="Animation" id=4]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Particles2D:emitting")
 tracks/0/interp = 1
@@ -172,14 +213,14 @@ tracks/5/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Gradient" id=3]
+[sub_resource type="Gradient" id=5]
 offsets = PoolRealArray( 0.728395, 1 )
 colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0 )
 
-[sub_resource type="GradientTexture" id=4]
-gradient = SubResource( 3 )
+[sub_resource type="GradientTexture" id=6]
+gradient = SubResource( 5 )
 
-[sub_resource type="ParticlesMaterial" id=5]
+[sub_resource type="ParticlesMaterial" id=7]
 flag_disable_z = true
 spread = 180.0
 gravity = Vector3( 0, 0, 0 )
@@ -191,12 +232,12 @@ damping = 1200.0
 damping_random = 0.2
 scale = 0.2
 scale_random = 0.48
-color_ramp = SubResource( 4 )
+color_ramp = SubResource( 6 )
 
-[sub_resource type="CircleShape2D" id=6]
+[sub_resource type="CircleShape2D" id=8]
 radius = 24.0
 
-[sub_resource type="CircleShape2D" id=7]
+[sub_resource type="CircleShape2D" id=9]
 radius = 24.0
 
 [node name="Asteroid" type="Node2D"]
@@ -206,20 +247,24 @@ script = ExtResource( 3 )
 visible = false
 texture = ExtResource( 2 )
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite"]
+anims/spin = SubResource( 1 )
+script = SubResource( 2 )
+
 [node name="Health" parent="." instance=ExtResource( 1 )]
 max_amount = 1.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "setup"
-anims/explode = SubResource( 1 )
-anims/setup = SubResource( 2 )
+anims/explode = SubResource( 3 )
+anims/setup = SubResource( 4 )
 
 [node name="Particles2D" type="Particles2D" parent="."]
 emitting = false
 amount = 10
 lifetime = 0.5
 explosiveness = 0.9
-process_material = SubResource( 5 )
+process_material = SubResource( 7 )
 texture = ExtResource( 2 )
 
 [node name="HitBox2D" parent="." instance=ExtResource( 4 )]
@@ -227,19 +272,32 @@ monitoring = false
 monitorable = false
 
 [node name="CollisionShape2D" parent="HitBox2D" index="0"]
-shape = SubResource( 6 )
+shape = SubResource( 8 )
 
 [node name="HurtBox" parent="." instance=ExtResource( 5 )]
 monitoring = false
 monitorable = false
 
 [node name="CollisionShape2D" parent="HurtBox" index="0"]
-shape = SubResource( 7 )
+shape = SubResource( 9 )
+
+[node name="PlayerCollisionDetector" type="Area2D" parent="."]
+position = Vector2( 0, -1 )
+monitorable = false
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerCollisionDetector"]
+shape = SubResource( 9 )
 
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
 scale = Vector2( 2.45, 2.45 )
+
+[node name="SFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 6 )
+bus = "SFX"
 [connection signal="depleted" from="Health" to="." method="_on_Health_depleted"]
 [connection signal="damage_taken" from="HurtBox" to="." method="_on_HurtBox_damage_taken"]
+[connection signal="area_entered" from="PlayerCollisionDetector" to="." method="_on_PlayerCollisionDetector_area_entered"]
 [connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
 
 [editable path="HitBox2D"]

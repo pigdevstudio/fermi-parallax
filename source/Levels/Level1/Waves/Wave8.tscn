@@ -9,29 +9,113 @@
 [node name="LesserAsteroid" parent="." index="0" instance=ExtResource( 3 )]
 position = Vector2( 592, -480 )
 
-[node name="LesserAsteroid3" parent="." index="1" instance=ExtResource( 3 )]
-position = Vector2( 936, -1000 )
+[node name="LesserAsteroid4" parent="." index="1" instance=ExtResource( 3 )]
+position = Vector2( 608, -1520 )
 
-[node name="LesserAsteroid2" parent="." index="2" instance=ExtResource( 3 )]
-position = Vector2( 1768, -144 )
+[node name="LesserAsteroid5" parent="." index="2" instance=ExtResource( 3 )]
+position = Vector2( 1656, -1888 )
 
-[node name="PettyAsteroid" parent="." index="3" instance=ExtResource( 2 )]
-position = Vector2( 720, -32 )
+[node name="LesserAsteroid6" parent="." index="3" instance=ExtResource( 3 )]
+position = Vector2( 1128, -2104 )
 
-[node name="PettyAsteroid2" parent="." index="4" instance=ExtResource( 2 )]
-position = Vector2( 1136, -184 )
+[node name="LesserAsteroid7" parent="." index="4" instance=ExtResource( 3 )]
+position = Vector2( 392, -2336 )
 
-[node name="PettyAsteroid3" parent="." index="5" instance=ExtResource( 2 )]
-position = Vector2( 392, -360 )
+[node name="LesserAsteroid8" parent="." index="5" instance=ExtResource( 3 )]
+position = Vector2( 896, -2776 )
 
-[node name="PettyAsteroid4" parent="." index="6" instance=ExtResource( 2 )]
+[node name="LesserAsteroid3" parent="." index="6" instance=ExtResource( 3 )]
+position = Vector2( 888, -992 )
+
+[node name="LesserAsteroid2" parent="." index="7" instance=ExtResource( 3 )]
+position = Vector2( 1456, -216 )
+
+[node name="LesserAsteroid9" parent="." index="8" instance=ExtResource( 3 )]
+position = Vector2( 1784, -3536 )
+
+[node name="LesserAsteroid10" parent="." index="9" instance=ExtResource( 3 )]
+position = Vector2( 216, -3896 )
+
+[node name="PettyAsteroid" parent="." index="10" instance=ExtResource( 2 )]
+position = Vector2( 800, -96 )
+
+[node name="PettyAsteroid2" parent="." index="11" instance=ExtResource( 2 )]
+position = Vector2( 1056, -216 )
+
+[node name="PettyAsteroid3" parent="." index="12" instance=ExtResource( 2 )]
+position = Vector2( 864, -608 )
+
+[node name="PettyAsteroid4" parent="." index="13" instance=ExtResource( 2 )]
 position = Vector2( 1600, -512 )
 
-[node name="PettyAsteroid5" parent="." index="7" instance=ExtResource( 2 )]
+[node name="PettyAsteroid5" parent="." index="14" instance=ExtResource( 2 )]
 position = Vector2( 464, -904 )
 
-[node name="PettyAsteroid6" parent="." index="8" instance=ExtResource( 2 )]
+[node name="PettyAsteroid6" parent="." index="15" instance=ExtResource( 2 )]
 position = Vector2( 1280, -776 )
 
-[node name="PettyAsteroid7" parent="." index="9" instance=ExtResource( 2 )]
+[node name="PettyAsteroid7" parent="." index="16" instance=ExtResource( 2 )]
 position = Vector2( 752, -1208 )
+
+[node name="PettyAsteroid8" parent="." index="17" instance=ExtResource( 2 )]
+position = Vector2( 136, -1024 )
+
+[node name="PettyAsteroid9" parent="." index="18" instance=ExtResource( 2 )]
+position = Vector2( 288, -544 )
+
+[node name="PettyAsteroid10" parent="." index="19" instance=ExtResource( 2 )]
+position = Vector2( 1728, -1072 )
+
+[node name="PettyAsteroid11" parent="." index="20" instance=ExtResource( 2 )]
+position = Vector2( 1344, -1328 )
+
+[node name="PettyAsteroid12" parent="." index="21" instance=ExtResource( 2 )]
+position = Vector2( 1000, -1632 )
+
+[node name="PettyAsteroid13" parent="." index="22" instance=ExtResource( 2 )]
+position = Vector2( 392, -1704 )
+
+[node name="PettyAsteroid14" parent="." index="23" instance=ExtResource( 2 )]
+position = Vector2( 424, -1280 )
+
+[node name="PettyAsteroid15" parent="." index="24" instance=ExtResource( 2 )]
+position = Vector2( 152, -1504 )
+
+[node name="PettyAsteroid16" parent="." index="25" instance=ExtResource( 2 )]
+position = Vector2( 1736, -1536 )
+
+[node name="PettyAsteroid17" parent="." index="26" instance=ExtResource( 2 )]
+position = Vector2( 1376, -1792 )
+
+[node name="PettyAsteroid18" parent="." index="27" instance=ExtResource( 2 )]
+position = Vector2( 728, -1976 )
+
+[node name="PettyAsteroid20" parent="." index="28" instance=ExtResource( 2 )]
+position = Vector2( 1664, -2256 )
+
+[node name="PettyAsteroid21" parent="." index="29" instance=ExtResource( 2 )]
+position = Vector2( 1128, -2368 )
+
+[node name="PettyAsteroid22" parent="." index="30" instance=ExtResource( 2 )]
+position = Vector2( 744, -2440 )
+
+[node name="PettyAsteroid24" parent="." index="31" instance=ExtResource( 2 )]
+position = Vector2( 1512, -2896 )
+
+[node name="PettyAsteroid25" parent="." index="32" instance=ExtResource( 2 )]
+position = Vector2( 528, -3160 )
+
+[node name="PettyAsteroid26" parent="." index="33" instance=ExtResource( 2 )]
+position = Vector2( 1200, -3320 )
+
+[node name="PettyAsteroid27" parent="." index="34" instance=ExtResource( 2 )]
+position = Vector2( 792, -3520 )
+
+[node name="PettyAsteroid28" parent="." index="35" instance=ExtResource( 2 )]
+position = Vector2( 1424, -3776 )
+
+[node name="PettyAsteroid30" parent="." index="36" instance=ExtResource( 2 )]
+position = Vector2( 1096, -3992 )
+
+[node name="PettyAsteroid31" parent="." index="37" instance=ExtResource( 2 )]
+position = Vector2( 600, -4160 )

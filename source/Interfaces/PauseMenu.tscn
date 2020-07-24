@@ -1,10 +1,9 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Interfaces/label_font.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Interfaces/title_font.tres" type="DynamicFont" id=2]
 [ext_resource path="res://Interfaces/PauseMenu.gd" type="Script" id=3]
 [ext_resource path="res://Interfaces/VolumeSlider.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Interfaces/VolumeSlider.gd" type="Script" id=5]
 [ext_resource path="res://Interfaces/FullscreenButton.tscn" type="PackedScene" id=6]
 
 [sub_resource type="StyleBoxLine" id=1]
@@ -18,14 +17,6 @@ thickness = 8
 [sub_resource type="StyleBoxLine" id=3]
 color = Color( 0.294118, 0.356863, 0.670588, 1 )
 thickness = 8
-
-[sub_resource type="GDScript" id=4]
-script/source = "extends CheckButton
-
-
-func _toggled(button_pressed: bool) -> void:
-	OS.window_fullscreen = button_pressed
-"
 
 [node name="PauseScreen" type="Control"]
 pause_mode = 2
@@ -205,20 +196,13 @@ custom_fonts/font = ExtResource( 1 )
 text = "Master"
 align = 1
 
-[node name="VolumeSlider" type="HSlider" parent="OptionsMenu/HBoxContainer/CenterColumn/VBoxContainer4/VBoxContainer" instance=ExtResource( 4 )]
+[node name="VolumeSlider" parent="OptionsMenu/HBoxContainer/CenterColumn/VBoxContainer4/VBoxContainer" instance=ExtResource( 4 )]
 margin_top = 44.0
 margin_right = 624.0
 margin_bottom = 68.0
-rect_min_size = Vector2( 0, 24 )
 custom_styles/slider = SubResource( 1 )
 custom_styles/grabber_area_highlight = SubResource( 2 )
 custom_styles/grabber_area = SubResource( 3 )
-max_value = 1.0
-step = 0.05
-script = ExtResource( 5 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="OptionsMenu/HBoxContainer/CenterColumn/VBoxContainer4"]
 margin_top = 72.0
@@ -232,20 +216,13 @@ custom_fonts/font = ExtResource( 1 )
 text = "Background Music"
 align = 1
 
-[node name="VolumeSlider" type="HSlider" parent="OptionsMenu/HBoxContainer/CenterColumn/VBoxContainer4/VBoxContainer2" instance=ExtResource( 4 )]
+[node name="VolumeSlider" parent="OptionsMenu/HBoxContainer/CenterColumn/VBoxContainer4/VBoxContainer2" instance=ExtResource( 4 )]
 margin_top = 44.0
 margin_right = 624.0
 margin_bottom = 68.0
-rect_min_size = Vector2( 0, 24 )
 custom_styles/slider = SubResource( 1 )
 custom_styles/grabber_area_highlight = SubResource( 2 )
 custom_styles/grabber_area = SubResource( 3 )
-max_value = 1.0
-step = 0.05
-script = ExtResource( 5 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 bus = "BGM"
 
 [node name="VBoxContainer3" type="VBoxContainer" parent="OptionsMenu/HBoxContainer/CenterColumn/VBoxContainer4"]
@@ -260,32 +237,16 @@ custom_fonts/font = ExtResource( 1 )
 text = "Sound Effects"
 align = 1
 
-[node name="VolumeSlider" type="HSlider" parent="OptionsMenu/HBoxContainer/CenterColumn/VBoxContainer4/VBoxContainer3" instance=ExtResource( 4 )]
+[node name="VolumeSlider" parent="OptionsMenu/HBoxContainer/CenterColumn/VBoxContainer4/VBoxContainer3" instance=ExtResource( 4 )]
 margin_top = 44.0
 margin_right = 624.0
 margin_bottom = 68.0
-rect_min_size = Vector2( 0, 24 )
 custom_styles/slider = SubResource( 1 )
 custom_styles/grabber_area_highlight = SubResource( 2 )
 custom_styles/grabber_area = SubResource( 3 )
-max_value = 1.0
-step = 0.05
-script = ExtResource( 5 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 bus = "SFX"
 
-[node name="FullscreenButton" type="CheckButton" parent="OptionsMenu/HBoxContainer/CenterColumn/VBoxContainer4" instance=ExtResource( 6 )]
-margin_top = 216.0
-margin_right = 624.0
-margin_bottom = 264.0
-custom_fonts/font = ExtResource( 1 )
-text = "Fullscreen"
-script = SubResource( 4 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="FullscreenButton" parent="OptionsMenu/HBoxContainer/CenterColumn/VBoxContainer4" instance=ExtResource( 6 )]
 
 [node name="CenterContainer" type="CenterContainer" parent="OptionsMenu/HBoxContainer/CenterColumn/VBoxContainer4"]
 margin_top = 268.0
@@ -311,10 +272,4 @@ size_flags_vertical = 3
 [connection signal="pressed" from="PauseMenu/HBoxContainer/Center/MarginContainer/VBoxContainer/ResumeButton" to="." method="_on_ResumeButton_pressed"]
 [connection signal="pressed" from="PauseMenu/HBoxContainer/Center/MarginContainer/VBoxContainer/OptionsButton" to="." method="_on_OptionsButton_pressed"]
 [connection signal="pressed" from="PauseMenu/HBoxContainer/Center/MarginContainer/VBoxContainer/QuitButton" to="." method="_on_QuitButton_pressed"]
-[connection signal="mouse_exited" from="OptionsMenu/HBoxContainer/CenterColumn/VBoxContainer4/VBoxContainer/VolumeSlider" to="OptionsMenu/HBoxContainer/CenterColumn/VBoxContainer4/VBoxContainer/VolumeSlider" method="release_focus"]
-[connection signal="value_changed" from="OptionsMenu/HBoxContainer/CenterColumn/VBoxContainer4/VBoxContainer/VolumeSlider" to="OptionsMenu/HBoxContainer/CenterColumn/VBoxContainer4/VBoxContainer/VolumeSlider" method="_on_value_changed"]
-[connection signal="mouse_exited" from="OptionsMenu/HBoxContainer/CenterColumn/VBoxContainer4/VBoxContainer2/VolumeSlider" to="OptionsMenu/HBoxContainer/CenterColumn/VBoxContainer4/VBoxContainer2/VolumeSlider" method="release_focus"]
-[connection signal="value_changed" from="OptionsMenu/HBoxContainer/CenterColumn/VBoxContainer4/VBoxContainer2/VolumeSlider" to="OptionsMenu/HBoxContainer/CenterColumn/VBoxContainer4/VBoxContainer2/VolumeSlider" method="_on_value_changed"]
-[connection signal="mouse_exited" from="OptionsMenu/HBoxContainer/CenterColumn/VBoxContainer4/VBoxContainer3/VolumeSlider" to="OptionsMenu/HBoxContainer/CenterColumn/VBoxContainer4/VBoxContainer3/VolumeSlider" method="release_focus"]
-[connection signal="value_changed" from="OptionsMenu/HBoxContainer/CenterColumn/VBoxContainer4/VBoxContainer3/VolumeSlider" to="OptionsMenu/HBoxContainer/CenterColumn/VBoxContainer4/VBoxContainer3/VolumeSlider" method="_on_value_changed"]
 [connection signal="pressed" from="OptionsMenu/HBoxContainer/CenterColumn/VBoxContainer4/CenterContainer/CloseButton" to="." method="_on_OptionsCloseButton_pressed"]

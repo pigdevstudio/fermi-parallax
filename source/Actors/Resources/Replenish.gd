@@ -19,3 +19,8 @@ func _process(delta: float) -> void:
 
 func _on_timeout() -> void:
 	set_process(true)
+
+
+func _on_Energy_changed(new_amount) -> void:
+	if not is_processing():
+		start()

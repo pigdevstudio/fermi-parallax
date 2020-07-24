@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/sfx_sound_shutdown1.wav-9ee473085bfb49e9f5e86ee377d153de.sample"
+
+[deps]
+
+source_file="res://Actors/Enemies/sfx_sound_shutdown1.wav"
+dest_files=[ "res://.import/sfx_sound_shutdown1.wav-9ee473085bfb49e9f5e86ee377d153de.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

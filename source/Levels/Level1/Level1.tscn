@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://Actors/Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Objects/Spawner/Spawner2D.tscn" type="PackedScene" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://Levels/Level1/Waves/Wave6.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Levels/Level1/Waves/Wave7.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Levels/Level1/Waves/Wave8.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Levels/Level1/Juhani Junkala [Retro Game Music Pack] Level 1.ogg" type="AudioStream" id=13]
 
 [sub_resource type="Environment" id=1]
 background_mode = 4
@@ -47,6 +48,18 @@ tracks/1/keys = {
 "args": [  ],
 "method": "spawn"
 } ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("ParallaxBackground:speed")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 100.0 ]
 }
 
 [sub_resource type="Animation" id=3]
@@ -265,15 +278,15 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 3 ),
+"times": PoolRealArray( 0, 1.5 ),
 "transitions": PoolRealArray( 2, 1 ),
 "update": 0,
-"values": [ 100.0, 1600.0 ]
+"values": [ 100.0, 5000.0 ]
 }
 
 [sub_resource type="Animation" id=10]
 resource_name = "08"
-length = 3.0
+length = 5.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("ParallaxBackground:speed")
 tracks/0/interp = 1
@@ -281,10 +294,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 3 ),
+"times": PoolRealArray( 3, 5 ),
 "transitions": PoolRealArray( 0.5, 2 ),
 "update": 0,
-"values": [ 1600.0, 100.0 ]
+"values": [ 5000.0, 100.0 ]
 }
 tracks/1/type = "method"
 tracks/1/path = NodePath(".")
@@ -293,7 +306,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 3 ),
+"times": PoolRealArray( 5 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [  ],
@@ -303,6 +316,7 @@ tracks/1/keys = {
 
 [node name="Level" type="Node2D"]
 script = ExtResource( 4 )
+background_music = ExtResource( 13 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 960, 960 )
@@ -314,7 +328,7 @@ clamp_right = 1888.0
 environment = SubResource( 1 )
 
 [node name="WaveSpawner2D" parent="." instance=ExtResource( 2 )]
-spawn_scene = ExtResource( 12 )
+spawn_scene = ExtResource( 5 )
 
 [node name="EventsPlayer" type="AnimationPlayer" parent="."]
 autoplay = "00"

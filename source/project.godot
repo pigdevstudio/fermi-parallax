@@ -54,6 +54,10 @@ config/name="Fermi Parallax"
 run/main_scene="res://Screens/MainScreen.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+BackgroundMusic="*res://Screens/BackgroundMusic.tscn"
+
 [display]
 
 window/size/width=1920

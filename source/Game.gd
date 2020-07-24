@@ -13,6 +13,5 @@ func _ready() -> void:
 	$Interface/PlayScreen/HBoxContainer/Left/VBoxContainer/PlayerEnergyBar.resource = _level.player.energy
 
 
-
 func _on_Player_died() -> void:
 	_transit_rect.transit(game_over_screen_path)
