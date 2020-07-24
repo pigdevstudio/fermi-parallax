@@ -7,6 +7,8 @@ onready var _dash_time := $DashTime
 
 
 func _execute() -> void:
+	if is_equal_approx(player.direction.x, 0.0):
+		return 
 	player.velocity.x = player.direction.x * speed
 	_dash_time.start(dash_duration)
 	player.animator.play("dash")

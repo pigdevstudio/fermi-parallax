@@ -1,9 +1,17 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Actors/Player/Player.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Actors/Enemies/EnemyTwo/EnemyTwo.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Objects/Spawner/Spawner2D.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Areas/ParallaxBackground.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Levels/Level.gd" type="Script" id=4]
+[ext_resource path="res://Levels/Level1/Waves/Wave1.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Levels/Level1/Waves/Wave2.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Levels/Level1/Waves/Wave3.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Levels/Level1/Waves/Wave4.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Levels/Level1/Waves/Wave5.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Levels/Level1/Waves/Wave6.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Levels/Level1/Waves/Wave7.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Levels/Level1/Waves/Wave8.tscn" type="PackedScene" id=12]
 
 [sub_resource type="Environment" id=1]
 background_mode = 4
@@ -11,11 +19,293 @@ glow_enabled = true
 glow_blend_mode = 0
 glow_bicubic_upscale = true
 
+[sub_resource type="Animation" id=2]
+resource_name = "00"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("WaveSpawner2D:spawn_scene")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 5 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("WaveSpawner2D")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "spawn"
+} ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "01"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("WaveSpawner2D:spawn_scene")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1.18921 ),
+"update": 1,
+"values": [ ExtResource( 6 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("WaveSpawner2D")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 2 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "spawn"
+} ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "02"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("WaveSpawner2D:spawn_scene")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 0 ),
+"update": 1,
+"values": [ ExtResource( 7 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("WaveSpawner2D")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 3 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "spawn"
+} ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "03"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("WaveSpawner2D:spawn_scene")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 0 ),
+"update": 1,
+"values": [ ExtResource( 8 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("WaveSpawner2D")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 3 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "spawn"
+} ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "04"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("WaveSpawner2D:spawn_scene")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 0 ),
+"update": 1,
+"values": [ ExtResource( 9 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("WaveSpawner2D")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 3 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "spawn"
+} ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "05"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("WaveSpawner2D:spawn_scene")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 0 ),
+"update": 1,
+"values": [ ExtResource( 10 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("WaveSpawner2D")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 3 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "spawn"
+} ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "06"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("WaveSpawner2D:spawn_scene")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 0 ),
+"update": 1,
+"values": [ ExtResource( 11 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("WaveSpawner2D")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 3 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "spawn"
+} ]
+}
+
+[sub_resource type="Animation" id=9]
+resource_name = "07"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("WaveSpawner2D:spawn_scene")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 0 ),
+"update": 1,
+"values": [ ExtResource( 12 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("WaveSpawner2D")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 3 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "spawn"
+} ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("ParallaxBackground:speed")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 3 ),
+"transitions": PoolRealArray( 2, 1 ),
+"update": 0,
+"values": [ 100.0, 1600.0 ]
+}
+
+[sub_resource type="Animation" id=10]
+resource_name = "08"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("ParallaxBackground:speed")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 3 ),
+"transitions": PoolRealArray( 0.5, 2 ),
+"update": 0,
+"values": [ 1600.0, 100.0 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 3 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "finish"
+} ]
+}
+
 [node name="Level" type="Node2D"]
 script = ExtResource( 4 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 672, 960 )
+position = Vector2( 960, 960 )
 clamp_right = 1888.0
 
 [node name="ParallaxBackground" parent="." instance=ExtResource( 3 )]
@@ -23,14 +313,18 @@ clamp_right = 1888.0
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 1 )
 
-[node name="EnemyPath" parent="." instance=ExtResource( 2 )]
-position = Vector2( 573.319, 116.479 )
+[node name="WaveSpawner2D" parent="." instance=ExtResource( 2 )]
+spawn_scene = ExtResource( 12 )
 
-[node name="EnemyPath3" parent="." instance=ExtResource( 2 )]
-position = Vector2( 829.916, 116.479 )
-
-[node name="EnemyPath4" parent="." instance=ExtResource( 2 )]
-position = Vector2( 752.937, 116.479 )
-
-[node name="EnemyPath5" parent="." instance=ExtResource( 2 )]
-position = Vector2( 657.296, 116.479 )
+[node name="EventsPlayer" type="AnimationPlayer" parent="."]
+autoplay = "00"
+anims/00 = SubResource( 2 )
+anims/01 = SubResource( 3 )
+anims/02 = SubResource( 4 )
+anims/03 = SubResource( 5 )
+anims/04 = SubResource( 6 )
+anims/05 = SubResource( 7 )
+anims/06 = SubResource( 8 )
+anims/07 = SubResource( 9 )
+anims/08 = SubResource( 10 )
+[connection signal="spawned" from="WaveSpawner2D" to="." method="_on_WaveSpawner2D_spawned"]

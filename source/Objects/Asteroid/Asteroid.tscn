@@ -6,7 +6,6 @@
 [ext_resource path="res://Objects/HitBox/HitBox.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Objects/HurtBox/HurtBox.tscn" type="PackedScene" id=5]
 
-
 [sub_resource type="Animation" id=1]
 resource_name = "explode"
 length = 0.5
@@ -236,8 +235,12 @@ monitorable = false
 
 [node name="CollisionShape2D" parent="HurtBox" index="0"]
 shape = SubResource( 7 )
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+scale = Vector2( 2.45, 2.45 )
 [connection signal="depleted" from="Health" to="." method="_on_Health_depleted"]
 [connection signal="damage_taken" from="HurtBox" to="." method="_on_HurtBox_damage_taken"]
+[connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
 
 [editable path="HitBox2D"]
 

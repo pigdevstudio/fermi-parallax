@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Actors/Enemies/PathFollowEnemy/EnemyOne.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Levels/Wave/Wave.tscn" type="PackedScene" id=2]
+
+[node name="Wave" instance=ExtResource( 2 )]
+
+[node name="EnemyOne" parent="." index="0" instance=ExtResource( 1 )]
+position = Vector2( 656, 0 )

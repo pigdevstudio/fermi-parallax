@@ -22,3 +22,6 @@ func _on_Health_depleted() -> void:
 func _on_HurtBox_damage_taken(damage) -> void:
 	_health.current -= damage
 
+
+func _on_VisibilityNotifier2D_screen_exited() -> void:
+	queue_free()
