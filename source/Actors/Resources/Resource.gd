@@ -7,7 +7,7 @@ signal depleted
 
 
 export var max_amount := 10.0 setget set_max
-onready var current := max_amount setget set_current
+var current := max_amount setget set_current
 
 var depleted := false
 
@@ -31,6 +31,7 @@ func set_current(new_value: float) -> void:
 		emit_signal("depleted")
 
 
-func initialize() -> void: 
+func initialize() -> void:
+	current = max_amount
 	emit_signal("max_changed", max_amount)
 	emit_signal("changed", current)

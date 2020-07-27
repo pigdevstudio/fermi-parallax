@@ -6,19 +6,12 @@
 [node name="EnemyOne" instance=ExtResource( 1 )]
 
 [node name="PathFollow2D" parent="." index="0"]
-position = Vector2( 304, 192 )
-rotation = 1.5679
+position = Vector2( 304, 191.998 )
+rotation = 1.5708
 offset = 1304.77
-
-[node name="Weapon" parent="PathFollow2D/Enemy" index="1"]
-disabled = true
 
 [node name="Health" parent="PathFollow2D/Enemy" index="2"]
 max_amount = 3.0
-
-[node name="HurtBox" parent="PathFollow2D/Enemy" index="3"]
-monitoring = false
-monitorable = false
 
 [node name="AnimationPlayer" parent="." index="1"]
 anims/idle = ExtResource( 3 )

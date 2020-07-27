@@ -5,8 +5,6 @@ onready var enemy_interface := $HBoxContainer/Right/VBoxContainer
 
 func _ready() -> void:
 	get_tree().connect("node_added", self, "_on_SceneTree_node_added")
-#	link_enemies_health()
-
 
 
 func update_enemy_healthbar(new_value: float) -> void:

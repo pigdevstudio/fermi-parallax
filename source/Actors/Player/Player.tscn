@@ -72,6 +72,8 @@ script = ExtResource( 2 )
 [node name="HurtBox" parent="." instance=ExtResource( 6 )]
 team = "player"
 
+[node name="ChargingParticles" parent="." instance=ExtResource( 12 )]
+
 [node name="Sprite" type="Sprite" parent="."]
 rotation = -1.57079
 texture = ExtResource( 1 )
@@ -117,8 +119,6 @@ collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AsteroidCollisionArea"]
 shape = SubResource( 6 )
-
-[node name="ChargingParticles" parent="." instance=ExtResource( 12 )]
 [connection signal="damage_taken" from="HurtBox" to="." method="_on_HurtBox_damage_taken"]
 [connection signal="depleted" from="Health" to="." method="die"]
 [connection signal="finished" from="EnergyReplenish" to="." method="_on_EnergyReplenish_finished"]
