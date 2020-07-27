@@ -26,6 +26,6 @@ func _on_timeout() -> void:
 	emit_signal("started")
 
 
-func _on_Resource_changed(new_amount) -> void:
+func _on_Resource_changed(new_amount: float) -> void:
 	if not is_processing():
 		start()
