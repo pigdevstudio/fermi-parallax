@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Actors/Player/topdown-player.svg" type="Texture" id=1]
 [ext_resource path="res://Actors/Player/Player.gd" type="Script" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://Actors/Actions/Dash.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Actors/Actions/Shoot.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Actors/Resources/Replenish.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Actors/Player/Charging/ChargingParticles.tscn" type="PackedScene" id=12]
 
 [sub_resource type="Animation" id=1]
 resource_name = "damage"
@@ -116,8 +117,11 @@ collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AsteroidCollisionArea"]
 shape = SubResource( 6 )
+
+[node name="ChargingParticles" parent="." instance=ExtResource( 12 )]
 [connection signal="damage_taken" from="HurtBox" to="." method="_on_HurtBox_damage_taken"]
 [connection signal="depleted" from="Health" to="." method="die"]
-[connection signal="changed" from="Energy" to="EnergyReplenish" method="_on_Energy_changed"]
+[connection signal="finished" from="EnergyReplenish" to="." method="_on_EnergyReplenish_finished"]
+[connection signal="started" from="EnergyReplenish" to="." method="_on_EnergyReplenish_started"]
 
 [editable path="Weapon"]

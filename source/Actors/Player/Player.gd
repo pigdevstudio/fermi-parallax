@@ -23,6 +23,7 @@ onready var hurtbox := $HurtBox
 onready var sprite_anim := $Sprite/AnimationPlayer
 onready var dash := $Actions/Dash
 onready var shoot := $Actions/Shoot
+onready var charge_vfx := $ChargingParticles
 
 func _ready() -> void:
 	for action in $Actions.get_children():
@@ -82,3 +83,11 @@ func stop_dash() -> void:
 func _on_HurtBox_damage_taken(damage: float) -> void:
 	health.current -= damage
 	sprite_anim.play("damage")
+
+
+func _on_EnergyReplenish_started() -> void:
+	charge_vfx.start()
+
+
+func _on_EnergyReplenish_finished() -> void:
+	charge_vfx.stop()
