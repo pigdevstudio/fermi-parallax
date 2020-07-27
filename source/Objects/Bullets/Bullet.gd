@@ -8,6 +8,7 @@ export var spread := 10.0
 
 onready var velocity := direction * speed
 onready var hitbox := $HitBox
+onready var animator := $AnimationPlayer
 
 func _ready() -> void:
 	var team := "player" if "player" in get_groups() else "enemy"
@@ -30,4 +31,5 @@ func _on_VisibilityNotifier2D_screen_exited() -> void:
 
 func _on_HitBox_area_entered(area: Area2D) -> void:
 	if not is_in_group(area.team):
-		queue_free()
+		set_process(false)
+		animator.play("explode")

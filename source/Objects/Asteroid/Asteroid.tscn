@@ -245,8 +245,7 @@ radius = 24.0
 script = ExtResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="."]
-visible = false
-rotation = -6.28319
+rotation = -5.44543
 texture = ExtResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite"]
@@ -270,15 +269,11 @@ process_material = SubResource( 7 )
 texture = ExtResource( 2 )
 
 [node name="HitBox2D" parent="." instance=ExtResource( 4 )]
-monitoring = false
-monitorable = false
 
 [node name="CollisionShape2D" parent="HitBox2D" index="0"]
 shape = SubResource( 8 )
 
 [node name="HurtBox" parent="." instance=ExtResource( 5 )]
-monitoring = false
-monitorable = false
 
 [node name="CollisionShape2D" parent="HurtBox" index="0"]
 shape = SubResource( 9 )

@@ -7,5 +7,14 @@
 "enemy",
 ] instance=ExtResource( 1 )]
 
-[node name="Sprite" parent="." index="0"]
+[node name="ExplodeParticles" parent="." index="0"]
+modulate = Color( 1, 0.568627, 0.4, 1 )
+
+[node name="Sprite" parent="." index="1"]
 texture = ExtResource( 2 )
+
+[node name="HitBox" parent="." index="2"]
+visible = false
+
+[node name="VisibilityNotifier2D" parent="." index="3"]
+visible = false
