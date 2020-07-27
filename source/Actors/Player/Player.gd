@@ -9,6 +9,9 @@ export var dash_speed := 1800.0
 
 export var clamp_left := 0.0 + 32.0
 export var clamp_right := 640.0 - 32
+export var clamp_bottom := 1048.024
+export var clamp_top := 60.147
+
 
 onready var velocity := direction * speed
 
@@ -31,31 +34,32 @@ func _process(delta: float) -> void:
 	move(delta)
 	if Input.is_action_pressed("shoot"):
 		shoot.execute()
-	handle_input()
 
 
-func handle_input() -> void:
-	var update_movement := false
-	update_movement = Input.is_action_just_pressed("move_left")
-	update_movement = update_movement or Input.is_action_just_pressed("move_right")
-	update_movement = update_movement or Input.is_action_just_released("move_left")
-	update_movement = update_movement or Input.is_action_just_released("move_right")
-	if update_movement:
-		update_direction()
-		update_velocity()
-	if Input.is_action_just_pressed("dash"):
+func _unhandled_input(event: InputEvent) -> void:
+	handle_input(event)
+
+
+func handle_input(event: InputEvent) -> void:
+	if not event.is_action_type():
+		return
+	update_direction()
+	update_velocity()
+	if event.is_action_pressed("dash"):
 		dash()
-	elif Input.is_action_just_released("dash"):
+	elif event.is_action_released("dash"):
 		stop_dash()
 
 
 func move(delta: float) -> void:
 	translate(velocity * delta)
 	position.x = clamp(position.x, clamp_left, clamp_right)
+	position.y = clamp(position.y, clamp_top, clamp_bottom)
 
 
 func update_direction() -> void:
 	direction.x = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
+	direction.y = Input.get_action_strength("move_down") - Input.get_action_strength("move_up")
 
 
 func update_velocity() -> void:
