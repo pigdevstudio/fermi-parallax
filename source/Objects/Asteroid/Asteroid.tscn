@@ -268,7 +268,9 @@ explosiveness = 0.9
 process_material = SubResource( 7 )
 texture = ExtResource( 2 )
 
-[node name="HitBox2D" parent="." instance=ExtResource( 4 )]
+[node name="HitBox2D" parent="." groups=[
+"enemy",
+] instance=ExtResource( 4 )]
 
 [node name="CollisionShape2D" parent="HitBox2D" index="0"]
 shape = SubResource( 8 )
@@ -278,12 +280,13 @@ shape = SubResource( 8 )
 [node name="CollisionShape2D" parent="HurtBox" index="0"]
 shape = SubResource( 9 )
 
-[node name="PlayerCollisionDetector" type="Area2D" parent="."]
+[node name="DestructionArea" type="Area2D" parent="."]
 position = Vector2( 0, -1 )
 monitorable = false
-collision_layer = 0
+collision_layer = 4
+collision_mask = 5
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerCollisionDetector"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DestructionArea"]
 shape = SubResource( 9 )
 
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
@@ -294,7 +297,7 @@ stream = ExtResource( 6 )
 bus = "SFX"
 [connection signal="depleted" from="Health" to="." method="_on_Health_depleted"]
 [connection signal="damage_taken" from="HurtBox" to="." method="_on_HurtBox_damage_taken"]
-[connection signal="area_entered" from="PlayerCollisionDetector" to="." method="_on_PlayerCollisionDetector_area_entered"]
+[connection signal="area_entered" from="DestructionArea" to="." method="_on_DestructionArea_area_entered"]
 [connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
 
 [editable path="HitBox2D"]

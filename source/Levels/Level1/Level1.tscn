@@ -385,7 +385,7 @@ environment = SubResource( 1 )
 spawn_scene = ExtResource( 12 )
 
 [node name="EventsPlayer" type="AnimationPlayer" parent="."]
-autoplay = "00"
+autoplay = "07"
 anims/00 = SubResource( 2 )
 anims/01 = SubResource( 3 )
 anims/02 = SubResource( 4 )

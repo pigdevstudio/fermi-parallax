@@ -24,7 +24,7 @@ onready var sprite_anim := $Sprite/AnimationPlayer
 onready var dash := $Actions/Dash
 onready var shoot := $Actions/Shoot
 onready var charge_vfx := $ChargingParticles
-onready var asteroid_collision := $AsteroidCollisionArea/CollisionShape2D
+onready var asteroid_collision := $AsteroidCollisionArea
 
 
 func _ready() -> void:
@@ -63,6 +63,7 @@ func move(delta: float) -> void:
 func update_direction() -> void:
 	direction.x = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
 	direction.y = Input.get_action_strength("move_down") - Input.get_action_strength("move_up")
+	direction = direction.normalized()
 
 
 func update_velocity() -> void:
@@ -75,17 +76,10 @@ func die() -> void:
 
 func dash() -> void:
 	dash.execute()
-	hurtbox.monitorable = false
-	hurtbox.monitoring = false
-	asteroid_collision.disabled = true
-	
+
 
 func stop_dash() -> void:
 	dash.cancel()
-	$GhostTrail.emitting = false
-	hurtbox.monitorable = true
-	hurtbox.monitoring = true
-	asteroid_collision.disabled = false
 
 
 func _on_HurtBox_damage_taken(damage: float) -> void:
