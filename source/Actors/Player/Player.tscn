@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Actors/Player/topdown-player.svg" type="Texture" id=1]
 [ext_resource path="res://Actors/Player/Player.gd" type="Script" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://Actors/Resources/Replenish.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Actors/Player/Charging/ChargingParticles.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Actors/Actions/sfx_sound_noise.wav" type="AudioStream" id=13]
+[ext_resource path="res://Actors/Actions/Move.tscn" type="PackedScene" id=14]
 
 [sub_resource type="Gradient" id=1]
 offsets = PoolRealArray( 0.00740741, 1 )
@@ -260,6 +261,7 @@ script = ExtResource( 2 )
 [node name="ChargingParticles" parent="." instance=ExtResource( 12 )]
 
 [node name="GhostTrail" type="Particles2D" parent="."]
+emitting = false
 lifetime = 0.5
 local_coords = false
 process_material = SubResource( 3 )
@@ -301,17 +303,16 @@ cost = 3.0
 [node name="Shoot" parent="Actions" instance=ExtResource( 10 )]
 weapon_path = NodePath("../../Weapon")
 
+[node name="Move" parent="Actions" instance=ExtResource( 14 )]
+cost = 1.0
+
 [node name="AsteroidCollisionArea" type="Area2D" parent="."]
-monitoring = false
-monitorable = false
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AsteroidCollisionArea"]
 shape = SubResource( 8 )
 
 [node name="HurtBox" parent="." instance=ExtResource( 6 )]
-monitoring = false
-monitorable = false
 team = "player"
 
 [node name="SFX" type="AudioStreamPlayer2D" parent="."]

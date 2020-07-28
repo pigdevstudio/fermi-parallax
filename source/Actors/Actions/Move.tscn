@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Actors/Actions/Action.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Actors/Actions/Move.gd" type="Script" id=2]
+
+[node name="Move" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+clamp_right = 1888.0
+clamp_bottom = 1048.0
+clamp_top = -32.0

@@ -10,7 +10,6 @@ onready var resource: ActionResource = get_node_or_null(resource_path)
 
 func _ready() -> void:
 	set_process(false)
-	resource.connect("changed", self, "_on_Resource_changed")
 
 
 func _process(delta: float) -> void:
@@ -26,6 +25,7 @@ func _on_timeout() -> void:
 	emit_signal("started")
 
 
-func _on_Resource_changed(new_amount: float) -> void:
-	if not is_processing():
-		start()
+func stop() -> void:
+	.stop()
+	set_process(false)
+	emit_signal("finished")
