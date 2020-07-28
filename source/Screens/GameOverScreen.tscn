@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Interfaces/title_font.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Interfaces/label_font.tres" type="DynamicFont" id=2]
 [ext_resource path="res://Interfaces/SceneTransitionRect.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Screens/GameOverScreen.gd" type="Script" id=4]
+[ext_resource path="res://Interfaces/ButtonSFX.tscn" type="PackedScene" id=5]
 
 [node name="GameOverScreen" type="Control"]
 anchor_right = 1.0
@@ -59,6 +60,9 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="ButtonSFX" parent="MarginContainer/VBoxContainer/MarginContainer/RetryButton" instance=ExtResource( 5 )]
+
 [node name="SceneTransitionRect" parent="." instance=ExtResource( 3 )]
 next_scene_path = "res://Game.tscn"
 [connection signal="pressed" from="MarginContainer/VBoxContainer/MarginContainer/RetryButton" to="." method="_on_RetryButton_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/MarginContainer/RetryButton" to="MarginContainer/VBoxContainer/MarginContainer/RetryButton/ButtonSFX" method="play"]

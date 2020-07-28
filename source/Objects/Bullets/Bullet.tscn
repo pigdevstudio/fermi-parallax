@@ -157,8 +157,8 @@ script = ExtResource( 1 )
 speed = 2000.0
 
 [node name="ExplodeParticles" type="Particles2D" parent="."]
-modulate = Color( 0.301961, 0.65098, 1, 1 )
-self_modulate = Color( 1.1, 1.1, 1.1, 1 )
+modulate = Color( 1.5, 1.5, 1.5, 1 )
+self_modulate = Color( 0.34902, 0.67451, 1, 1 )
 emitting = false
 amount = 16
 lifetime = 0.25
@@ -169,7 +169,6 @@ process_material = SubResource( 5 )
 texture = ExtResource( 5 )
 
 [node name="Sprite" type="Sprite" parent="."]
-visible = false
 modulate = Color( 1.2, 1.2, 1.2, 1 )
 rotation = -1.5708
 texture = ExtResource( 2 )
@@ -182,7 +181,7 @@ monitorable = false
 position = Vector2( -9.53674e-07, 0 )
 scale = Vector2( 2, 4 )
 
-[node name="SFX" type="AudioStreamPlayer" parent="."]
+[node name="SFX" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 4 )
 pitch_scale = 1.3
 autoplay = true

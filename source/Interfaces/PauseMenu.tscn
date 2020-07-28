@@ -1,10 +1,12 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Interfaces/label_font.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Interfaces/title_font.tres" type="DynamicFont" id=2]
 [ext_resource path="res://Interfaces/PauseMenu.gd" type="Script" id=3]
 [ext_resource path="res://Interfaces/VolumeSlider.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Interfaces/powerUp2.ogg" type="AudioStream" id=5]
 [ext_resource path="res://Interfaces/FullscreenButton.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Interfaces/ButtonSFX.tscn" type="PackedScene" id=7]
 
 [sub_resource type="StyleBoxLine" id=1]
 color = Color( 0.152941, 0.152941, 0.211765, 1 )
@@ -269,7 +271,15 @@ margin_right = 1880.0
 margin_bottom = 1040.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+
+[node name="ButtonSFX" type="AudioStreamPlayer" parent="." instance=ExtResource( 7 )]
+stream = ExtResource( 5 )
+pitch_scale = 1.8
+bus = "TransitionButton"
 [connection signal="pressed" from="PauseMenu/HBoxContainer/Center/MarginContainer/VBoxContainer/ResumeButton" to="." method="_on_ResumeButton_pressed"]
+[connection signal="pressed" from="PauseMenu/HBoxContainer/Center/MarginContainer/VBoxContainer/ResumeButton" to="ButtonSFX" method="play"]
 [connection signal="pressed" from="PauseMenu/HBoxContainer/Center/MarginContainer/VBoxContainer/OptionsButton" to="." method="_on_OptionsButton_pressed"]
+[connection signal="pressed" from="PauseMenu/HBoxContainer/Center/MarginContainer/VBoxContainer/OptionsButton" to="ButtonSFX" method="play"]
 [connection signal="pressed" from="PauseMenu/HBoxContainer/Center/MarginContainer/VBoxContainer/QuitButton" to="." method="_on_QuitButton_pressed"]
+[connection signal="draw" from="OptionsMenu/HBoxContainer/CenterColumn/VBoxContainer4/VBoxContainer/VolumeSlider" to="OptionsMenu/HBoxContainer/CenterColumn/VBoxContainer4/VBoxContainer/VolumeSlider" method="grab_focus"]
 [connection signal="pressed" from="OptionsMenu/HBoxContainer/CenterColumn/VBoxContainer4/CenterContainer/CloseButton" to="." method="_on_OptionsCloseButton_pressed"]

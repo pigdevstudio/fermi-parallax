@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://Actors/Player/topdown-player.svg" type="Texture" id=1]
 [ext_resource path="res://Actors/Player/Player.gd" type="Script" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://Actors/Actions/Shoot.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Actors/Resources/Replenish.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Actors/Player/Charging/ChargingParticles.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Actors/Actions/sfx_sound_noise.wav" type="AudioStream" id=13]
 
 [sub_resource type="Gradient" id=1]
 offsets = PoolRealArray( 0.00740741, 1 )
@@ -45,7 +46,7 @@ tracks/0/keys = {
 "values": [ ExtResource( 7 ), ExtResource( 1 ), ExtResource( 7 ), ExtResource( 1 ), ExtResource( 7 ), ExtResource( 1 ) ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=5]
 resource_name = "cancel_dash"
 length = 0.5
 tracks/0/type = "value"
@@ -109,8 +110,7 @@ tracks/4/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=5]
-resource_name = "dash"
+[sub_resource type="Animation" id=6]
 length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("GhostTrail:emitting")
@@ -171,6 +171,20 @@ tracks/4/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ false ]
+}
+tracks/5/type = "method"
+tracks/5/path = NodePath("SFX")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ 0.0 ],
+"method": "play"
+} ]
 }
 
 [sub_resource type="Animation" id=7]
@@ -236,7 +250,7 @@ tracks/4/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="RectangleShape2D" id=6]
+[sub_resource type="RectangleShape2D" id=8]
 extents = Vector2( 32, 32 )
 
 [node name="Player" type="Node2D"]
@@ -275,8 +289,8 @@ resource_path = NodePath("../Energy")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "setup"
-anims/cancel_dash = SubResource( 8 )
-anims/dash = SubResource( 5 )
+anims/cancel_dash = SubResource( 5 )
+anims/dash = SubResource( 6 )
 anims/setup = SubResource( 7 )
 
 [node name="Actions" type="Node" parent="."]
@@ -293,12 +307,17 @@ monitorable = false
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AsteroidCollisionArea"]
-shape = SubResource( 6 )
+shape = SubResource( 8 )
 
 [node name="HurtBox" parent="." instance=ExtResource( 6 )]
 monitoring = false
 monitorable = false
 team = "player"
+
+[node name="SFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 13 )
+pitch_scale = 1.5
+bus = "SFX"
 [connection signal="depleted" from="Health" to="." method="die"]
 [connection signal="finished" from="EnergyReplenish" to="." method="_on_EnergyReplenish_finished"]
 [connection signal="started" from="EnergyReplenish" to="." method="_on_EnergyReplenish_started"]

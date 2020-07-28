@@ -147,3 +147,4 @@ size_flags_vertical = 3
 [node name="SceneTransitionRect" parent="." instance=ExtResource( 1 )]
 next_scene_path = "res://Screens/MainScreen.tscn"
 [connection signal="pressed" from="MarginContainer/HBoxContainer/LeftColumn/BackButton" to="." method="_on_BackButton_pressed"]
+[connection signal="ready" from="MarginContainer/HBoxContainer/CenterColumn/VBoxContainer4/VBoxContainer/VolumeSlider" to="MarginContainer/HBoxContainer/CenterColumn/VBoxContainer4/VBoxContainer/VolumeSlider" method="grab_focus"]

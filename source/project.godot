@@ -67,6 +67,13 @@ window/size/test_height=720
 window/stretch/mode="2d"
 window/stretch/aspect="keep_width"
 
+[importer_defaults]
+
+ogg_vorbis={
+"loop": false,
+"loop_offset": 0
+}
+
 [input]
 
 ui_left={
