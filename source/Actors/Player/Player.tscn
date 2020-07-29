@@ -304,7 +304,7 @@ cost = 3.0
 weapon_path = NodePath("../../Weapon")
 
 [node name="Move" parent="Actions" instance=ExtResource( 14 )]
-cost = 1.0
+cost = 0.0
 
 [node name="AsteroidCollisionArea" type="Area2D" parent="."]
 collision_mask = 0

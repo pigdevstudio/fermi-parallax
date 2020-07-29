@@ -8,9 +8,6 @@ export var recharge_per_second := 10.0
 
 onready var resource: ActionResource = get_node_or_null(resource_path)
 
-func _ready() -> void:
-	set_process(false)
-
 
 func _process(delta: float) -> void:
 	resource.current += recharge_per_second * delta
@@ -25,7 +22,6 @@ func _on_timeout() -> void:
 	emit_signal("started")
 
 
-func stop() -> void:
-	.stop()
-	set_process(false)
-	emit_signal("finished")
+func _on_Resource_changed(current):
+	if not is_processing():
+		start()

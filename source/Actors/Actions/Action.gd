@@ -10,7 +10,7 @@ var player: Player
 var available := true
 
 func execute() -> void:
-	if resource.current - cost >= 0.0 and not resource.depleted:
+	if resource.current - cost >= 0.0:
 		_execute()
 
 

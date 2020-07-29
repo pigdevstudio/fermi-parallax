@@ -10,6 +10,8 @@ func _ready() -> void:
 
 
 func _execute() -> void:
+	if player.replenish.is_processing():
+		return
 	weapon.fire()
 
 

@@ -14,7 +14,8 @@ func _process(delta: float) -> void:
 	player.translate(player.velocity * delta)
 	player.position.x = clamp(player.position.x, clamp_left, clamp_right)
 	player.position.y = clamp(player.position.y, clamp_top, clamp_bottom)
-	resource.current -= cost * delta
+	if cost > 0.0:
+		resource.current -= cost * delta
 
 
 func _execute() -> void:

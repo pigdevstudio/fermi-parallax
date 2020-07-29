@@ -28,6 +28,7 @@ func _ready() -> void:
 	for action in $Actions.get_children():
 		action.player = self
 		action.resource = $Energy
+	energy.connect("changed", replenish, "_on_Resource_changed")
 
 
 func _process(delta: float) -> void:
@@ -57,9 +58,7 @@ func update_direction() -> void:
 	
 	if is_zero_approx(direction.length()):
 		move.cancel()
-		replenish.start()
 	else:
-		replenish.stop()
 		move.execute()
 
 

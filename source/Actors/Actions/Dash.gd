@@ -7,6 +7,8 @@ onready var _dash_time := $DashTime
 
 
 func _execute() -> void:
+	if player.replenish.is_processing():
+		return
 	if player.direction.is_equal_approx(Vector2.ZERO):
 		return
 	if not _dash_time.is_stopped():
