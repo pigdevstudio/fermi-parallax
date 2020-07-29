@@ -371,10 +371,10 @@ tracks/1/keys = {
 [node name="Level" type="Node2D"]
 script = ExtResource( 4 )
 background_music = ExtResource( 15 )
+next_level_path = "res://Levels/Level2/Level2.tscn"
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 960, 960 )
-clamp_right = 1888.0
 
 [node name="ParallaxBackground" parent="." instance=ExtResource( 3 )]
 
@@ -385,7 +385,7 @@ environment = SubResource( 1 )
 spawn_scene = ExtResource( 5 )
 
 [node name="EventsPlayer" type="AnimationPlayer" parent="."]
-autoplay = "00"
+autoplay = "08"
 anims/00 = SubResource( 2 )
 anims/01 = SubResource( 3 )
 anims/02 = SubResource( 4 )

@@ -1,7 +1,11 @@
 extends Node2D
+class_name Level
 
+signal finished(next_level_path)
 
 export var background_music: AudioStream
+export(String, FILE, "*.tscn") var next_level_path
+
 
 onready var player := $Player
 onready var _events_player := $EventsPlayer
@@ -32,4 +36,4 @@ func _on_Wave_finished() -> void:
 
 
 func finish() -> void:
-	print("Level finished!")
+	emit_signal("finished", next_level_path)

@@ -27,6 +27,7 @@ scale_curve = SubResource( 2 )
 [node name="ParallaxBackground" type="ParallaxBackground"]
 script = ExtResource( 3 )
 __meta__ = {
+"_edit_horizontal_guides_": [ 1083.89, 1993.26 ],
 "_edit_vertical_guides_": [ 640.0 ]
 }
 
@@ -46,20 +47,20 @@ texture = ExtResource( 2 )
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="."]
 motion_scale = Vector2( 0.5, 0.5 )
-motion_mirroring = Vector2( 0, 2160 )
+motion_mirroring = Vector2( 0, 2000 )
 
 [node name="Sprite" type="Sprite" parent="ParallaxLayer"]
 position = Vector2( 1776, 1040 )
 rotation = 0.263499
-scale = Vector2( 1.41439, 1.41439 )
+scale = Vector2( 1.97286, 1.97286 )
 texture = ExtResource( 1 )
 region_enabled = true
-region_rect = Rect2( 138, 483, 745, 357 )
+region_rect = Rect2( 16, 618, 536, 257 )
 
 [node name="Sprite2" type="Sprite" parent="ParallaxLayer"]
 position = Vector2( 104, -0.00012207 )
 rotation = -0.203016
-scale = Vector2( 0.494398, 0.494398 )
+scale = Vector2( 0.803108, 0.803108 )
 texture = ExtResource( 1 )
 region_enabled = true
-region_rect = Rect2( 36, 22, 356, 356 )
+region_rect = Rect2( 16, 22, 256, 256 )

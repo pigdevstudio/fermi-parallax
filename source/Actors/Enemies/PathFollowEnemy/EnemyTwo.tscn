@@ -8,8 +8,9 @@
 curve = ExtResource( 2 )
 
 [node name="PathFollow2D" parent="." index="0"]
-position = Vector2( 0, 192 )
+position = Vector2( 502.365, 192 )
 rotation = 1.5708
+offset = 502.501
 rotate = false
 
 [node name="Sprite" parent="PathFollow2D/Enemy" index="0"]
