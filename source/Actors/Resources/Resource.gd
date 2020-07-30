@@ -22,6 +22,8 @@ func set_max(new_max: float) -> void:
 
 
 func set_current(new_value: float) -> void:
+	if current == new_value:
+		return
 	current = new_value
 	current = clamp(current, 0.0, max_amount)
 	emit_signal("changed", current)
