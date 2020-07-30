@@ -1,5 +1,7 @@
 extends Control
 
+onready var player_healthbar := $HBoxContainer/Left/VBoxContainer/PlayerHealthBar
+onready var player_energybar := $HBoxContainer/Left/VBoxContainer/PlayerEnergyBar
 onready var enemy_healthbar := $HBoxContainer/Right/VBoxContainer/EnemyHealthBar
 onready var enemy_interface := $HBoxContainer/Right/VBoxContainer
 

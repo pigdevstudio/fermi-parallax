@@ -14,8 +14,7 @@ func _ready() -> void:
 
 func initialize_level() -> void:
 	_level.player.connect("died", self, "_on_Player_died")
-	$Interface/PlayScreen/HBoxContainer/Left/VBoxContainer/PlayerHealthBar.resource = _level.player.health
-	$Interface/PlayScreen/HBoxContainer/Left/VBoxContainer/PlayerEnergyBar.resource = _level.player.energy
+	_interface.link_player_resources(_level.player)
 
 
 func _on_Player_died() -> void:
@@ -32,3 +31,4 @@ func _on_Level_finished(next_level_path) -> void:
 	add_child(_level)
 	move_child(_level, 0)
 	_interface.fade_in()
+	initialize_level()
