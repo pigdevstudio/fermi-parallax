@@ -1,0 +1,357 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://Objects/HitBox/HitBox.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Objects/HurtBox/HurtBox.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Objects/Mine/mine.svg" type="Texture" id=3]
+[ext_resource path="res://Objects/Mine/Mine.gd" type="Script" id=4]
+[ext_resource path="res://Actors/Resources/Resource.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Objects/Explosion/Explosion.tscn" type="PackedScene" id=6]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 96.0
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 24.0
+
+[sub_resource type="Animation" id=4]
+resource_name = "countdown"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite/Light:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.9, 1 ),
+"transitions": PoolRealArray( 0, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1.08073, 1.08073, 1.08073, 1 ), Color( 1.08073, 1.08073, 1.08073, 1 ), Color( 1.08073, 1.08073, 1.08073, 1 ), Color( 1, 1, 1, 1 ), Color( 1.08073, 1.08073, 1.08073, 1 ), Color( 1, 1, 1, 1 ), Color( 1.08073, 1.08073, 1.08073, 1 ), Color( 1, 1, 1, 1 ), Color( 1.08073, 1.08073, 1.08073, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("AnimationPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ "explode" ],
+"method": "play"
+} ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "explode"
+length = 3.0
+tracks/0/type = "animation"
+tracks/0/path = NodePath("Explosion/AnimationPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"clips": PoolStringArray( "Explode" ),
+"times": PoolRealArray( 0 )
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 3 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "queue_free"
+} ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("SensorArea:monitoring")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("SensorArea:monitorable")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("HurtBox:monitoring")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("HurtBox:monitorable")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("HitBox2D:monitoring")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("HitBox2D:monitorable")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Sprite:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "idle"
+length = 6.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite/Light:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.5, 3, 4.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1.5, 1.5, 1.5, 1 ), Color( 1, 1, 1, 1 ), Color( 1.5, 1.5, 1.5, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 3 ),
+"transitions": PoolRealArray( -2, -2 ),
+"update": 0,
+"values": [ 0.0, -17.6842 ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "setup"
+tracks/0/type = "value"
+tracks/0/path = NodePath("HitBox2D:monitoring")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("HitBox2D:monitorable")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("HurtBox:monitorable")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("HurtBox:monitoring")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("SensorArea:monitoring")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("SensorArea:monitorable")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Sprite:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/7/type = "method"
+tracks/7/path = NodePath("AnimationPlayer")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0.1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ "idle" ],
+"method": "play"
+} ]
+}
+
+[sub_resource type="CircleShape2D" id=5]
+radius = 64.4981
+
+[node name="Mine" type="Node2D"]
+script = ExtResource( 4 )
+speed = 200.0
+
+[node name="HitBox2D" parent="." instance=ExtResource( 1 )]
+monitoring = false
+monitorable = false
+damage = 5.0
+
+[node name="CollisionShape2D" parent="HitBox2D" index="0"]
+shape = SubResource( 1 )
+
+[node name="HurtBox" parent="." instance=ExtResource( 2 )]
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape2D" parent="HurtBox" index="0"]
+shape = SubResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+visible = false
+rotation = -0.304624
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 9, 32, 110, 94 )
+
+[node name="Light" type="Sprite" parent="Sprite"]
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 54, 5, 23, 23 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "setup"
+anims/countdown = SubResource( 4 )
+anims/explode = SubResource( 3 )
+anims/idle = SubResource( 6 )
+anims/setup = SubResource( 7 )
+
+[node name="Health" parent="." instance=ExtResource( 5 )]
+max_amount = 3.0
+
+[node name="SensorArea" type="Area2D" parent="."]
+monitoring = false
+monitorable = false
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SensorArea"]
+shape = SubResource( 5 )
+
+[node name="Explosion" parent="." instance=ExtResource( 6 )]
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+autostart = true
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+scale = Vector2( 1.6, 1.6 )
+[connection signal="damage_taken" from="HurtBox" to="." method="_on_HurtBox_damage_taken"]
+[connection signal="depleted" from="Health" to="." method="_on_Health_depleted"]
+[connection signal="area_entered" from="SensorArea" to="." method="_on_SensorArea_area_entered"]
+[connection signal="timeout" from="Timer" to="." method="set_process" binds= [ false ]]
+[connection signal="screen_entered" from="VisibilityNotifier2D" to="Timer" method="start"]
+
+[editable path="HitBox2D"]
+
+[editable path="HurtBox"]

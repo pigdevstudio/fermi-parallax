@@ -63,7 +63,7 @@ tracks/0/keys = {
 "values": [ false ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("AsteroidCollisionArea:monitoring")
+tracks/1/path = NodePath("CollisionArea:monitoring")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -75,7 +75,7 @@ tracks/1/keys = {
 "values": [ true ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("AsteroidCollisionArea:monitorable")
+tracks/2/path = NodePath("CollisionArea:monitorable")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -126,7 +126,7 @@ tracks/0/keys = {
 "values": [ true, false ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("AsteroidCollisionArea:monitoring")
+tracks/1/path = NodePath("CollisionArea:monitoring")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -138,7 +138,7 @@ tracks/1/keys = {
 "values": [ false ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("AsteroidCollisionArea:monitorable")
+tracks/2/path = NodePath("CollisionArea:monitorable")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -227,7 +227,7 @@ tracks/2/keys = {
 "values": [ true ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("AsteroidCollisionArea:monitorable")
+tracks/3/path = NodePath("CollisionArea:monitorable")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -239,7 +239,7 @@ tracks/3/keys = {
 "values": [ true ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("AsteroidCollisionArea:monitoring")
+tracks/4/path = NodePath("CollisionArea:monitoring")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -306,10 +306,11 @@ weapon_path = NodePath("../../Weapon")
 [node name="Move" parent="Actions" instance=ExtResource( 14 )]
 cost = 0.0
 
-[node name="AsteroidCollisionArea" type="Area2D" parent="."]
+[node name="CollisionArea" type="Area2D" parent="."]
+collision_layer = 9
 collision_mask = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AsteroidCollisionArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionArea"]
 shape = SubResource( 8 )
 
 [node name="HurtBox" parent="." instance=ExtResource( 6 )]

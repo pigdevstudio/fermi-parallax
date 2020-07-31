@@ -20,7 +20,7 @@ onready var dash := $Actions/Dash
 onready var shoot := $Actions/Shoot
 onready var move := $Actions/Move
 onready var charge_vfx := $ChargingParticles
-onready var asteroid_collision := $AsteroidCollisionArea
+onready var asteroid_collision := $CollisionArea
 onready var replenish := $EnergyReplenish
 
 
