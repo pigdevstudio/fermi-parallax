@@ -2,10 +2,16 @@ extends Node2D
 
 export var speed := 300.0
 export var direction := Vector2.DOWN
-
+export var wait_min := 2.5
+export var wait_max := 3.5
+onready var timer := $Timer
 onready var health := $Health
 onready var animator := $AnimationPlayer
 onready var _velocity := speed * direction
+
+
+func _ready() -> void:
+	$Timer.wait_time = rand_range(wait_min, wait_max)
 
 
 func _on_HurtBox_damage_taken(damage) -> void:
