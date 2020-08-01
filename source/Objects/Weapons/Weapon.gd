@@ -19,10 +19,10 @@ func fire() -> void:
 		return
 	
 	var bullet: Bullet = bullet_scene.instance()
+	bullet.direction = bullet.direction.rotated(global_rotation)
 	add_child(bullet)
 	bullet.set_as_toplevel(true)
 	bullet.global_position = global_position
-	bullet.direction = bullet.direction.rotated(rotation)
 	
 	_cooldown.start(cooldown)
 	animator.play("flash")
