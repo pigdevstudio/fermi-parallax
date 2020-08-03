@@ -174,7 +174,7 @@ anims/setup = SubResource( 2 )
 
 [node name="Weapon" parent="." instance=ExtResource( 3 )]
 position = Vector2( 48, 0 )
-rotation = 3.14159
+rotation = 1.5708
 bullet_scene = ExtResource( 5 )
 cooldown = 0.1
 disabled = true
