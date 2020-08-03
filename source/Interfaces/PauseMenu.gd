@@ -1,6 +1,7 @@
 extends Control
 
 onready var _resume_button := $PauseMenu/HBoxContainer/Center/MarginContainer/VBoxContainer/ResumeButton
+onready var _master_slider := $OptionsMenu/HBoxContainer/CenterColumn/VBoxContainer4/VBoxContainer/VolumeSlider
 onready var _pause_menu := $PauseMenu
 onready var _options_menu := $OptionsMenu
 
@@ -35,12 +36,10 @@ func _on_QuitButton_pressed() -> void:
 func _on_OptionsButton_pressed() -> void:
 	_pause_menu.hide()
 	_options_menu.show()
+	_master_slider.grab_focus()
 
 
 func _on_OptionsCloseButton_pressed() -> void:
 	_pause_menu.show()
 	_options_menu.hide()
-
-
-func _on_CloseButton_draw():
-	$OptionsMenu/HBoxContainer/CenterColumn/VBoxContainer4/CenterContainer/CloseButton.grab_focus()
+	_resume_button.grab_focus()

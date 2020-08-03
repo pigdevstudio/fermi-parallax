@@ -301,5 +301,4 @@ size_flags_vertical = 3
 [connection signal="pressed" from="PauseMenu/HBoxContainer/Center/MarginContainer/VBoxContainer/OptionsButton" to="ButtonSFX" method="play"]
 [connection signal="pressed" from="PauseMenu/HBoxContainer/Center/MarginContainer/VBoxContainer/OptionsButton" to="." method="_on_OptionsButton_pressed"]
 [connection signal="pressed" from="PauseMenu/HBoxContainer/Center/MarginContainer/VBoxContainer/QuitButton" to="." method="_on_QuitButton_pressed"]
-[connection signal="draw" from="OptionsMenu/HBoxContainer/CenterColumn/VBoxContainer4/CenterContainer/CloseButton" to="." method="_on_CloseButton_draw"]
 [connection signal="pressed" from="OptionsMenu/HBoxContainer/CenterColumn/VBoxContainer4/CenterContainer/CloseButton" to="." method="_on_OptionsCloseButton_pressed"]

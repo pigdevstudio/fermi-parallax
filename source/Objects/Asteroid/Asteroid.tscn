@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Actors/Resources/Resource.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Objects/Asteroid/asteroid-small.svg" type="Texture" id=2]
@@ -6,11 +6,9 @@
 [ext_resource path="res://Objects/HitBox/HitBox.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Objects/HurtBox/HurtBox.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Objects/Asteroid/random_pitch_asteroid_sfx.tres" type="AudioStream" id=6]
-[ext_resource path="res://Objects/Asteroid/asteroid-small-damage.svg" type="Texture" id=7]
 [ext_resource path="res://Objects/Asteroid/damage-anim.tres" type="Animation" id=8]
 
-[sub_resource type="Animation" id=1]
-resource_name = "spin"
+[sub_resource type="Animation" id=2]
 length = 3.0
 loop = true
 tracks/0/type = "value"
@@ -26,7 +24,7 @@ tracks/0/keys = {
 "values": [ -360.0, 0.0 ]
 }
 
-[sub_resource type="GDScript" id=2]
+[sub_resource type="GDScript" id=10]
 script/source = "extends AnimationPlayer
 
 
@@ -247,19 +245,21 @@ radius = 24.0
 script = ExtResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="."]
-rotation = -5.44543
-texture = ExtResource( 7 )
+rotation = -3.35103
+texture = ExtResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite"]
-anims/spin = SubResource( 1 )
-script = SubResource( 2 )
+anims/damage = ExtResource( 8 )
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="Sprite"]
+anims/spin = SubResource( 2 )
+script = SubResource( 10 )
 
 [node name="Health" parent="." instance=ExtResource( 1 )]
 max_amount = 1.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "setup"
-anims/damage = ExtResource( 8 )
 anims/explode = SubResource( 3 )
 anims/setup = SubResource( 4 )
 
@@ -274,11 +274,15 @@ texture = ExtResource( 2 )
 [node name="HitBox2D" parent="." groups=[
 "enemy",
 ] instance=ExtResource( 4 )]
+monitoring = false
+monitorable = false
 
 [node name="CollisionShape2D" parent="HitBox2D" index="0"]
 shape = SubResource( 8 )
 
 [node name="HurtBox" parent="." instance=ExtResource( 5 )]
+monitoring = false
+monitorable = false
 
 [node name="CollisionShape2D" parent="HurtBox" index="0"]
 shape = SubResource( 9 )
