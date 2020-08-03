@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Actors/Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Objects/Spawner/Spawner2D.tscn" type="PackedScene" id=2]
@@ -17,6 +17,36 @@ glow_bicubic_upscale = true
 
 [sub_resource type="Animation" id=2]
 resource_name = "00"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("WaveSpawner2D:spawn_scene")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 5 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("WaveSpawner2D")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 2 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "spawn"
+} ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "01"
 length = 2.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("WaveSpawner2D:spawn_scene")
@@ -68,6 +98,7 @@ bus = "SFX"
 
 [node name="EventsPlayer" type="AnimationPlayer" parent="."]
 anims/00 = SubResource( 2 )
+anims/01 = SubResource( 3 )
 
 [node name="Mine" parent="." instance=ExtResource( 6 )]
 position = Vector2( 950.292, -176.513 )
