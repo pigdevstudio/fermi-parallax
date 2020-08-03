@@ -1,10 +1,9 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Interfaces/label_font.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Interfaces/title_font.tres" type="DynamicFont" id=2]
 [ext_resource path="res://Interfaces/PauseMenu.gd" type="Script" id=3]
 [ext_resource path="res://Interfaces/VolumeSlider.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Interfaces/powerUp2.ogg" type="AudioStream" id=5]
 [ext_resource path="res://Interfaces/FullscreenButton.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Interfaces/ButtonSFX.tscn" type="PackedScene" id=7]
 
@@ -248,12 +247,36 @@ custom_styles/grabber_area_highlight = SubResource( 2 )
 custom_styles/grabber_area = SubResource( 3 )
 bus = "SFX"
 
+[node name="VBoxContainer4" type="VBoxContainer" parent="OptionsMenu/HBoxContainer/CenterColumn/VBoxContainer4"]
+margin_top = 216.0
+margin_right = 624.0
+margin_bottom = 284.0
+
+[node name="Label" type="Label" parent="OptionsMenu/HBoxContainer/CenterColumn/VBoxContainer4/VBoxContainer4"]
+margin_right = 624.0
+margin_bottom = 40.0
+custom_fonts/font = ExtResource( 1 )
+text = "Interface"
+align = 1
+
+[node name="VolumeSlider" parent="OptionsMenu/HBoxContainer/CenterColumn/VBoxContainer4/VBoxContainer4" instance=ExtResource( 4 )]
+margin_top = 44.0
+margin_right = 624.0
+margin_bottom = 68.0
+custom_styles/slider = SubResource( 1 )
+custom_styles/grabber_area_highlight = SubResource( 2 )
+custom_styles/grabber_area = SubResource( 3 )
+bus = "UI"
+
 [node name="FullscreenButton" parent="OptionsMenu/HBoxContainer/CenterColumn/VBoxContainer4" instance=ExtResource( 6 )]
+margin_top = 288.0
+margin_right = 624.0
+margin_bottom = 336.0
 
 [node name="CenterContainer" type="CenterContainer" parent="OptionsMenu/HBoxContainer/CenterColumn/VBoxContainer4"]
-margin_top = 268.0
+margin_top = 340.0
 margin_right = 624.0
-margin_bottom = 332.0
+margin_bottom = 404.0
 
 [node name="CloseButton" type="Button" parent="OptionsMenu/HBoxContainer/CenterColumn/VBoxContainer4/CenterContainer"]
 margin_left = 184.0
@@ -272,14 +295,11 @@ margin_bottom = 1040.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="ButtonSFX" type="AudioStreamPlayer" parent="." instance=ExtResource( 7 )]
-stream = ExtResource( 5 )
-pitch_scale = 1.8
-bus = "TransitionButton"
-[connection signal="pressed" from="PauseMenu/HBoxContainer/Center/MarginContainer/VBoxContainer/ResumeButton" to="." method="_on_ResumeButton_pressed"]
+[node name="ButtonSFX" parent="." instance=ExtResource( 7 )]
 [connection signal="pressed" from="PauseMenu/HBoxContainer/Center/MarginContainer/VBoxContainer/ResumeButton" to="ButtonSFX" method="play"]
-[connection signal="pressed" from="PauseMenu/HBoxContainer/Center/MarginContainer/VBoxContainer/OptionsButton" to="." method="_on_OptionsButton_pressed"]
+[connection signal="pressed" from="PauseMenu/HBoxContainer/Center/MarginContainer/VBoxContainer/ResumeButton" to="." method="_on_ResumeButton_pressed"]
 [connection signal="pressed" from="PauseMenu/HBoxContainer/Center/MarginContainer/VBoxContainer/OptionsButton" to="ButtonSFX" method="play"]
+[connection signal="pressed" from="PauseMenu/HBoxContainer/Center/MarginContainer/VBoxContainer/OptionsButton" to="." method="_on_OptionsButton_pressed"]
 [connection signal="pressed" from="PauseMenu/HBoxContainer/Center/MarginContainer/VBoxContainer/QuitButton" to="." method="_on_QuitButton_pressed"]
-[connection signal="draw" from="OptionsMenu/HBoxContainer/CenterColumn/VBoxContainer4/VBoxContainer/VolumeSlider" to="OptionsMenu/HBoxContainer/CenterColumn/VBoxContainer4/VBoxContainer/VolumeSlider" method="grab_focus"]
+[connection signal="draw" from="OptionsMenu/HBoxContainer/CenterColumn/VBoxContainer4/CenterContainer/CloseButton" to="." method="_on_CloseButton_draw"]
 [connection signal="pressed" from="OptionsMenu/HBoxContainer/CenterColumn/VBoxContainer4/CenterContainer/CloseButton" to="." method="_on_OptionsCloseButton_pressed"]

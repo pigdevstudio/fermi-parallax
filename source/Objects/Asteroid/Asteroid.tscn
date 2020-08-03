@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Actors/Resources/Resource.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Objects/Asteroid/asteroid-small.svg" type="Texture" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Objects/HitBox/HitBox.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Objects/HurtBox/HurtBox.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Objects/Asteroid/random_pitch_asteroid_sfx.tres" type="AudioStream" id=6]
+[ext_resource path="res://Objects/Asteroid/asteroid-small-damage.svg" type="Texture" id=7]
 [ext_resource path="res://Objects/Asteroid/damage-anim.tres" type="Animation" id=8]
 
 [sub_resource type="Animation" id=1]
@@ -247,7 +248,7 @@ script = ExtResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="."]
 rotation = -5.44543
-texture = ExtResource( 2 )
+texture = ExtResource( 7 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite"]
 anims/spin = SubResource( 1 )
@@ -258,7 +259,7 @@ max_amount = 1.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "setup"
-anims/damage-anim = ExtResource( 8 )
+anims/damage = ExtResource( 8 )
 anims/explode = SubResource( 3 )
 anims/setup = SubResource( 4 )
 

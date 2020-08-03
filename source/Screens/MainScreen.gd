@@ -7,6 +7,10 @@ export(String, FILE, "*.tscn") var options_screen_path
 onready var _transition_rect := $SceneTransitionRect
 
 
+func _ready() -> void:
+	$MarginContainer/VBoxContainer/HBoxContainer/Center/VBoxContainer/PlayButton.grab_focus()
+
+
 func _on_PlayButton_pressed() -> void:
 	_transition_rect.transit(play_screen_path)
 
