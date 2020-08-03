@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Interfaces/label_font.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Interfaces/title_font.tres" type="DynamicFont" id=2]
 [ext_resource path="res://Interfaces/PauseMenu.gd" type="Script" id=3]
 [ext_resource path="res://Interfaces/VolumeSlider.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Interfaces/CancelShortcut.tres" type="ShortCut" id=5]
 [ext_resource path="res://Interfaces/FullscreenButton.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Interfaces/ButtonSFX.tscn" type="PackedScene" id=7]
 
@@ -103,6 +104,7 @@ margin_bottom = 106.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = ExtResource( 1 )
+shortcut = ExtResource( 5 )
 text = "Resume"
 
 [node name="OptionsButton" type="Button" parent="PauseMenu/HBoxContainer/Center/MarginContainer/VBoxContainer"]
@@ -286,6 +288,7 @@ rect_min_size = Vector2( 256, 64 )
 size_flags_horizontal = 0
 size_flags_vertical = 0
 custom_fonts/font = ExtResource( 1 )
+shortcut = ExtResource( 5 )
 text = "Close"
 
 [node name="RightColumn" type="VBoxContainer" parent="OptionsMenu/HBoxContainer"]

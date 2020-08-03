@@ -4,7 +4,7 @@
 [ext_resource path="res://Objects/Mine/Mine.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Actors/Enemies/PathFollowEnemy/EnemyTwo.tscn" type="PackedScene" id=3]
 
-[node name="Wave1" instance=ExtResource( 1 )]
+[node name="Wave" instance=ExtResource( 1 )]
 position = Vector2( 0, 84.2947 )
 
 [node name="EnemyTwo" parent="." index="0" instance=ExtResource( 3 )]

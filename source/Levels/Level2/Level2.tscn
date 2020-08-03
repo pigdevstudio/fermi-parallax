@@ -5,7 +5,7 @@
 [ext_resource path="res://Areas/ParallaxBackground.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Levels/Level.gd" type="Script" id=4]
 [ext_resource path="res://Levels/Level2/Waves/Wave1.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Objects/Mine/Mine.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Objects/Asteroid/Comet/Comet.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Levels/Level1/sfx_sound_depressurizing.wav" type="AudioStream" id=14]
 [ext_resource path="res://Levels/Level1/Juhani Junkala [Retro Game Music Pack] Ending.ogg" type="AudioStream" id=15]
 
@@ -100,15 +100,6 @@ bus = "SFX"
 anims/00 = SubResource( 2 )
 anims/01 = SubResource( 3 )
 
-[node name="Mine" parent="." instance=ExtResource( 6 )]
-position = Vector2( 950.292, -176.513 )
-
-[node name="Mine2" parent="." instance=ExtResource( 6 )]
-position = Vector2( 446.324, -446.136 )
-
-[node name="Mine3" parent="." instance=ExtResource( 6 )]
-position = Vector2( 1600.41, -302.505 )
-
-[node name="Mine4" parent="." instance=ExtResource( 6 )]
-position = Vector2( 1257.71, -630.084 )
+[node name="Comet" parent="." instance=ExtResource( 6 )]
+position = Vector2( 949.927, 1603.19 )
 [connection signal="spawned" from="WaveSpawner2D" to="." method="_on_WaveSpawner2D_spawned"]

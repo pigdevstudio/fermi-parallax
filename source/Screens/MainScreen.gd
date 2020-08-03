@@ -9,6 +9,7 @@ onready var _transition_rect := $SceneTransitionRect
 
 func _ready() -> void:
 	$MarginContainer/VBoxContainer/HBoxContainer/Center/VBoxContainer/PlayButton.grab_focus()
+	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 
 
 func _on_PlayButton_pressed() -> void:
