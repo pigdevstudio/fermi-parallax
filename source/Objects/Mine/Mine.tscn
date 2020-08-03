@@ -123,7 +123,7 @@ tracks/6/loop_wrap = true
 tracks/6/imported = false
 tracks/6/enabled = true
 tracks/6/keys = {
-"times": PoolRealArray( 0, 1 ),
+"times": PoolRealArray( 0, 0.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ true, false ]
@@ -135,7 +135,7 @@ tracks/7/loop_wrap = true
 tracks/7/imported = false
 tracks/7/enabled = true
 tracks/7/keys = {
-"times": PoolRealArray( 0, 1 ),
+"times": PoolRealArray( 0, 0.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ true, false ]
@@ -313,6 +313,7 @@ region_enabled = true
 region_rect = Rect2( 9, 32, 110, 94 )
 
 [node name="Light" type="Sprite" parent="Sprite"]
+self_modulate = Color( 1.08073, 1.08073, 1.08073, 1 )
 texture = ExtResource( 3 )
 region_enabled = true
 region_rect = Rect2( 54, 5, 23, 23 )

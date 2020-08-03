@@ -1,14 +1,15 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Actors/Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Objects/Spawner/Spawner2D.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Areas/ParallaxBackground.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Levels/Level.gd" type="Script" id=4]
 [ext_resource path="res://Levels/Level2/Waves/Wave1.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Objects/Mine/Mine.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Levels/Level2/Waves/Wave5.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Levels/Level2/Waves/Wave4.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Levels/Level2/Waves/Wave2.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Levels/Level2/Waves/Wave3.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Levels/Level2/Tween.gd" type="Script" id=10]
 [ext_resource path="res://Levels/Level1/sfx_sound_depressurizing.wav" type="AudioStream" id=14]
 [ext_resource path="res://Levels/Level1/Juhani Junkala [Retro Game Music Pack] Ending.ogg" type="AudioStream" id=15]
 
@@ -138,14 +139,88 @@ tracks/1/keys = {
 } ]
 }
 
+[sub_resource type="Animation" id=6]
+resource_name = "05"
+length = 4.0
+tracks/0/type = "method"
+tracks/0/path = NodePath("Player")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [ false ],
+"method": "set_process_unhandled_input"
+}, {
+"args": [ true ],
+"method": "set_process_unhandled_input"
+} ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("ParallaxBackground:speed")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 2, 1 ),
+"update": 0,
+"values": [ 100.0, 5000.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("WaveSpawner2D:spawn_scene")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 6 ) ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath("WaveSpawner2D")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 2 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "spawn"
+} ]
+}
+tracks/4/type = "method"
+tracks/4/path = NodePath("Tween")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "tween_player"
+} ]
+}
+
 [node name="Level" type="Node2D"]
 script = ExtResource( 4 )
 background_music = ExtResource( 15 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 960, 960 )
+position = Vector2( 388.658, 343.403 )
 
 [node name="ParallaxBackground" parent="." instance=ExtResource( 3 )]
+speed = 5000.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 1 )
@@ -160,20 +235,16 @@ volume_db = -16.0
 bus = "SFX"
 
 [node name="EventsPlayer" type="AnimationPlayer" parent="."]
+autoplay = "00"
 anims/00 = SubResource( 2 )
 anims/01 = SubResource( 3 )
 anims/02 = SubResource( 4 )
 anims/03 = SubResource( 5 )
+anims/05 = SubResource( 6 )
 
-[node name="Mine" parent="." instance=ExtResource( 6 )]
-position = Vector2( 950.292, -176.513 )
-
-[node name="Mine2" parent="." instance=ExtResource( 6 )]
-position = Vector2( 446.324, -446.136 )
-
-[node name="Mine3" parent="." instance=ExtResource( 6 )]
-position = Vector2( 1600.41, -302.505 )
-
-[node name="Mine4" parent="." instance=ExtResource( 6 )]
-position = Vector2( 1257.71, -630.084 )
+[node name="Tween" type="Tween" parent="."]
+script = ExtResource( 10 )
+player_path = NodePath("../Player")
+target_position = Vector2( 960, 960 )
+duration = 2.0
 [connection signal="spawned" from="WaveSpawner2D" to="." method="_on_WaveSpawner2D_spawned"]
