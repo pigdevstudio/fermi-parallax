@@ -40,3 +40,7 @@ func _on_OptionsButton_pressed() -> void:
 func _on_OptionsCloseButton_pressed() -> void:
 	_pause_menu.show()
 	_options_menu.hide()
+
+
+func _on_CloseButton_draw():
+	$OptionsMenu/HBoxContainer/CenterColumn/VBoxContainer4/CenterContainer/CloseButton.grab_focus()
