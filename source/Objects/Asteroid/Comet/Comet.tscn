@@ -1,7 +1,7 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://Objects/Asteroid/Comet/Fireball/sparkle.png" type="Texture" id=1]
-[ext_resource path="res://Objects/Asteroid/asteroid-great-damage.svg" type="Texture" id=2]
+[ext_resource path="res://Objects/Asteroid/asteroid-great.svg" type="Texture" id=2]
 [ext_resource path="res://Objects/Asteroid/Comet/Fireball/puff.png" type="Texture" id=3]
 [ext_resource path="res://Objects/Asteroid/Asteroid.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Objects/Asteroid/Comet/damage-anim.tres" type="Animation" id=5]
@@ -140,6 +140,9 @@ color_ramp = SubResource( 18 )
 [sub_resource type="CircleShape2D" id=20]
 radius = 260.768
 
+[sub_resource type="CircleShape2D" id=21]
+radius = 256.002
+
 [node name="Comet" instance=ExtResource( 4 )]
 
 [node name="FireBallEffect" type="Node2D" parent="." index="0"]
@@ -196,6 +199,9 @@ texture = ExtResource( 2 )
 min_spin_speed = 1.0
 max_spin_speed = 1.0
 
+[node name="AnimationPlayer2" parent="Sprite" index="1"]
+anims/damage = ExtResource( 5 )
+
 [node name="Health" parent="." index="2" groups=[
 "enemy",
 ]]
@@ -211,16 +217,10 @@ explosiveness = 1.0
 process_material = SubResource( 19 )
 
 [node name="HitBox2D" parent="." index="5"]
-monitoring = false
-monitorable = false
 damage = 5000.0
 
 [node name="CollisionShape2D" parent="HitBox2D" index="0"]
 shape = SubResource( 20 )
-
-[node name="HurtBox" parent="." index="6"]
-monitoring = false
-monitorable = false
 
 [node name="CollisionShape2D" parent="HurtBox" index="0"]
 shape = SubResource( 20 )
@@ -229,6 +229,7 @@ shape = SubResource( 20 )
 monitoring = false
 
 [node name="CollisionShape2D" parent="DestructionArea" index="0"]
+shape = SubResource( 21 )
 disabled = true
 
 [node name="VisibilityNotifier2D" parent="." index="8"]

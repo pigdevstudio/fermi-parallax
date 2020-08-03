@@ -9,6 +9,7 @@ onready var _velocity := speed * direction
 
 onready var _health := $Health
 onready var _animator := $AnimationPlayer
+onready var _sprite_animator := $Sprite/AnimationPlayer
 
 
 func _process(delta: float) -> void:
@@ -21,7 +22,7 @@ func _on_Health_depleted() -> void:
 
 func _on_HurtBox_damage_taken(damage) -> void:
 	_health.current -= damage
-	_animator.play("damage")
+	_sprite_animator.play("damage")
 
 
 func _on_VisibilityNotifier2D_screen_exited() -> void:

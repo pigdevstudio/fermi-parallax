@@ -8,12 +8,12 @@
 [ext_resource path="res://Objects/Explosion/Explosion.tscn" type="PackedScene" id=6]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 96.0
+radius = 184.0
 
 [sub_resource type="CircleShape2D" id=2]
 radius = 24.0
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=3]
 resource_name = "countdown"
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite/Light:self_modulate")
@@ -42,8 +42,7 @@ tracks/1/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=3]
-resource_name = "explode"
+[sub_resource type="Animation" id=4]
 length = 3.0
 tracks/0/type = "animation"
 tracks/0/path = NodePath("Explosion/AnimationPlayer")
@@ -154,7 +153,7 @@ tracks/8/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=5]
 resource_name = "idle"
 length = 6.0
 loop = true
@@ -183,7 +182,7 @@ tracks/1/keys = {
 "values": [ 0.0, -17.6842 ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=6]
 resource_name = "setup"
 tracks/0/type = "value"
 tracks/0/path = NodePath("HitBox2D:monitoring")
@@ -284,7 +283,7 @@ tracks/7/keys = {
 } ]
 }
 
-[sub_resource type="CircleShape2D" id=5]
+[sub_resource type="CircleShape2D" id=7]
 radius = 64.4981
 
 [node name="Mine" type="Node2D"]
@@ -320,10 +319,10 @@ region_rect = Rect2( 54, 5, 23, 23 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "setup"
-anims/countdown = SubResource( 4 )
-anims/explode = SubResource( 3 )
-anims/idle = SubResource( 6 )
-anims/setup = SubResource( 7 )
+anims/countdown = SubResource( 3 )
+anims/explode = SubResource( 4 )
+anims/idle = SubResource( 5 )
+anims/setup = SubResource( 6 )
 
 [node name="Health" parent="." instance=ExtResource( 5 )]
 max_amount = 3.0
@@ -335,14 +334,13 @@ collision_layer = 0
 collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SensorArea"]
-shape = SubResource( 5 )
+shape = SubResource( 7 )
 
 [node name="Explosion" parent="." instance=ExtResource( 6 )]
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 3.0
 one_shot = true
-autostart = true
 
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
 scale = Vector2( 1.6, 1.6 )
