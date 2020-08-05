@@ -273,10 +273,11 @@ process_material = SubResource( 7 )
 texture = ExtResource( 2 )
 
 [node name="HitBox2D" parent="." groups=[
-"enemy",
+"asteroid",
 ] instance=ExtResource( 4 )]
 monitoring = false
 monitorable = false
+team = "asteroid"
 
 [node name="CollisionShape2D" parent="HitBox2D" index="0"]
 shape = SubResource( 8 )
@@ -284,6 +285,7 @@ shape = SubResource( 8 )
 [node name="HurtBox" parent="." instance=ExtResource( 5 )]
 monitoring = false
 monitorable = false
+team = "asteroid"
 
 [node name="CollisionShape2D" parent="HurtBox" index="0"]
 shape = SubResource( 9 )

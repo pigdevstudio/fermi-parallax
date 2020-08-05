@@ -6,3 +6,6 @@
 "player",
 ] instance=ExtResource( 1 )]
 spread = 0.0
+
+[node name="HitBox" parent="." index="2"]
+team = "player"

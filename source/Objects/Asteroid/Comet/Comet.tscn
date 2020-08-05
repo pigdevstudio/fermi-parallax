@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://Objects/Asteroid/Comet/Fireball/sparkle.png" type="Texture" id=1]
 [ext_resource path="res://Objects/Asteroid/asteroid-great.svg" type="Texture" id=2]
@@ -26,11 +26,12 @@ flag_disable_z = true
 direction = Vector3( 0, 1, 0 )
 spread = 15.0
 gravity = Vector3( 0, 0, 0 )
-initial_velocity = 500.0
+initial_velocity = 2500.0
 angular_velocity = 200.0
 angular_velocity_random = 0.3
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
+radial_accel = -2000.0
 angle = 200.0
 angle_random = 0.5
 scale = 2.0
@@ -82,14 +83,15 @@ emission_shape = 1
 emission_sphere_radius = 256.0
 flag_disable_z = true
 direction = Vector3( 0, 1, 0 )
-spread = 15.0
+spread = 0.0
 gravity = Vector3( 0, 0, 0 )
-initial_velocity = 700.0
+initial_velocity = 1000.0
 initial_velocity_random = 0.5
 angular_velocity = 200.0
 angular_velocity_random = 0.5
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
+radial_accel = -100.0
 damping = 100.0
 damping_random = 0.85
 angle = 200.0
@@ -114,14 +116,14 @@ scale_random = 0.3
 scale_curve = SubResource( 9 )
 color_ramp = SubResource( 7 )
 
-[sub_resource type="Gradient" id=17]
+[sub_resource type="Gradient" id=24]
 offsets = PoolRealArray( 0.728395, 1 )
 colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0 )
 
-[sub_resource type="GradientTexture" id=18]
-gradient = SubResource( 17 )
+[sub_resource type="GradientTexture" id=25]
+gradient = SubResource( 24 )
 
-[sub_resource type="ParticlesMaterial" id=19]
+[sub_resource type="ParticlesMaterial" id=26]
 emission_shape = 1
 emission_sphere_radius = 128.0
 flag_disable_z = true
@@ -135,16 +137,19 @@ damping = 500.0
 damping_random = 0.2
 scale = 0.2
 scale_random = 0.48
-color_ramp = SubResource( 18 )
+color_ramp = SubResource( 25 )
 
-[sub_resource type="CircleShape2D" id=20]
+[sub_resource type="CircleShape2D" id=27]
 radius = 260.768
 
-[sub_resource type="CircleShape2D" id=21]
+[sub_resource type="RectangleShape2D" id=23]
+extents = Vector2( 248, 736 )
+
+[sub_resource type="CircleShape2D" id=22]
 radius = 256.002
 
 [node name="Comet" instance=ExtResource( 4 )]
-speed = 50.0
+speed = 0.0
 direction = Vector2( 0, -1 )
 
 [node name="FireBallEffect" type="Node2D" parent="." index="0"]
@@ -152,7 +157,7 @@ modulate = Color( 1.1, 1.1, 1.1, 1 )
 
 [node name="FireTrail" type="Particles2D" parent="FireBallEffect" index="0"]
 self_modulate = Color( 1.1, 1.1, 1.1, 1 )
-amount = 64
+amount = 32
 lifetime = 0.5
 visibility_rect = Rect2( -512, -300, 1024, 600 )
 local_coords = false
@@ -202,37 +207,40 @@ texture = ExtResource( 2 )
 [node name="AnimationPlayer" parent="Sprite" index="0"]
 anims/damage = ExtResource( 5 )
 
-[node name="Health" parent="." index="2" groups=[
-"enemy",
-]]
+[node name="Health" parent="." index="2"]
 max_amount = 50.0
 
 [node name="Particles2D" parent="." index="4"]
 amount = 80
 lifetime = 4.0
 explosiveness = 1.0
-process_material = SubResource( 19 )
+process_material = SubResource( 26 )
 
 [node name="HitBox2D" parent="." index="5"]
 monitoring = true
 monitorable = true
-damage = 5000.0
+team = "enemy"
 
 [node name="CollisionShape2D" parent="HitBox2D" index="0"]
-shape = SubResource( 20 )
+shape = SubResource( 27 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="HitBox2D" index="1"]
+position = Vector2( 8, 728 )
+shape = SubResource( 23 )
 
 [node name="HurtBox" parent="." index="6"]
 monitoring = true
 monitorable = true
+team = "comet"
 
 [node name="CollisionShape2D" parent="HurtBox" index="0"]
-shape = SubResource( 20 )
+shape = SubResource( 27 )
 
 [node name="DestructionArea" parent="." index="7"]
 monitoring = false
 
 [node name="CollisionShape2D" parent="DestructionArea" index="0"]
-shape = SubResource( 21 )
+shape = SubResource( 22 )
 disabled = true
 
 [node name="VisibilityNotifier2D" parent="." index="8"]
