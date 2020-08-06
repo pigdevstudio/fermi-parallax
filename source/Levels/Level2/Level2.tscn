@@ -332,6 +332,10 @@ tracks/1/keys = {
 [node name="Level" type="Node2D"]
 script = ExtResource( 4 )
 background_music = ExtResource( 15 )
+<<<<<<< Updated upstream
+=======
+_current_event = 4
+>>>>>>> Stashed changes
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 400, 928 )
@@ -342,7 +346,11 @@ position = Vector2( 400, 928 )
 environment = SubResource( 1 )
 
 [node name="WaveSpawner2D" parent="." instance=ExtResource( 2 )]
+<<<<<<< Updated upstream
 spawn_scene = ExtResource( 5 )
+=======
+spawn_scene = ExtResource( 12 )
+>>>>>>> Stashed changes
 
 [node name="SFX" type="AudioStreamPlayer2D" parent="."]
 position = Vector2( 960, 960 )
