@@ -10,7 +10,7 @@ export(String, FILE, "*.tscn") var next_level_path
 onready var player := $Player
 onready var _events_player := $EventsPlayer
 
-export var _current_event := 0
+export var current_event := 0
 
 
 func _ready() -> void:
@@ -28,11 +28,11 @@ func _on_WaveSpawner2D_spawned(spawn) -> void:
 func _on_Wave_finished() -> void:
 	var events_list := _events_player.get_animation_list() as PoolStringArray
 	var animation_count := events_list.size() as int
-	_current_event += 1
+	current_event += 1
 	
-	if _current_event >= animation_count:
+	if current_event >= animation_count:
 		return
-	_events_player.play(events_list[_current_event])
+	_events_player.play(events_list[current_event])
 
 
 func finish() -> void:
