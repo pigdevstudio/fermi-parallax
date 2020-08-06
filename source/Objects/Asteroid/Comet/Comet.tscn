@@ -116,14 +116,14 @@ scale_random = 0.3
 scale_curve = SubResource( 9 )
 color_ramp = SubResource( 7 )
 
-[sub_resource type="Gradient" id=24]
+[sub_resource type="Gradient" id=17]
 offsets = PoolRealArray( 0.728395, 1 )
 colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0 )
 
-[sub_resource type="GradientTexture" id=25]
-gradient = SubResource( 24 )
+[sub_resource type="GradientTexture" id=18]
+gradient = SubResource( 17 )
 
-[sub_resource type="ParticlesMaterial" id=26]
+[sub_resource type="ParticlesMaterial" id=19]
 emission_shape = 1
 emission_sphere_radius = 128.0
 flag_disable_z = true
@@ -137,12 +137,12 @@ damping = 500.0
 damping_random = 0.2
 scale = 0.2
 scale_random = 0.48
-color_ramp = SubResource( 25 )
+color_ramp = SubResource( 18 )
 
-[sub_resource type="CircleShape2D" id=27]
+[sub_resource type="CircleShape2D" id=20]
 radius = 260.768
 
-[sub_resource type="RectangleShape2D" id=23]
+[sub_resource type="RectangleShape2D" id=21]
 extents = Vector2( 248, 736 )
 
 [sub_resource type="CircleShape2D" id=22]
@@ -208,25 +208,26 @@ texture = ExtResource( 2 )
 anims/damage = ExtResource( 5 )
 
 [node name="Health" parent="." index="2"]
-max_amount = 50.0
+max_amount = 125.0
 
 [node name="Particles2D" parent="." index="4"]
 amount = 80
 lifetime = 4.0
 explosiveness = 1.0
-process_material = SubResource( 26 )
+process_material = SubResource( 19 )
 
 [node name="HitBox2D" parent="." index="5"]
 monitoring = true
 monitorable = true
-team = "enemy"
+damage = 50000.0
+team = "comet"
 
 [node name="CollisionShape2D" parent="HitBox2D" index="0"]
-shape = SubResource( 27 )
+shape = SubResource( 20 )
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="HitBox2D" index="1"]
 position = Vector2( 8, 728 )
-shape = SubResource( 23 )
+shape = SubResource( 21 )
 
 [node name="HurtBox" parent="." index="6"]
 monitoring = true
@@ -234,7 +235,7 @@ monitorable = true
 team = "comet"
 
 [node name="CollisionShape2D" parent="HurtBox" index="0"]
-shape = SubResource( 27 )
+shape = SubResource( 20 )
 
 [node name="DestructionArea" parent="." index="7"]
 monitoring = false
