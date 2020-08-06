@@ -9,10 +9,10 @@
 position = Vector2( 0, -48 )
 
 [node name="EnemyOne" parent="." index="0" instance=ExtResource( 4 )]
-position = Vector2( -145.674, -3.74414 )
+position = Vector2( -128.569, 0 )
 
 [node name="EnemyOne2" parent="." index="1" instance=ExtResource( 4 )]
-position = Vector2( 121.459, -14.0185 )
+position = Vector2( 135.306, 0 )
 
 [node name="PettyAsteroid" parent="." index="2" instance=ExtResource( 3 )]
 position = Vector2( 537.817, -908.723 )
@@ -35,7 +35,8 @@ position = Vector2( 570.628, -2589.41 )
 speed = 600.0
 
 [node name="PettyAsteroid7" parent="." index="7" instance=ExtResource( 3 )]
-position = Vector2( 418.255, -4896.91 )
+position = Vector2( 435.319, -5654.28 )
+scale = Vector2( 0.701485, -0.565986 )
 speed = 600.0
 
 [node name="PettyAsteroid5" parent="." index="8" instance=ExtResource( 3 )]
@@ -43,7 +44,7 @@ position = Vector2( 263.183, -1065.66 )
 speed = 600.0
 
 [node name="PettyAsteroid6" parent="." index="9" instance=ExtResource( 3 )]
-position = Vector2( 173.394, -5456.93 )
+position = Vector2( 173.394, -5408.54 )
 speed = 600.0
 
 [node name="LesserAsteroid" parent="." index="10" instance=ExtResource( 2 )]
