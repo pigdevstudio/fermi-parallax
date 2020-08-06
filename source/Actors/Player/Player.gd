@@ -28,7 +28,6 @@ func _ready() -> void:
 	for action in $Actions.get_children():
 		action.player = self
 		action.resource = $Energy
-	energy.connect("changed", replenish, "_on_Resource_changed")
 
 
 func _process(delta: float) -> void:

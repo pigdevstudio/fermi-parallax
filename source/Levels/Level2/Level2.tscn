@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=2]
+[gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://Actors/Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Objects/Spawner/Spawner2D.tscn" type="PackedScene" id=2]
@@ -707,7 +707,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 0 ),
 "update": 1,
-"values": [ ExtResource( 20 ) ]
+"values": [ ExtResource( 19 ) ]
 }
 tracks/1/type = "method"
 tracks/1/path = NodePath("WaveSpawner2D")
@@ -736,35 +736,6 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 0 ),
 "update": 1,
-"values": [ ExtResource( 19 ) ]
-}
-tracks/1/type = "method"
-tracks/1/path = NodePath("WaveSpawner2D")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 1 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [  ],
-"method": "spawn"
-} ]
-}
-
-[sub_resource type="Animation" id=15]
-resource_name = "13"
-tracks/0/type = "value"
-tracks/0/path = NodePath("WaveSpawner2D:spawn_scene")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 0 ),
-"update": 1,
 "values": [ ExtResource( 21 ) ]
 }
 tracks/1/type = "method"
@@ -783,7 +754,7 @@ tracks/1/keys = {
 }
 
 [sub_resource type="Animation" id=16]
-resource_name = "14"
+resource_name = "13"
 length = 15.0
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:current_event")
@@ -874,7 +845,7 @@ position = Vector2( 304.835, 982.775 )
 environment = SubResource( 1 )
 
 [node name="WaveSpawner2D" parent="." instance=ExtResource( 2 )]
-spawn_scene = ExtResource( 16 )
+spawn_scene = ExtResource( 18 )
 
 [node name="SFX" type="AudioStreamPlayer2D" parent="."]
 position = Vector2( 960, 960 )
@@ -897,16 +868,20 @@ anims/09 = SubResource( 11 )
 anims/10 = SubResource( 12 )
 anims/11 = SubResource( 13 )
 anims/12 = SubResource( 14 )
-anims/13 = SubResource( 15 )
-anims/14 = SubResource( 16 )
+anims/13 = SubResource( 16 )
 
 [node name="Tween" type="Tween" parent="."]
 script = ExtResource( 10 )
 player_path = NodePath("../Player")
-target_position = Vector2( 400, 936 )
+target_position = Vector2( 288, 104 )
 duration = 2.0
 
 [node name="Comet" parent="." instance=ExtResource( 11 )]
-position = Vector2( 960, 788.364 )
+position = Vector2( 960, 1030.55 )
+
+[node name="CollisionShape2D2" parent="Comet/HitBox2D" index="1"]
+disabled = true
 [connection signal="spawned" from="WaveSpawner2D" to="." method="_on_WaveSpawner2D_spawned"]
 [connection signal="tree_exited" from="Comet" to="." method="finish"]
+
+[editable path="Comet"]
