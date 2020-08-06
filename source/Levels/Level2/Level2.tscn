@@ -875,9 +875,6 @@ environment = SubResource( 1 )
 
 [node name="WaveSpawner2D" parent="." instance=ExtResource( 2 )]
 spawn_scene = ExtResource( 16 )
-spawn_scene = ExtResource( 7 )
-=======
->>>>>>> Add comet segment
 
 [node name="SFX" type="AudioStreamPlayer2D" parent="."]
 position = Vector2( 960, 960 )
