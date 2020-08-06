@@ -10,7 +10,7 @@ export(String, FILE, "*.tscn") var next_level_path
 onready var player := $Player
 onready var _events_player := $EventsPlayer
 
-var _current_event := 0
+export var _current_event := 0
 
 
 func _ready() -> void:
