@@ -32,7 +32,7 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
-	if Input.is_action_pressed("shoot"):
+	if Input.is_action_pressed("shoot") and is_processing_unhandled_input():
 		shoot.execute()
 
 
