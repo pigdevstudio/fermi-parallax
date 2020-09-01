@@ -1,0 +1,188 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Levels/Wave/Wave.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Objects/Asteroid/LesserAsteroid.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Objects/Asteroid/PettyAsteroid.tscn" type="PackedScene" id=3]
+
+[node name="Wave" instance=ExtResource( 1 )]
+position = Vector2( 0, -48 )
+
+[node name="LesserAsteroid" parent="." index="0" instance=ExtResource( 2 )]
+position = Vector2( 176, -126.77 )
+speed = 900.0
+
+[node name="PettyAsteroid" parent="." index="1" instance=ExtResource( 3 )]
+position = Vector2( 520.589, -398.63 )
+speed = 900.0
+
+[node name="PettyAsteroid7" parent="." index="2" instance=ExtResource( 3 )]
+position = Vector2( 323.081, -157.33 )
+speed = 900.0
+
+[node name="PettyAsteroid8" parent="." index="3" instance=ExtResource( 3 )]
+position = Vector2( 671.589, -836.31 )
+speed = 900.0
+
+[node name="PettyAsteroid3" parent="." index="4" instance=ExtResource( 3 )]
+position = Vector2( 329.332, -412.01 )
+speed = 900.0
+
+[node name="LesserAsteroid2" parent="." index="5" instance=ExtResource( 2 )]
+position = Vector2( 381.976, -641.94 )
+speed = 900.0
+
+[node name="PettyAsteroid2" parent="." index="6" instance=ExtResource( 3 )]
+position = Vector2( 599.078, -557.84 )
+speed = 900.0
+
+[node name="PettyAsteroid10" parent="." index="7" instance=ExtResource( 3 )]
+position = Vector2( 658.891, -319.3 )
+speed = 900.0
+
+[node name="PettyAsteroid9" parent="." index="8" instance=ExtResource( 3 )]
+position = Vector2( 607.078, -1029.84 )
+speed = 900.0
+
+[node name="PettyAsteroid4" parent="." index="9" instance=ExtResource( 3 )]
+position = Vector2( 230.667, -726.97 )
+speed = 900.0
+
+[node name="LesserAsteroid3" parent="." index="10" instance=ExtResource( 2 )]
+position = Vector2( 437.839, -938.85 )
+speed = 900.0
+
+[node name="PettyAsteroid6" parent="." index="11" instance=ExtResource( 3 )]
+position = Vector2( 610.462, -739.99 )
+speed = 900.0
+
+[node name="PettyAsteroid12" parent="." index="12" instance=ExtResource( 3 )]
+position = Vector2( 493.902, -245.27 )
+speed = 900.0
+
+[node name="PettyAsteroid11" parent="." index="13" instance=ExtResource( 3 )]
+position = Vector2( 354.825, -1208 )
+speed = 900.0
+
+[node name="PettyAsteroid5" parent="." index="14" instance=ExtResource( 3 )]
+position = Vector2( 188.925, -958.46 )
+speed = 900.0
+
+[node name="LesserAsteroid4" parent="." index="15" instance=ExtResource( 2 )]
+position = Vector2( 168, -1422.77 )
+speed = 900.0
+
+[node name="PettyAsteroid13" parent="." index="16" instance=ExtResource( 3 )]
+position = Vector2( 512.589, -1694.63 )
+speed = 900.0
+
+[node name="PettyAsteroid14" parent="." index="17" instance=ExtResource( 3 )]
+position = Vector2( 315.081, -1453.33 )
+speed = 900.0
+
+[node name="PettyAsteroid15" parent="." index="18" instance=ExtResource( 3 )]
+position = Vector2( 663.589, -2132.31 )
+speed = 900.0
+
+[node name="PettyAsteroid16" parent="." index="19" instance=ExtResource( 3 )]
+position = Vector2( 321.332, -1708.01 )
+speed = 900.0
+
+[node name="LesserAsteroid5" parent="." index="20" instance=ExtResource( 2 )]
+position = Vector2( 373.976, -1937.94 )
+speed = 900.0
+
+[node name="PettyAsteroid17" parent="." index="21" instance=ExtResource( 3 )]
+position = Vector2( 591.078, -1853.84 )
+speed = 900.0
+
+[node name="PettyAsteroid18" parent="." index="22" instance=ExtResource( 3 )]
+position = Vector2( 650.891, -1615.3 )
+speed = 900.0
+
+[node name="PettyAsteroid19" parent="." index="23" instance=ExtResource( 3 )]
+position = Vector2( 599.078, -2325.84 )
+speed = 900.0
+
+[node name="PettyAsteroid20" parent="." index="24" instance=ExtResource( 3 )]
+position = Vector2( 222.667, -2022.97 )
+speed = 900.0
+
+[node name="LesserAsteroid6" parent="." index="25" instance=ExtResource( 2 )]
+position = Vector2( 429.839, -2234.85 )
+speed = 900.0
+
+[node name="PettyAsteroid21" parent="." index="26" instance=ExtResource( 3 )]
+position = Vector2( 602.462, -2035.99 )
+speed = 900.0
+
+[node name="PettyAsteroid22" parent="." index="27" instance=ExtResource( 3 )]
+position = Vector2( 485.902, -1541.27 )
+speed = 900.0
+
+[node name="PettyAsteroid23" parent="." index="28" instance=ExtResource( 3 )]
+position = Vector2( 346.825, -2504 )
+speed = 900.0
+
+[node name="PettyAsteroid24" parent="." index="29" instance=ExtResource( 3 )]
+position = Vector2( 180.925, -2254.46 )
+speed = 900.0
+
+[node name="LesserAsteroid7" parent="." index="30" instance=ExtResource( 2 )]
+position = Vector2( 136, -2710.77 )
+speed = 900.0
+
+[node name="PettyAsteroid25" parent="." index="31" instance=ExtResource( 3 )]
+position = Vector2( 480.589, -2982.63 )
+speed = 900.0
+
+[node name="PettyAsteroid26" parent="." index="32" instance=ExtResource( 3 )]
+position = Vector2( 283.081, -2741.33 )
+speed = 900.0
+
+[node name="PettyAsteroid27" parent="." index="33" instance=ExtResource( 3 )]
+position = Vector2( 631.589, -3420.31 )
+speed = 900.0
+
+[node name="PettyAsteroid28" parent="." index="34" instance=ExtResource( 3 )]
+position = Vector2( 289.332, -2996.01 )
+speed = 900.0
+
+[node name="LesserAsteroid8" parent="." index="35" instance=ExtResource( 2 )]
+position = Vector2( 341.976, -3225.94 )
+speed = 900.0
+
+[node name="PettyAsteroid29" parent="." index="36" instance=ExtResource( 3 )]
+position = Vector2( 559.078, -3141.84 )
+speed = 900.0
+
+[node name="PettyAsteroid30" parent="." index="37" instance=ExtResource( 3 )]
+position = Vector2( 618.891, -2903.3 )
+speed = 900.0
+
+[node name="PettyAsteroid31" parent="." index="38" instance=ExtResource( 3 )]
+position = Vector2( 567.078, -3613.84 )
+speed = 900.0
+
+[node name="PettyAsteroid32" parent="." index="39" instance=ExtResource( 3 )]
+position = Vector2( 190.667, -3310.97 )
+speed = 900.0
+
+[node name="LesserAsteroid9" parent="." index="40" instance=ExtResource( 2 )]
+position = Vector2( 397.839, -3522.85 )
+speed = 900.0
+
+[node name="PettyAsteroid33" parent="." index="41" instance=ExtResource( 3 )]
+position = Vector2( 570.462, -3323.99 )
+speed = 900.0
+
+[node name="PettyAsteroid34" parent="." index="42" instance=ExtResource( 3 )]
+position = Vector2( 453.902, -2829.27 )
+speed = 900.0
+
+[node name="PettyAsteroid35" parent="." index="43" instance=ExtResource( 3 )]
+position = Vector2( 314.825, -3792 )
+speed = 900.0
+
+[node name="PettyAsteroid36" parent="." index="44" instance=ExtResource( 3 )]
+position = Vector2( 148.925, -3542.46 )
+speed = 900.0

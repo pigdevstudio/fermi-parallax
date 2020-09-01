@@ -28,11 +28,10 @@ func _ready() -> void:
 	for action in $Actions.get_children():
 		action.player = self
 		action.resource = $Energy
-	energy.connect("changed", replenish, "_on_Resource_changed")
 
 
 func _process(delta: float) -> void:
-	if Input.is_action_pressed("shoot"):
+	if Input.is_action_pressed("shoot") and is_processing_unhandled_input():
 		shoot.execute()
 
 
