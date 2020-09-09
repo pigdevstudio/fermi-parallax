@@ -92,7 +92,7 @@ tracks/2/keys = {
 "values": [ 100.0 ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("Comet:position")
+tracks/3/path = NodePath(".:current_event")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -100,23 +100,23 @@ tracks/3/enabled = true
 tracks/3/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 960, 1704 ) ]
+"update": 1,
+"values": [ 0 ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("Comet:visible")
+tracks/4/path = NodePath(".:background_music")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
 "times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 0 ),
 "update": 1,
-"values": [ false ]
+"values": [ ExtResource( 15 ) ]
 }
-tracks/5/type = "value"
-tracks/5/path = NodePath(".:current_event")
+tracks/5/type = "method"
+tracks/5/path = NodePath(".")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
@@ -124,34 +124,22 @@ tracks/5/enabled = true
 tracks/5/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ 0 ]
+"values": [ {
+"args": [  ],
+"method": "update_background_music"
+} ]
 }
 tracks/6/type = "value"
-tracks/6/path = NodePath(".:background_music")
+tracks/6/path = NodePath("Comet:visible")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
 tracks/6/enabled = true
 tracks/6/keys = {
 "times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 0 ),
-"update": 1,
-"values": [ ExtResource( 15 ) ]
-}
-tracks/7/type = "method"
-tracks/7/path = NodePath(".")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/keys = {
-"times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [  ],
-"method": "update_background_music"
-} ]
+"update": 1,
+"values": [ false ]
 }
 
 [sub_resource type="Animation" id=6]
@@ -313,48 +301,24 @@ tracks/4/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( 0, 0 ) ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("Comet:position")
+tracks/5/path = NodePath("Tween:target_rotation")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PoolRealArray( 0, 3 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 960, 1408 ), Vector2( 960, 1192 ) ]
-}
-tracks/6/type = "value"
-tracks/6/path = NodePath("Comet:visible")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
-}
-tracks/7/type = "value"
-tracks/7/path = NodePath("Tween:target_rotation")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ 180.0 ]
 }
-tracks/8/type = "value"
-tracks/8/path = NodePath("Tween:target_position")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/keys = {
+tracks/6/type = "value"
+tracks/6/path = NodePath("Tween:target_position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
@@ -420,36 +384,24 @@ tracks/1/keys = {
 [sub_resource type="Animation" id=12]
 length = 5.5
 tracks/0/type = "value"
-tracks/0/path = NodePath("Comet:position")
+tracks/0/path = NodePath("Tween:target_position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 5.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 960, 1192 ), Vector2( 960, 304 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Tween:target_position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
 "times": PoolRealArray( 0, 1.5, 5.5 ),
 "transitions": PoolRealArray( 0, 0, 0 ),
 "update": 0,
 "values": [ Vector2( 288, 104 ), Vector2( 400, 936 ), Vector2( 1632, 832 ) ]
 }
-tracks/2/type = "method"
-tracks/2/path = NodePath("Tween")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
+tracks/1/type = "method"
+tracks/1/path = NodePath("Tween")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
 "times": PoolRealArray( 1, 3, 5.5 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "values": [ {
@@ -463,25 +415,25 @@ tracks/2/keys = {
 "method": "tween_player"
 } ]
 }
-tracks/3/type = "value"
-tracks/3/path = NodePath("Player:direction")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
+tracks/2/type = "value"
+tracks/2/path = NodePath("Player:direction")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
 "times": PoolRealArray( 0.1, 3.7 ),
 "transitions": PoolRealArray( 0, 1 ),
 "update": 0,
 "values": [ Vector2( 0, 0 ), Vector2( 1, 0 ) ]
 }
-tracks/4/type = "method"
-tracks/4/path = NodePath("Player")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
+tracks/3/type = "method"
+tracks/3/path = NodePath("Player")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
 "times": PoolRealArray( 0, 5.4 ),
 "transitions": PoolRealArray( 1, 1 ),
 "values": [ {
@@ -492,25 +444,25 @@ tracks/4/keys = {
 "method": "dash"
 } ]
 }
-tracks/5/type = "value"
-tracks/5/path = NodePath("WaveSpawner2D:spawn_scene")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/keys = {
+tracks/4/type = "value"
+tracks/4/path = NodePath("WaveSpawner2D:spawn_scene")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 0 ),
 "update": 1,
 "values": [ ExtResource( 16 ) ]
 }
-tracks/6/type = "method"
-tracks/6/path = NodePath("WaveSpawner2D")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/keys = {
+tracks/5/type = "method"
+tracks/5/path = NodePath("WaveSpawner2D")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
 "times": PoolRealArray( 3 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
@@ -518,8 +470,20 @@ tracks/6/keys = {
 "method": "spawn"
 } ]
 }
+tracks/6/type = "value"
+tracks/6/path = NodePath("Tween:duration")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 2.0 ]
+}
 tracks/7/type = "value"
-tracks/7/path = NodePath("Tween:duration")
+tracks/7/path = NodePath("Tween:target_rotation")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/imported = false
@@ -528,22 +492,22 @@ tracks/7/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ 2.0 ]
+"values": [ 0.0 ]
 }
 tracks/8/type = "value"
-tracks/8/path = NodePath("Tween:target_rotation")
+tracks/8/path = NodePath(".:background_music")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/imported = false
 tracks/8/enabled = true
 tracks/8/keys = {
-"times": PoolRealArray( 0 ),
+"times": PoolRealArray( 3 ),
 "transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 0.0 ]
+"update": 1,
+"values": [ ExtResource( 24 ) ]
 }
-tracks/9/type = "value"
-tracks/9/path = NodePath(".:background_music")
+tracks/9/type = "method"
+tracks/9/path = NodePath(".")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/imported = false
@@ -551,22 +515,22 @@ tracks/9/enabled = true
 tracks/9/keys = {
 "times": PoolRealArray( 3 ),
 "transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ ExtResource( 24 ) ]
+"values": [ {
+"args": [  ],
+"method": "update_background_music"
+} ]
 }
-tracks/10/type = "method"
-tracks/10/path = NodePath(".")
+tracks/10/type = "value"
+tracks/10/path = NodePath("Comet:visible")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/imported = false
 tracks/10/enabled = true
 tracks/10/keys = {
-"times": PoolRealArray( 3 ),
+"times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [  ],
-"method": "update_background_music"
-} ]
+"update": 1,
+"values": [ true ]
 }
 
 [sub_resource type="Animation" id=13]
@@ -817,49 +781,13 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 11 ]
 }
-tracks/1/type = "value"
-tracks/1/path = NodePath("Comet/FireBallEffect/FireTrail:process_material:initial_velocity")
+tracks/1/type = "method"
+tracks/1/path = NodePath("WaveSpawner2D")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 2, 12, 14 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 0,
-"values": [ 2500.0, 100.0, 100.0, 2500.0 ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("Comet/FireBallEffect/FireCore:process_material:initial_velocity")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0, 2, 12, 14 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 0,
-"values": [ 1000.0, 100.0, 100.0, 1000.0 ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("Comet/HitBox2D/CollisionShape2D2:disabled")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 2, 14 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ true, false ]
-}
-tracks/4/type = "method"
-tracks/4/path = NodePath("WaveSpawner2D")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
 "times": PoolRealArray( 15 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
@@ -867,13 +795,13 @@ tracks/4/keys = {
 "method": "spawn"
 } ]
 }
-tracks/5/type = "value"
-tracks/5/path = NodePath("WaveSpawner2D:spawn_scene")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/keys = {
+tracks/2/type = "value"
+tracks/2/path = NodePath("WaveSpawner2D:spawn_scene")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
@@ -882,6 +810,9 @@ tracks/5/keys = {
 
 [node name="Level" type="Node2D"]
 script = ExtResource( 4 )
+__meta__ = {
+"_edit_vertical_guides_": [ 936.0 ]
+}
 background_music = ExtResource( 15 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
@@ -942,6 +873,10 @@ environment = SubResource( 4 )
 [node name="WaveSpawner2D" parent="." instance=ExtResource( 2 )]
 spawn_scene = ExtResource( 5 )
 
+[node name="Comet" parent="." instance=ExtResource( 11 )]
+visible = false
+position = Vector2( 936, 1472 )
+
 [node name="SFX" type="AudioStreamPlayer2D" parent="."]
 position = Vector2( 960, 960 )
 stream = ExtResource( 14 )
@@ -968,16 +903,6 @@ anims/13 = SubResource( 18 )
 [node name="Tween" type="Tween" parent="."]
 script = ExtResource( 10 )
 player_path = NodePath("../Player")
-target_position = Vector2( 400, 936 )
+target_position = Vector2( 288, 104 )
 duration = 2.0
-
-[node name="Comet" parent="." instance=ExtResource( 11 )]
-visible = false
-position = Vector2( 960, 1704 )
-
-[node name="CollisionShape2D2" parent="Comet/HitBox2D" index="1"]
-disabled = true
 [connection signal="spawned" from="WaveSpawner2D" to="." method="_on_WaveSpawner2D_spawned"]
-[connection signal="tree_exited" from="Comet" to="." method="finish"]
-
-[editable path="Comet"]

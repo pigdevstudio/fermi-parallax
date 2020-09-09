@@ -8,7 +8,7 @@
 [ext_resource path="res://Objects/Explosion/Explosion.tscn" type="PackedScene" id=6]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 184.0
+radius = 264.121
 
 [sub_resource type="CircleShape2D" id=2]
 radius = 24.0
@@ -308,33 +308,33 @@ tracks/8/keys = {
 }
 
 [sub_resource type="CircleShape2D" id=7]
-radius = 64.4981
+radius = 96.0
 
 [node name="Mine" type="Node2D"]
 script = ExtResource( 4 )
-speed = 0.0
-wait_max = 3.5
+speed = 150.0
 
 [node name="HitBox2D" parent="." instance=ExtResource( 1 )]
+monitoring = false
+monitorable = false
 damage = 5.0
 
 [node name="CollisionShape2D" parent="HitBox2D" index="0"]
 shape = SubResource( 1 )
 
 [node name="HurtBox" parent="." instance=ExtResource( 2 )]
-monitoring = false
-monitorable = false
+visible = false
 
 [node name="CollisionShape2D" parent="HurtBox" index="0"]
 shape = SubResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
-visible = false
 texture = ExtResource( 3 )
 region_enabled = true
 region_rect = Rect2( 9, 32, 110, 94 )
 
 [node name="Light" type="Sprite" parent="Sprite"]
+self_modulate = Color( 1.08073, 1.08073, 1.08073, 1 )
 texture = ExtResource( 3 )
 region_enabled = true
 region_rect = Rect2( 54, 5, 23, 23 )
@@ -350,8 +350,6 @@ anims/setup = SubResource( 6 )
 max_amount = 3.0
 
 [node name="SensorArea" type="Area2D" parent="."]
-monitoring = false
-monitorable = false
 collision_layer = 0
 collision_mask = 8
 
@@ -359,6 +357,7 @@ collision_mask = 8
 shape = SubResource( 7 )
 
 [node name="Explosion" parent="." instance=ExtResource( 6 )]
+scale = Vector2( 1.3, 1.3 )
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 3.0

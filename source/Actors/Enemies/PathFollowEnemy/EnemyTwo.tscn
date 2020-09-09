@@ -1,7 +1,6 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Actors/Enemies/PathFollowEnemy/PathFollowEnemy.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Actors/Enemies/PathFollowEnemy/Animations/arrive-top-bot.tres" type="Animation" id=2]
 [ext_resource path="res://Actors/Enemies/PathFollowEnemy/Animations/enemy_two_idle.tres" type="Animation" id=3]
 
 [node name="EnemyTwo" instance=ExtResource( 1 )]
@@ -11,11 +10,20 @@ position = Vector2( 304, 192 )
 rotation = 1.5679
 offset = 1304.77
 
+[node name="Enemy" parent="PathFollow2D" index="0"]
+scale = Vector2( 1, 1 )
+
+[node name="Weapon" parent="PathFollow2D/Enemy" index="1"]
+disabled = false
+
 [node name="Health" parent="PathFollow2D/Enemy" index="2"]
 max_amount = 3.0
 
+[node name="HurtBox" parent="PathFollow2D/Enemy" index="3"]
+monitoring = true
+monitorable = true
+
 [node name="AnimationPlayer" parent="." index="1"]
-anims/arrive = ExtResource( 2 )
 anims/idle = ExtResource( 3 )
 
 [editable path="PathFollow2D/Enemy"]

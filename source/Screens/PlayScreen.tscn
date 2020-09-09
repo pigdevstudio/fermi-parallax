@@ -31,7 +31,6 @@ __meta__ = {
 }
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
-modulate = Color( 1, 1, 1, 0 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 custom_constants/separation = 0
@@ -124,7 +123,7 @@ align = 1
 [node name="EnemyHealthBar" parent="HBoxContainer/Right/VBoxContainer" instance=ExtResource( 2 )]
 margin_top = 108.0
 margin_right = 600.0
-margin_bottom = 86.0
+margin_bottom = 140.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/interface_fadeOut = SubResource( 1 )

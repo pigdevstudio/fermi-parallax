@@ -158,6 +158,3 @@ __meta__ = {
 anims/cinematic_in = SubResource( 1 )
 anims/cinematic_on = SubResource( 2 )
 anims/cinematic_out = SubResource( 3 )
-[connection signal="finished" from="Level" to="." method="_on_Level_finished"]
-
-[editable path="Interface/PlayScreen"]
