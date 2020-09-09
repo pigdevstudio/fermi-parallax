@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Actors/Enemies/topdown-enemy.svg" type="Texture" id=1]
 [ext_resource path="res://Objects/HurtBox/HurtBox.tscn" type="PackedScene" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://Actors/topdown-damaged-character.svg" type="Texture" id=8]
 [ext_resource path="res://Objects/Weapons/flash_enemy.svg" type="Texture" id=9]
 [ext_resource path="res://Actors/Enemies/random_pitch_enemy_sfx.tres" type="AudioStream" id=10]
+[ext_resource path="res://Objects/Spawner/PopLabelSpawner2D.tscn" type="PackedScene" id=11]
 
 [sub_resource type="Animation" id=1]
 resource_name = "damage"
@@ -212,6 +213,12 @@ anims/setup = SubResource( 4 )
 stream = ExtResource( 10 )
 pitch_scale = 2.0
 bus = "SFX"
+
+[node name="ScoreLabelSpawner2D" parent="." instance=ExtResource( 11 )]
+z_index = 2
+
+[node name="DamageLabelSpawner2D" parent="." instance=ExtResource( 11 )]
+z_index = 2
 [connection signal="depleted" from="Health" to="." method="die"]
 [connection signal="damage_taken" from="HurtBox" to="." method="_on_HurtBox_damage_taken"]
 

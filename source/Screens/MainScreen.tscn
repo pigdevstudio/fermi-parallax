@@ -113,9 +113,9 @@ size_flags_vertical = 3
 [node name="SceneTransitionRect" parent="." instance=ExtResource( 1 )]
 
 [node name="ButtonSFX" parent="." instance=ExtResource( 6 )]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/Center/VBoxContainer/PlayButton" to="ButtonSFX" method="play"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/Center/VBoxContainer/PlayButton" to="." method="_on_PlayButton_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/Center/VBoxContainer/OptionsButton" to="ButtonSFX" method="play"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/Center/VBoxContainer/PlayButton" to="ButtonSFX" method="play"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/Center/VBoxContainer/OptionsButton" to="." method="_on_OptionsButton_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/Center/VBoxContainer/QuitButton" to="ButtonSFX" method="play"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/Center/VBoxContainer/OptionsButton" to="ButtonSFX" method="play"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/Center/VBoxContainer/QuitButton" to="." method="_on_QuitButton_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/Center/VBoxContainer/QuitButton" to="ButtonSFX" method="play"]

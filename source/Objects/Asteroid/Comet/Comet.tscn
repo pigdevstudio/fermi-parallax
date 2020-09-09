@@ -207,7 +207,9 @@ texture = ExtResource( 2 )
 [node name="AnimationPlayer" parent="Sprite" index="0"]
 anims/damage = ExtResource( 5 )
 
-[node name="Health" parent="." index="2"]
+[node name="Health" parent="." index="2" groups=[
+"enemy",
+]]
 max_amount = 125.0
 
 [node name="Particles2D" parent="." index="4"]

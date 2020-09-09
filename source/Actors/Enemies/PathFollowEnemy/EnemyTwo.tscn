@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Actors/Enemies/PathFollowEnemy/PathFollowEnemy.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Actors/Enemies/PathFollowEnemy/Animations/arrive.tres" type="Animation" id=2]
+[ext_resource path="res://Actors/Enemies/PathFollowEnemy/Animations/arrive-top-bot.tres" type="Animation" id=2]
 [ext_resource path="res://Actors/Enemies/PathFollowEnemy/Animations/enemy_two_idle.tres" type="Animation" id=3]
 
 [node name="EnemyTwo" instance=ExtResource( 1 )]

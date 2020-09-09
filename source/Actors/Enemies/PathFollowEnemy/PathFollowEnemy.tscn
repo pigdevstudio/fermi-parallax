@@ -4,63 +4,7 @@
 [ext_resource path="res://Actors/Enemies/PathFollowEnemy/Paths/Arrival.tres" type="Curve2D" id=2]
 [ext_resource path="res://Actors/Enemies/PathFollowEnemy/Paths/Idle.tres" type="Curve2D" id=3]
 [ext_resource path="res://Actors/Enemies/PathFollowEnemy/PathFollowEnemy.gd" type="Script" id=4]
-
-
-
-
-[sub_resource type="Animation" id=1]
-resource_name = "arrive"
-length = 2.0
-tracks/0/type = "value"
-tracks/0/path = NodePath("PathFollow2D:unit_offset")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 2 ),
-"transitions": PoolRealArray( 0.5, 1 ),
-"update": 0,
-"values": [ 0.0, 1.0 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath(".:curve")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ ExtResource( 2 ) ]
-}
-tracks/2/type = "method"
-tracks/2/path = NodePath("AnimationPlayer")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 2 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [ "idle" ],
-"method": "play"
-} ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("PathFollow2D:rotate")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
-}
+[ext_resource path="res://Actors/Enemies/PathFollowEnemy/Animations/arrive-top-bot.tres" type="Animation" id=5]
 
 [sub_resource type="Animation" id=2]
 resource_name = "idle"
@@ -147,15 +91,16 @@ __meta__ = {
 }
 
 [node name="PathFollow2D" type="PathFollow2D" parent="."]
-position = Vector2( 320, 0 )
-rotation = 3.08486
+position = Vector2( 356.518, -3.02769 )
+rotation = 3.083
 loop = false
 
 [node name="Enemy" parent="PathFollow2D" instance=ExtResource( 1 )]
+scale = Vector2( 1e-05, 1e-05 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "arrive"
-anims/arrive = SubResource( 1 )
+anims/arrive = ExtResource( 5 )
 anims/idle = SubResource( 2 )
 [connection signal="died" from="PathFollow2D/Enemy" to="." method="_on_Enemy_died"]
 

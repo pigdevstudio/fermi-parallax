@@ -1,8 +1,8 @@
-[gd_scene load_steps=37 format=2]
+[gd_scene load_steps=43 format=2]
 
 [ext_resource path="res://Actors/Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Objects/Spawner/Spawner2D.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Areas/ParallaxBackground.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Areas/ParallaxBackground.gd" type="Script" id=3]
 [ext_resource path="res://Levels/Level.gd" type="Script" id=4]
 [ext_resource path="res://Levels/Level2/Waves/Wave1.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Levels/Level2/Waves/Wave7.tscn" type="PackedScene" id=6]
@@ -21,15 +21,37 @@
 [ext_resource path="res://Levels/Level2/Waves/Wave12.tscn" type="PackedScene" id=19]
 [ext_resource path="res://Levels/Level2/Waves/Wave14.tscn" type="PackedScene" id=20]
 [ext_resource path="res://Levels/Level2/Waves/Wave13.tscn" type="PackedScene" id=21]
+[ext_resource path="res://Areas/star.svg" type="Texture" id=22]
+[ext_resource path="res://Areas/planets.svg" type="Texture" id=23]
+[ext_resource path="res://Levels/Level1/Juhani Junkala [Retro Game Music Pack] Level 1.ogg" type="AudioStream" id=24]
 
-[sub_resource type="Environment" id=1]
+[sub_resource type="Curve" id=1]
+_data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.5, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=2]
+curve = SubResource( 1 )
+
+[sub_resource type="ParticlesMaterial" id=3]
+emission_shape = 2
+emission_box_extents = Vector3( 960, 540, 1 )
+flag_disable_z = true
+gravity = Vector3( 0, 0, 0 )
+angular_velocity = 20.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+angle = 360.0
+angle_random = 1.0
+scale = 0.5
+scale_random = 0.76
+scale_curve = SubResource( 2 )
+
+[sub_resource type="Environment" id=4]
 background_mode = 4
 glow_enabled = true
 glow_blend_mode = 0
 glow_bicubic_upscale = true
 
-[sub_resource type="Animation" id=2]
-resource_name = "00"
+[sub_resource type="Animation" id=5]
 length = 2.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("WaveSpawner2D:spawn_scene")
@@ -105,9 +127,34 @@ tracks/5/keys = {
 "update": 1,
 "values": [ 0 ]
 }
+tracks/6/type = "value"
+tracks/6/path = NodePath(".:background_music")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 0 ),
+"update": 1,
+"values": [ ExtResource( 15 ) ]
+}
+tracks/7/type = "method"
+tracks/7/path = NodePath(".")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "update_background_music"
+} ]
+}
 
-[sub_resource type="Animation" id=3]
-resource_name = "01"
+[sub_resource type="Animation" id=6]
 length = 2.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("WaveSpawner2D:spawn_scene")
@@ -136,8 +183,7 @@ tracks/1/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=4]
-resource_name = "02"
+[sub_resource type="Animation" id=7]
 length = 2.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("WaveSpawner2D:spawn_scene")
@@ -166,8 +212,7 @@ tracks/1/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=5]
-resource_name = "03"
+[sub_resource type="Animation" id=8]
 length = 2.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("WaveSpawner2D:spawn_scene")
@@ -196,8 +241,7 @@ tracks/1/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=6]
-resource_name = "04"
+[sub_resource type="Animation" id=9]
 length = 4.0
 tracks/0/type = "method"
 tracks/0/path = NodePath("Player")
@@ -217,36 +261,24 @@ tracks/0/keys = {
 } ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("ParallaxBackground:speed")
+tracks/1/path = NodePath("WaveSpawner2D:spawn_scene")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 2 ),
-"transitions": PoolRealArray( 2, 1 ),
-"update": 0,
-"values": [ 100.0, 5000.0 ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("WaveSpawner2D:spawn_scene")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ ExtResource( 12 ) ]
 }
-tracks/3/type = "method"
-tracks/3/path = NodePath("WaveSpawner2D")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
+tracks/2/type = "method"
+tracks/2/path = NodePath("WaveSpawner2D")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
 "times": PoolRealArray( 4 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
@@ -254,13 +286,13 @@ tracks/3/keys = {
 "method": "spawn"
 } ]
 }
-tracks/4/type = "method"
-tracks/4/path = NodePath("Tween")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
+tracks/3/type = "method"
+tracks/3/path = NodePath("Tween")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
 "times": PoolRealArray( 1 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
@@ -268,8 +300,20 @@ tracks/4/keys = {
 "method": "tween_player"
 } ]
 }
+tracks/4/type = "value"
+tracks/4/path = NodePath("Player:direction")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 0 ) ]
+}
 tracks/5/type = "value"
-tracks/5/path = NodePath("Player:direction")
+tracks/5/path = NodePath("Comet:position")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
@@ -278,22 +322,22 @@ tracks/5/keys = {
 "times": PoolRealArray( 0, 3 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 0, 0 ), Vector2( 0, 0 ) ]
+"values": [ Vector2( 960, 1408 ), Vector2( 960, 1192 ) ]
 }
 tracks/6/type = "value"
-tracks/6/path = NodePath("Comet:position")
+tracks/6/path = NodePath("Comet:visible")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
 tracks/6/enabled = true
 tracks/6/keys = {
-"times": PoolRealArray( 0, 3 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 960, 1408 ), Vector2( 960, 1192 ) ]
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
 }
 tracks/7/type = "value"
-tracks/7/path = NodePath("Comet:visible")
+tracks/7/path = NodePath("Tween:target_rotation")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/imported = false
@@ -301,11 +345,11 @@ tracks/7/enabled = true
 tracks/7/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
+"update": 0,
+"values": [ 180.0 ]
 }
 tracks/8/type = "value"
-tracks/8/path = NodePath("Tween:target_rotation")
+tracks/8/path = NodePath("Tween:target_position")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/imported = false
@@ -314,23 +358,10 @@ tracks/8/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ 180.0 ]
-}
-tracks/9/type = "value"
-tracks/9/path = NodePath("Tween:target_position")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
 "values": [ Vector2( 960, 120 ) ]
 }
 
-[sub_resource type="Animation" id=7]
-resource_name = "05"
+[sub_resource type="Animation" id=10]
 tracks/0/type = "value"
 tracks/0/path = NodePath("WaveSpawner2D:spawn_scene")
 tracks/0/interp = 1
@@ -358,8 +389,7 @@ tracks/1/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=8]
-resource_name = "06"
+[sub_resource type="Animation" id=11]
 tracks/0/type = "value"
 tracks/0/path = NodePath("WaveSpawner2D:spawn_scene")
 tracks/0/interp = 1
@@ -387,8 +417,7 @@ tracks/1/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=9]
-resource_name = "07"
+[sub_resource type="Animation" id=12]
 length = 5.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("Comet:position")
@@ -513,9 +542,34 @@ tracks/8/keys = {
 "update": 0,
 "values": [ 0.0 ]
 }
+tracks/9/type = "value"
+tracks/9/path = NodePath(".:background_music")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 3 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 24 ) ]
+}
+tracks/10/type = "method"
+tracks/10/path = NodePath(".")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 3 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "update_background_music"
+} ]
+}
 
-[sub_resource type="Animation" id=10]
-resource_name = "08"
+[sub_resource type="Animation" id=13]
 length = 5.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("Tween:target_position")
@@ -623,8 +677,7 @@ tracks/7/keys = {
 "values": [ 0.0 ]
 }
 
-[sub_resource type="Animation" id=11]
-resource_name = "09"
+[sub_resource type="Animation" id=14]
 tracks/0/type = "value"
 tracks/0/path = NodePath("WaveSpawner2D:spawn_scene")
 tracks/0/interp = 1
@@ -666,8 +719,7 @@ tracks/2/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=12]
-resource_name = "10"
+[sub_resource type="Animation" id=15]
 tracks/0/type = "value"
 tracks/0/path = NodePath("WaveSpawner2D:spawn_scene")
 tracks/0/interp = 1
@@ -695,8 +747,7 @@ tracks/1/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=13]
-resource_name = "11"
+[sub_resource type="Animation" id=16]
 tracks/0/type = "value"
 tracks/0/path = NodePath("WaveSpawner2D:spawn_scene")
 tracks/0/interp = 1
@@ -724,8 +775,7 @@ tracks/1/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=14]
-resource_name = "12"
+[sub_resource type="Animation" id=17]
 tracks/0/type = "value"
 tracks/0/path = NodePath("WaveSpawner2D:spawn_scene")
 tracks/0/interp = 1
@@ -753,8 +803,7 @@ tracks/1/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=16]
-resource_name = "13"
+[sub_resource type="Animation" id=18]
 length = 15.0
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:current_event")
@@ -834,18 +883,64 @@ tracks/5/keys = {
 [node name="Level" type="Node2D"]
 script = ExtResource( 4 )
 background_music = ExtResource( 15 )
-current_event = 7
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 304.835, 982.775 )
+position = Vector2( 968, 966.775 )
 
-[node name="ParallaxBackground" parent="." instance=ExtResource( 3 )]
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 1083.89, 1993.26 ],
+"_edit_vertical_guides_": [ 640.0 ]
+}
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0.3, 0.3 )
+motion_mirroring = Vector2( 0, 1080 )
+
+[node name="StarField" type="Particles2D" parent="ParallaxBackground/ParallaxLayer2"]
+modulate = Color( 1.1, 1.1, 1.1, 1 )
+position = Vector2( 960, 540 )
+amount = 16
+lifetime = 10.0
+preprocess = 10.0
+visibility_rect = Rect2( -960, -540, 1920, 1080 )
+process_material = SubResource( 3 )
+texture = ExtResource( 22 )
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0.5, 0.5 )
+motion_mirroring = Vector2( 0, 2000 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2( 1776, 1040 )
+rotation = 0.130087
+scale = Vector2( 2.50171, 2.50171 )
+texture = ExtResource( 23 )
+region_enabled = true
+region_rect = Rect2( 756, 25, 256, 256 )
+
+[node name="Sprite2" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2( 104, -0.00012207 )
+rotation = -0.203016
+scale = Vector2( 0.803108, 0.803108 )
+texture = ExtResource( 23 )
+region_enabled = true
+region_rect = Rect2( 16, 320, 256, 257 )
+
+[node name="Sprite3" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2( 1696, -400 )
+rotation = 0.126474
+scale = Vector2( 0.803108, 0.803108 )
+texture = ExtResource( 23 )
+region_enabled = true
+region_rect = Rect2( 354, 22, 316, 256 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource( 1 )
+environment = SubResource( 4 )
 
 [node name="WaveSpawner2D" parent="." instance=ExtResource( 2 )]
-spawn_scene = ExtResource( 18 )
+spawn_scene = ExtResource( 5 )
 
 [node name="SFX" type="AudioStreamPlayer2D" parent="."]
 position = Vector2( 960, 960 )
@@ -854,30 +949,31 @@ volume_db = -16.0
 bus = "SFX"
 
 [node name="EventsPlayer" type="AnimationPlayer" parent="."]
-autoplay = "07"
-anims/00 = SubResource( 2 )
-anims/01 = SubResource( 3 )
-anims/02 = SubResource( 4 )
-anims/03 = SubResource( 5 )
-anims/04 = SubResource( 6 )
-anims/05 = SubResource( 7 )
-anims/06 = SubResource( 8 )
-anims/07 = SubResource( 9 )
-anims/08 = SubResource( 10 )
-anims/09 = SubResource( 11 )
-anims/10 = SubResource( 12 )
-anims/11 = SubResource( 13 )
-anims/12 = SubResource( 14 )
-anims/13 = SubResource( 16 )
+autoplay = "00"
+anims/00 = SubResource( 5 )
+anims/01 = SubResource( 6 )
+anims/02 = SubResource( 7 )
+anims/03 = SubResource( 8 )
+anims/04 = SubResource( 9 )
+anims/05 = SubResource( 10 )
+anims/06 = SubResource( 11 )
+anims/07 = SubResource( 12 )
+anims/08 = SubResource( 13 )
+anims/09 = SubResource( 14 )
+anims/10 = SubResource( 15 )
+anims/11 = SubResource( 16 )
+anims/12 = SubResource( 17 )
+anims/13 = SubResource( 18 )
 
 [node name="Tween" type="Tween" parent="."]
 script = ExtResource( 10 )
 player_path = NodePath("../Player")
-target_position = Vector2( 288, 104 )
+target_position = Vector2( 400, 936 )
 duration = 2.0
 
 [node name="Comet" parent="." instance=ExtResource( 11 )]
-position = Vector2( 960, 1030.55 )
+visible = false
+position = Vector2( 960, 1704 )
 
 [node name="CollisionShape2D2" parent="Comet/HitBox2D" index="1"]
 disabled = true

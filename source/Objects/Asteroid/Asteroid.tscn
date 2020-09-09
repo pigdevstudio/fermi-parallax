@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Actors/Resources/Resource.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Objects/Asteroid/asteroid-small.svg" type="Texture" id=2]
@@ -6,7 +6,9 @@
 [ext_resource path="res://Objects/HitBox/HitBox.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Objects/HurtBox/HurtBox.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Objects/Asteroid/random_pitch_asteroid_sfx.tres" type="AudioStream" id=6]
+[ext_resource path="res://Objects/Spawner/PopLabelSpawner2D.gd" type="Script" id=7]
 [ext_resource path="res://Objects/Asteroid/damage-anim.tres" type="Animation" id=8]
+[ext_resource path="res://Objects/Spawner/PopLabelSpawner2D.tscn" type="PackedScene" id=9]
 
 [sub_resource type="Animation" id=1]
 length = 3.0
@@ -305,6 +307,14 @@ scale = Vector2( 2.45, 2.45 )
 [node name="SFX" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 6 )
 bus = "SFX"
+
+[node name="ScoreLabelSpawner2D" type="Position2D" parent="." instance=ExtResource( 9 )]
+z_index = 2
+script = ExtResource( 7 )
+
+[node name="DamageLabelSpawner2D" type="Position2D" parent="." instance=ExtResource( 9 )]
+z_index = 2
+script = ExtResource( 7 )
 [connection signal="depleted" from="Health" to="." method="_on_Health_depleted"]
 [connection signal="damage_taken" from="HurtBox" to="." method="_on_HurtBox_damage_taken"]
 [connection signal="area_entered" from="DestructionArea" to="." method="_on_DestructionArea_area_entered"]

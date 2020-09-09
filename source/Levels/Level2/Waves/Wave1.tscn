@@ -7,15 +7,19 @@
 position = Vector2( 0, 1 )
 
 [node name="EnemyTwo" parent="." index="0" instance=ExtResource( 3 )]
-position = Vector2( 248, 0 )
-max_animator_speed = 2.0
+position = Vector2( 24, 18.0277 )
+max_animator_speed = 1.0
 
 [node name="EnemyTwo2" parent="." index="1" instance=ExtResource( 3 )]
-position = Vector2( 824, 128 )
+position = Vector2( 1032, 23 )
+max_animator_speed = 1.0
 
 [node name="EnemyTwo3" parent="." index="2" instance=ExtResource( 3 )]
-position = Vector2( 248, 392 )
-max_animator_speed = 2.0
+position = Vector2( 264, 383 )
+min_animator_speed = 1.5
+max_animator_speed = 1.5
 
 [node name="EnemyTwo4" parent="." index="3" instance=ExtResource( 3 )]
-position = Vector2( 824, 520 )
+position = Vector2( 872, 391 )
+min_animator_speed = 1.5
+max_animator_speed = 1.5

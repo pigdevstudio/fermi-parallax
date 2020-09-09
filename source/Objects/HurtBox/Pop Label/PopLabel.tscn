@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Objects/HurtBox/Pop Label/PopLabel.gd" type="Script" id=1]
+[ext_resource path="res://Interfaces/label_font.tres" type="DynamicFont" id=2]
+
+[node name="PopLabel" type="Label"]
+margin_left = -40.0
+margin_top = -16.0
+margin_right = 40.0
+margin_bottom = 24.0
+rect_pivot_offset = Vector2( 40, 16 )
+custom_fonts/font = ExtResource( 2 )
+text = "200"
+align = 1
+valign = 1
+autowrap = true
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+final_scale = Vector2( 1.6, 1.6 )
+fading_position_offset = Vector2( 0, -100 )
+duration_in_seconds = 1.0
+
+[node name="Tween" type="Tween" parent="."]
