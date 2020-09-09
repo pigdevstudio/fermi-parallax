@@ -3,7 +3,7 @@
 [ext_resource path="res://Interfaces/ResourceBar.gd" type="Script" id=1]
 
 [sub_resource type="StyleBoxFlat" id=1]
-bg_color = Color( 0.294118, 0.356863, 0.670588, 1 )
+bg_color = Color( 0.921569, 0.337255, 0.294118, 1 )
 border_width_left = 3
 border_width_top = 3
 border_width_right = 3

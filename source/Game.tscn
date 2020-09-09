@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Screens/PlayScreen.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Levels/Level1/Level1.tscn" type="PackedScene" id=2]
@@ -8,19 +8,114 @@
 [ext_resource path="res://Interfaces/Interface.gd" type="Script" id=6]
 
 [sub_resource type="Animation" id=1]
-resource_name = "fade"
-length = 0.5
+resource_name = "cinematic_in"
 tracks/0/type = "value"
-tracks/0/path = NodePath(".:self_modulate")
+tracks/0/path = NodePath("TopCinematic:rect_position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5 ),
+"times": PoolRealArray( 0, 0.999999 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+"values": [ Vector2( 0, -207.441 ), Vector2( 0, -140 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("BottomCinematic:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 6.7614e-07, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 1080 ), Vector2( 0, 1020 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath("PlayScreen")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "cinematic_fade_out"
+} ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "cinematic_on"
+length = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath("TopCinematic:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, -140 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("BottomCinematic:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 1020 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "cinematic_out"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("TopCinematic:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -140 ), Vector2( 0, -207.441 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("BottomCinematic:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 1020 ), Vector2( 0, 1080 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath("PlayScreen")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "cinematic_fade_out"
+} ]
 }
 
 [node name="Game" type="Node"]
@@ -37,9 +132,20 @@ script = ExtResource( 6 )
 [node name="PauseMenu" parent="Interface" instance=ExtResource( 5 )]
 
 [node name="SceneTransitionRect" parent="Interface" instance=ExtResource( 4 )]
+visible = false
+
+[node name="TopCinematic" parent="Interface" instance=ExtResource( 4 )]
+margin_top = -207.441
+margin_bottom = -1080.76
+script = null
+
+[node name="BottomCinematic" parent="Interface" instance=ExtResource( 4 )]
+margin_top = 1080.0
+margin_bottom = 206.697
+script = null
 
 [node name="FadeRect" type="ColorRect" parent="Interface"]
-self_modulate = Color( 1, 1, 1, 0 )
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
@@ -48,6 +154,10 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Interface/FadeRect"]
-anims/fade = SubResource( 1 )
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Interface"]
+anims/cinematic_in = SubResource( 1 )
+anims/cinematic_on = SubResource( 2 )
+anims/cinematic_out = SubResource( 3 )
 [connection signal="finished" from="Level" to="." method="_on_Level_finished"]
+
+[editable path="Interface/PlayScreen"]
