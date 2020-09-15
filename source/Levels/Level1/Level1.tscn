@@ -27,7 +27,7 @@ glow_bicubic_upscale = true
 resource_name = "00"
 length = 2.0
 tracks/0/type = "value"
-tracks/0/path = NodePath("WaveSpawner2D:spawn_scene")
+tracks/0/path = NodePath(".:background_music")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -36,82 +36,27 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 5 ) ]
+"values": [ ExtResource( 15 ) ]
 }
-tracks/1/type = "method"
-tracks/1/path = NodePath("WaveSpawner2D")
+tracks/1/type = "value"
+tracks/1/path = NodePath("Tween:target_position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 5 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [  ],
-"method": "spawn"
-} ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("ParallaxBackground:speed")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 100.0 ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath(".:background_music")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ ExtResource( 15 ) ]
-}
-tracks/4/type = "method"
-tracks/4/path = NodePath(".")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"times": PoolRealArray( 0.1, 2 ),
-"transitions": PoolRealArray( 1, 1 ),
-"values": [ {
-"args": [  ],
-"method": "end_cinematic"
-}, {
-"args": [  ],
-"method": "_on_Wave_finished"
-} ]
-}
-tracks/5/type = "value"
-tracks/5/path = NodePath("Tween:target_position")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Vector2( 960, 960 ) ]
 }
-tracks/6/type = "method"
-tracks/6/path = NodePath("Tween")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/keys = {
+tracks/2/type = "method"
+tracks/2/path = NodePath("Tween")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
 "times": PoolRealArray( 0.8 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
@@ -119,24 +64,24 @@ tracks/6/keys = {
 "method": "tween_player"
 } ]
 }
-tracks/7/type = "method"
-tracks/7/path = NodePath("EventsPlayer")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/keys = {
+tracks/3/type = "method"
+tracks/3/path = NodePath("EventsPlayer")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
 "times": PoolRealArray(  ),
 "transitions": PoolRealArray(  ),
 "values": [  ]
 }
-tracks/8/type = "method"
-tracks/8/path = NodePath("Player")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/keys = {
+tracks/4/type = "method"
+tracks/4/path = NodePath("Player")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
 "times": PoolRealArray( 0, 2 ),
 "transitions": PoolRealArray( 1, 1 ),
 "values": [ {
@@ -145,6 +90,20 @@ tracks/8/keys = {
 }, {
 "args": [ true ],
 "method": "set_process_unhandled_input"
+} ]
+}
+tracks/5/type = "method"
+tracks/5/path = NodePath(".")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 2 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "play_next_event"
 } ]
 }
 
@@ -468,7 +427,7 @@ tracks/5/keys = {
 }
 
 [sub_resource type="Animation" id=11]
-length = 5.0
+length = 3.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("ParallaxBackground:speed")
 tracks/0/interp = 1
@@ -476,7 +435,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 3, 5 ),
+"times": PoolRealArray( 0, 2 ),
 "transitions": PoolRealArray( 0.5, 2 ),
 "update": 0,
 "values": [ 5000.0, 100.0 ]
@@ -488,7 +447,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 5 ),
+"times": PoolRealArray( 3 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [  ],

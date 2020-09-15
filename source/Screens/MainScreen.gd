@@ -1,7 +1,7 @@
 extends Control
 
 
-export(String, FILE, "*.tscn") var play_screen_path
+export(String, FILE, "*.tscn") var game_screen_path
 export(String, FILE, "*.tscn") var options_screen_path
 
 onready var _transition_rect := $SceneTransitionRect
@@ -13,7 +13,7 @@ func _ready() -> void:
 
 
 func _on_PlayButton_pressed() -> void:
-	_transition_rect.transit(play_screen_path)
+	_transition_rect.transit(game_screen_path)
 
 
 func _on_OptionsButton_pressed() -> void:

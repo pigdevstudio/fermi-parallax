@@ -5,44 +5,50 @@ signal cinematic_started
 signal cinematic_ended
 signal finished(next_level_path)
 
-export var background_music: AudioStream
+export(AudioStream) var background_music
 export(String, FILE, "*.tscn") var next_level_path
 
-onready var player := $Player
-onready var _events_player := $EventsPlayer
+onready var player = $Player
+onready var _events_player = $EventsPlayer
 
-export var current_event := 0
+export(int) var current_event = 0
 
 
-func _ready() -> void:
+func _ready():
 	update_background_music()
 
 
-func update_background_music() -> void:
+func update_background_music():
 	BackgroundMusic.crossfade_to(background_music)
 
 
-func _on_WaveSpawner2D_spawned(spawn) -> void:
+func _on_WaveSpawner2D_spawned(spawn):
 	spawn.connect("finished", self, "_on_Wave_finished")
 
 
-func _on_Wave_finished() -> void:
-	var events_list := _events_player.get_animation_list() as PoolStringArray
-	var animation_count := events_list.size() as int
+func _on_Wave_finished():
+	play_next_event()
+
+
+func play_next_event():
 	current_event += 1
+	var events_list = _events_player.get_animation_list()
+	var animation_count = events_list.size()
 	
 	if current_event >= animation_count:
 		return
 	_events_player.play(events_list[current_event])
 
 
-func finish() -> void:
+func finish():
 	emit_signal("finished", next_level_path)
 
 
-func start_cinematic() -> void:
+func start_cinematic():
 	emit_signal("cinematic_started")
+	player.set_process_unhandled_input(false)
 
 
-func end_cinematic() -> void:
+func end_cinematic():
 	emit_signal("cinematic_ended")
+	player.set_process_unhandled_input(true)

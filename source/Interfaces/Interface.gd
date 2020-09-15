@@ -1,15 +1,23 @@
 extends CanvasLayer
 
 
-onready var fade_animator := $FadeRect/AnimationPlayer
+onready var fade_animator := $SceneTransitionRect/AnimationPlayer
 onready var _play_screen := $PlayScreen
 
 func fade_in():
-	fade_animator.play("fade")
+	fade_animator.play("Fade")
 
 
 func fade_out():
-	fade_animator.play_backwards("fade")
+	fade_animator.play_backwards("Fade")
+
+
+func fade_hud_in():
+	_play_screen.fade_in()
+
+
+func fade_hud_out():
+	_play_screen.fade_out()
 
 
 func link_player_resources(player: Player) -> void:

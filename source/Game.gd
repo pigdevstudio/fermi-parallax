@@ -6,7 +6,7 @@ export(String, FILE, "*.tscn") var game_over_screen_path
 onready var _interface := $Interface
 onready var _level := $Level
 onready var _transit_rect := $Interface/SceneTransitionRect
-onready var animator := $Interface/AnimationPlayer
+onready var _interface_animator := $Interface/AnimationPlayer
 
 func _ready() -> void:
 	initialize_level()
@@ -15,9 +15,12 @@ func _ready() -> void:
 func initialize_level() -> void:
 	_level.player.connect("died", self, "_on_Player_died")
 	_interface.link_player_resources(_level.player)
+	_level.connect("finished", self, "_on_Level_finished")
 	_level.connect("cinematic_started", self, "start_cinematic")
 	_level.connect("cinematic_ended", self, "end_cinematic")
-	animator.play("cinematic_on")
+	_transit_rect.fade_in()
+	yield(_transit_rect, "fade_finished")
+	start_cinematic()
 
 
 func _on_Player_died() -> void:
@@ -37,9 +40,12 @@ func _on_Level_finished(next_level_path) -> void:
 
 
 func start_cinematic():
-	animator.play("cinematic_in")
+	_interface_animator.play_backwards("slide_bars")
+	yield(_interface_animator, "animation_finished")
+	_interface.fade_hud_in()
 
 
 func end_cinematic():
-	animator.play_backwards("cinematic_in")
-
+	_interface_animator.play("slide_bars")
+	yield(_interface_animator, "animation_finished")
+	_interface.fade_hud_out()

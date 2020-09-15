@@ -13,7 +13,7 @@ script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-play_screen_path = "res://Game.tscn"
+game_screen_path = "res://Game.tscn"
 options_screen_path = "res://Screens/OptionsScreen.tscn"
 
 [node name="MarginContainer" type="MarginContainer" parent="."]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Interfaces/label_font.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Interfaces/ResourceBars/EnemyHealth/EnemyHealthBar.tscn" type="PackedScene" id=2]
@@ -7,7 +7,7 @@
 [ext_resource path="res://Interfaces/ResourceBars/PlayerEnergy/PlayerEnergyBar.tscn" type="PackedScene" id=5]
 
 [sub_resource type="Animation" id=1]
-resource_name = "interface_fadeOut"
+resource_name = "fade"
 length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("HBoxContainer:modulate")
@@ -19,7 +19,22 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "setup"
+tracks/0/type = "value"
+tracks/0/path = NodePath("HBoxContainer:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
 }
 
 [node name="PlayScreen" type="Control"]
@@ -31,6 +46,7 @@ __meta__ = {
 }
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
+modulate = Color( 1, 1, 1, 0 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 custom_constants/separation = 0
@@ -112,18 +128,25 @@ margin_bottom = 40.0
 custom_fonts/font = ExtResource( 1 )
 text = "Score: %d"
 
-[node name="Label" type="Label" parent="HBoxContainer/Right/VBoxContainer"]
+[node name="EnemyInterface" type="VBoxContainer" parent="HBoxContainer/Right/VBoxContainer"]
+visible = false
 margin_top = 54.0
 margin_right = 600.0
-margin_bottom = 94.0
+margin_bottom = 130.0
+
+[node name="Label" type="Label" parent="HBoxContainer/Right/VBoxContainer/EnemyInterface"]
+margin_right = 600.0
+margin_bottom = 40.0
 custom_fonts/font = ExtResource( 1 )
 text = "Enemy"
 align = 1
 
-[node name="EnemyHealthBar" parent="HBoxContainer/Right/VBoxContainer" instance=ExtResource( 2 )]
-margin_top = 108.0
+[node name="EnemyHealthBar" parent="HBoxContainer/Right/VBoxContainer/EnemyInterface" instance=ExtResource( 2 )]
+margin_top = 44.0
 margin_right = 600.0
-margin_bottom = 140.0
+margin_bottom = 76.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/interface_fadeOut = SubResource( 1 )
+autoplay = "setup"
+anims/fade = SubResource( 1 )
+anims/setup = SubResource( 2 )
