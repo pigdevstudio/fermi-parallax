@@ -18,7 +18,7 @@ func initialize_level() -> void:
 	_level.connect("finished", self, "_on_Level_finished")
 	_level.connect("cinematic_started", self, "start_cinematic")
 	_level.connect("cinematic_ended", self, "end_cinematic")
-	_transit_rect.fade_in()
+	_interface.fade_in()
 	yield(_transit_rect, "fade_finished")
 	start_cinematic()
 
@@ -35,7 +35,6 @@ func _on_Level_finished(next_level_path) -> void:
 	_level = load(next_level_path).instance()
 	add_child(_level)
 	move_child(_level, 0)
-	_interface.fade_in()
 	initialize_level()
 
 
