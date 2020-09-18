@@ -134,12 +134,24 @@ tracks/6/path = NodePath("Comet:visible")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
-tracks/6/enabled = true
+tracks/6/enabled = false
 tracks/6/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ false ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Comet:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 936, 2600 ) ]
 }
 
 [sub_resource type="Animation" id=6]
@@ -295,7 +307,7 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0, 3 ),
+"times": PoolRealArray( 0, 3.1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Vector2( 0, 0 ), Vector2( 0, 0 ) ]
@@ -323,6 +335,35 @@ tracks/6/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Vector2( 960, 120 ) ]
+}
+tracks/7/type = "method"
+tracks/7/path = NodePath(".")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "end_cinematic"
+}, {
+"args": [  ],
+"method": "start_cinematic"
+} ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Comet:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 960, 1528 ), Vector2( 960, 1072 ) ]
 }
 
 [sub_resource type="Animation" id=10]
@@ -513,9 +554,12 @@ tracks/9/loop_wrap = true
 tracks/9/imported = false
 tracks/9/enabled = true
 tracks/9/keys = {
-"times": PoolRealArray( 3 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
 "values": [ {
+"args": [  ],
+"method": "start_cinematic"
+}, {
 "args": [  ],
 "method": "update_background_music"
 } ]
@@ -639,6 +683,20 @@ tracks/7/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ 0.0 ]
+}
+tracks/8/type = "method"
+tracks/8/path = NodePath(".")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 5.3 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "end_cinematic"
+} ]
 }
 
 [sub_resource type="Animation" id=14]
@@ -811,7 +869,7 @@ tracks/2/keys = {
 [node name="Level" type="Node2D"]
 script = ExtResource( 4 )
 __meta__ = {
-"_edit_vertical_guides_": [ 936.0 ]
+"_edit_vertical_guides_": [ 968.0 ]
 }
 background_music = ExtResource( 15 )
 
@@ -871,11 +929,10 @@ region_rect = Rect2( 354, 22, 316, 256 )
 environment = SubResource( 4 )
 
 [node name="WaveSpawner2D" parent="." instance=ExtResource( 2 )]
-spawn_scene = ExtResource( 5 )
+spawn_scene = ExtResource( 12 )
 
 [node name="Comet" parent="." instance=ExtResource( 11 )]
-visible = false
-position = Vector2( 936, 1472 )
+position = Vector2( 960, 1528 )
 
 [node name="SFX" type="AudioStreamPlayer2D" parent="."]
 position = Vector2( 960, 960 )
@@ -884,7 +941,7 @@ volume_db = -16.0
 bus = "SFX"
 
 [node name="EventsPlayer" type="AnimationPlayer" parent="."]
-autoplay = "00"
+autoplay = "04"
 anims/00 = SubResource( 5 )
 anims/01 = SubResource( 6 )
 anims/02 = SubResource( 7 )
@@ -903,6 +960,7 @@ anims/13 = SubResource( 18 )
 [node name="Tween" type="Tween" parent="."]
 script = ExtResource( 10 )
 player_path = NodePath("../Player")
-target_position = Vector2( 288, 104 )
+target_position = Vector2( 960, 120 )
+target_rotation = 180.0
 duration = 2.0
 [connection signal="spawned" from="WaveSpawner2D" to="." method="_on_WaveSpawner2D_spawned"]

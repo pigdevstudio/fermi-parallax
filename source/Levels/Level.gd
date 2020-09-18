@@ -46,9 +46,7 @@ func finish():
 
 func start_cinematic():
 	emit_signal("cinematic_started")
-	player.set_process_unhandled_input(false)
 
 
 func end_cinematic():
 	emit_signal("cinematic_ended")
-	player.set_process_unhandled_input(true)
