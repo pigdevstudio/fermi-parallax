@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Interfaces/label_font.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Interfaces/title_font.tres" type="DynamicFont" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Interfaces/CancelShortcut.tres" type="ShortCut" id=5]
 [ext_resource path="res://Interfaces/FullscreenButton.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Interfaces/ButtonSFX.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Screens/main_theme.tres" type="Theme" id=8]
 
 [sub_resource type="StyleBoxLine" id=1]
 color = Color( 0.152941, 0.152941, 0.211765, 1 )
@@ -25,6 +26,7 @@ pause_mode = 2
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
+theme = ExtResource( 8 )
 script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false

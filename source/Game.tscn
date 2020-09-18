@@ -65,7 +65,6 @@ script = ExtResource( 3 )
 game_over_screen_path = "res://Screens/GameOverScreen.tscn"
 
 [node name="Level" parent="." instance=ExtResource( 2 )]
-current_event = 8
 
 [node name="Interface" type="CanvasLayer" parent="."]
 script = ExtResource( 6 )

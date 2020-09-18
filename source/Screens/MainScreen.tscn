@@ -1,20 +1,28 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Interfaces/SceneTransitionRect.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Interfaces/title_font.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Screens/main_screen_background.png" type="Texture" id=2]
 [ext_resource path="res://Interfaces/label_font.tres" type="DynamicFont" id=3]
 [ext_resource path="res://Screens/MainScreen.gd" type="Script" id=4]
+[ext_resource path="res://Screens/title.svg" type="Texture" id=5]
 [ext_resource path="res://Interfaces/ButtonSFX.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Screens/main_theme.tres" type="Theme" id=7]
 
 [node name="MainScreen" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+theme = ExtResource( 7 )
 script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 game_screen_path = "res://Game.tscn"
 options_screen_path = "res://Screens/OptionsScreen.tscn"
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 2 )
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchor_right = 1.0
@@ -33,15 +41,13 @@ margin_top = 20.0
 margin_right = 1900.0
 margin_bottom = 1060.0
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+[node name="Title" type="TextureRect" parent="MarginContainer/VBoxContainer"]
 margin_right = 1880.0
 margin_bottom = 518.0
 size_flags_horizontal = 3
 size_flags_vertical = 7
-custom_fonts/font = ExtResource( 2 )
-text = "Fermi Parallax"
-align = 1
-valign = 1
+texture = ExtResource( 5 )
+stretch_mode = 4
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 margin_top = 522.0
