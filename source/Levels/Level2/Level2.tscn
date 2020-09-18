@@ -130,24 +130,12 @@ tracks/5/keys = {
 } ]
 }
 tracks/6/type = "value"
-tracks/6/path = NodePath("Comet:visible")
+tracks/6/path = NodePath("Comet:position")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
-tracks/6/enabled = false
+tracks/6/enabled = true
 tracks/6/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ false ]
-}
-tracks/7/type = "value"
-tracks/7/path = NodePath("Comet:position")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
@@ -929,10 +917,10 @@ region_rect = Rect2( 354, 22, 316, 256 )
 environment = SubResource( 4 )
 
 [node name="WaveSpawner2D" parent="." instance=ExtResource( 2 )]
-spawn_scene = ExtResource( 12 )
+spawn_scene = ExtResource( 5 )
 
 [node name="Comet" parent="." instance=ExtResource( 11 )]
-position = Vector2( 960, 1528 )
+position = Vector2( 936, 2600 )
 
 [node name="SFX" type="AudioStreamPlayer2D" parent="."]
 position = Vector2( 960, 960 )
@@ -941,7 +929,7 @@ volume_db = -16.0
 bus = "SFX"
 
 [node name="EventsPlayer" type="AnimationPlayer" parent="."]
-autoplay = "04"
+autoplay = "00"
 anims/00 = SubResource( 5 )
 anims/01 = SubResource( 6 )
 anims/02 = SubResource( 7 )

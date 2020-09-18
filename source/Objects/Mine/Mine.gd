@@ -11,6 +11,7 @@ onready var _velocity := speed * direction
 
 
 func _ready() -> void:
+	randomize()
 	$Timer.wait_time = rand_range(wait_min, wait_max)
 
 
@@ -36,5 +37,10 @@ func countdown() -> void:
 
 
 func _on_Health_depleted() -> void:
+	set_process(false)
 	if not animator.current_animation == "explode":
 		animator.play("explode")
+
+
+func _on_Timer_timeout() -> void:
+	set_process(false)

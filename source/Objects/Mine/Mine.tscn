@@ -152,18 +152,6 @@ tracks/8/keys = {
 "update": 1,
 "values": [ false ]
 }
-tracks/9/type = "value"
-tracks/9/path = NodePath(".:speed")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 0.0 ]
-}
 
 [sub_resource type="Animation" id=5]
 resource_name = "idle"
@@ -294,29 +282,17 @@ tracks/7/keys = {
 "method": "play"
 } ]
 }
-tracks/8/type = "value"
-tracks/8/path = NodePath(".:speed")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 150.0 ]
-}
 
 [sub_resource type="CircleShape2D" id=7]
 radius = 96.0
 
 [node name="Mine" type="Node2D"]
+position = Vector2( 848, 80 )
 script = ExtResource( 4 )
-speed = 150.0
+speed = 100.0
+wait_max = 4.5
 
 [node name="HitBox2D" parent="." instance=ExtResource( 1 )]
-monitoring = false
-monitorable = false
 damage = 5.0
 
 [node name="CollisionShape2D" parent="HitBox2D" index="0"]
@@ -324,11 +300,14 @@ shape = SubResource( 1 )
 
 [node name="HurtBox" parent="." instance=ExtResource( 2 )]
 visible = false
+monitoring = false
+monitorable = false
 
 [node name="CollisionShape2D" parent="HurtBox" index="0"]
 shape = SubResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
+visible = false
 texture = ExtResource( 3 )
 region_enabled = true
 region_rect = Rect2( 9, 32, 110, 94 )
@@ -350,6 +329,8 @@ anims/setup = SubResource( 6 )
 max_amount = 3.0
 
 [node name="SensorArea" type="Area2D" parent="."]
+monitoring = false
+monitorable = false
 collision_layer = 0
 collision_mask = 8
 
@@ -368,7 +349,7 @@ scale = Vector2( 1.6, 1.6 )
 [connection signal="damage_taken" from="HurtBox" to="." method="_on_HurtBox_damage_taken"]
 [connection signal="depleted" from="Health" to="." method="_on_Health_depleted"]
 [connection signal="area_entered" from="SensorArea" to="." method="_on_SensorArea_area_entered"]
-[connection signal="timeout" from="Timer" to="." method="set_process" binds= [ false ]]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 [connection signal="screen_entered" from="VisibilityNotifier2D" to="Timer" method="start"]
 
 [editable path="HitBox2D"]

@@ -459,7 +459,6 @@ tracks/1/keys = {
 script = ExtResource( 4 )
 background_music = ExtResource( 15 )
 next_level_path = "res://Levels/Level2/Level2.tscn"
-current_event = 8
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 960, 1230.19 )
