@@ -16,6 +16,7 @@
 [ext_resource path="res://Levels/Level1/sfx_sound_depressurizing.wav" type="AudioStream" id=14]
 [ext_resource path="res://Levels/Level1/Juhani Junkala [Retro Game Music Pack] Ending.ogg" type="AudioStream" id=15]
 [ext_resource path="res://Levels/Level2/Tween.gd" type="Script" id=16]
+[ext_resource path="res://Levels/LevelsAnimations/player_arriving.tres" type="Animation" id=17]
 
 [sub_resource type="Environment" id=1]
 background_mode = 4
@@ -24,90 +25,6 @@ glow_blend_mode = 0
 glow_bicubic_upscale = true
 
 [sub_resource type="Animation" id=2]
-resource_name = "00"
-length = 2.0
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:background_music")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ ExtResource( 15 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Tween:target_position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 960, 960 ) ]
-}
-tracks/2/type = "method"
-tracks/2/path = NodePath("Tween")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0.8 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [  ],
-"method": "tween_player"
-} ]
-}
-tracks/3/type = "method"
-tracks/3/path = NodePath("EventsPlayer")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray(  ),
-"transitions": PoolRealArray(  ),
-"values": [  ]
-}
-tracks/4/type = "method"
-tracks/4/path = NodePath("Player")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"times": PoolRealArray( 0, 2 ),
-"transitions": PoolRealArray( 1, 1 ),
-"values": [ {
-"args": [ false ],
-"method": "set_process_unhandled_input"
-}, {
-"args": [ true ],
-"method": "set_process_unhandled_input"
-} ]
-}
-tracks/5/type = "method"
-tracks/5/path = NodePath(".")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/keys = {
-"times": PoolRealArray( 2 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [  ],
-"method": "play_next_event"
-} ]
-}
-
-[sub_resource type="Animation" id=3]
 length = 5.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("WaveSpawner2D:spawn_scene")
@@ -171,7 +88,7 @@ tracks/4/keys = {
 "values": [  ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=3]
 length = 2.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("WaveSpawner2D:spawn_scene")
@@ -200,7 +117,7 @@ tracks/1/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=4]
 length = 3.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("WaveSpawner2D:spawn_scene")
@@ -229,7 +146,7 @@ tracks/1/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=5]
 length = 3.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("WaveSpawner2D:spawn_scene")
@@ -258,7 +175,7 @@ tracks/1/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=6]
 length = 3.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("WaveSpawner2D:spawn_scene")
@@ -287,7 +204,7 @@ tracks/1/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=7]
 length = 3.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("WaveSpawner2D:spawn_scene")
@@ -316,7 +233,7 @@ tracks/1/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=8]
 length = 3.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("WaveSpawner2D:spawn_scene")
@@ -345,7 +262,7 @@ tracks/1/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=9]
 length = 3.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("WaveSpawner2D:spawn_scene")
@@ -426,7 +343,7 @@ tracks/5/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=10]
 length = 3.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("ParallaxBackground:speed")
@@ -473,16 +390,16 @@ spawn_scene = ExtResource( 5 )
 
 [node name="EventsPlayer" type="AnimationPlayer" parent="."]
 autoplay = "00"
-anims/00 = SubResource( 2 )
-anims/01 = SubResource( 3 )
-anims/02 = SubResource( 4 )
-anims/03 = SubResource( 5 )
-anims/04 = SubResource( 6 )
-anims/05 = SubResource( 7 )
-anims/06 = SubResource( 8 )
-anims/07 = SubResource( 9 )
-anims/08 = SubResource( 10 )
-anims/09 = SubResource( 11 )
+anims/00 = ExtResource( 17 )
+anims/01 = SubResource( 2 )
+anims/02 = SubResource( 3 )
+anims/03 = SubResource( 4 )
+anims/04 = SubResource( 5 )
+anims/05 = SubResource( 6 )
+anims/06 = SubResource( 7 )
+anims/07 = SubResource( 8 )
+anims/08 = SubResource( 9 )
+anims/09 = SubResource( 10 )
 
 [node name="SFX" type="AudioStreamPlayer2D" parent="."]
 position = Vector2( 960, 960 )

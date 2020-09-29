@@ -12,7 +12,7 @@ onready var animator := $AnimationPlayer
 onready var _cooldown := $Cooldown
 
 
-func fire() -> void:
+func fire() :
 	if disabled:
 		return
 	if not _cooldown.is_stopped():

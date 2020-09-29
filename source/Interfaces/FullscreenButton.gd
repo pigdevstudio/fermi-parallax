@@ -1,9 +1,9 @@
 extends CheckButton
 
 
-func _ready() -> void:
+func _ready() :
 	pressed = OS.window_fullscreen
 
 
-func _toggled(button_pressed: bool) -> void:
+func _toggled(button_pressed: bool) :
 	OS.window_fullscreen = button_pressed

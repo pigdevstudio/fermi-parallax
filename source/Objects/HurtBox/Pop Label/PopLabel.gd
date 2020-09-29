@@ -12,7 +12,7 @@ export (Vector2) var fading_position_offset := Vector2.ZERO
 export (float) var duration_in_seconds := 1.0
 
 
-func pop() -> void:
+func pop() :
 	rect_position -= rect_pivot_offset
 	var initial_scale := rect_scale
 	_tween.interpolate_property(self, "rect_scale", initial_scale, final_scale,
@@ -22,7 +22,7 @@ func pop() -> void:
 	fade()
 
 
-func fade() -> void:
+func fade() :
 	var transparent := modulate
 	transparent.a = 0.0
 	_tween.interpolate_property(self, "modulate",

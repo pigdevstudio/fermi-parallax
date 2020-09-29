@@ -1,0 +1,179 @@
+[gd_scene load_steps=19 format=2]
+
+[ext_resource path="res://Levels/LevelsAnimations/player_arriving.tres" type="Animation" id=1]
+[ext_resource path="res://Levels/Level2/Waves/Wave5.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Levels/Wave/Wave.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Actors/Enemies/Bosses/Lagactus/Lagactus.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Areas/planets.svg" type="Texture" id=6]
+[ext_resource path="res://Levels/Level1/Juhani Junkala [Retro Game Music Pack] Ending.ogg" type="AudioStream" id=10]
+[ext_resource path="res://Areas/star.svg" type="Texture" id=11]
+[ext_resource path="res://Levels/Level.gd" type="Script" id=15]
+[ext_resource path="res://Areas/ParallaxBackground.gd" type="Script" id=16]
+[ext_resource path="res://Levels/Level2/Tween.gd" type="Script" id=17]
+[ext_resource path="res://Actors/Player/Player.tscn" type="PackedScene" id=18]
+[ext_resource path="res://Objects/Spawner/Spawner2D.tscn" type="PackedScene" id=22]
+[ext_resource path="res://Levels/Level1/sfx_sound_depressurizing.wav" type="AudioStream" id=23]
+
+[sub_resource type="Curve" id=1]
+_data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.5, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=2]
+curve = SubResource( 1 )
+
+[sub_resource type="ParticlesMaterial" id=3]
+emission_shape = 2
+emission_box_extents = Vector3( 960, 540, 1 )
+flag_disable_z = true
+gravity = Vector3( 0, 0, 0 )
+angular_velocity = 20.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+angle = 360.0
+angle_random = 1.0
+scale = 0.5
+scale_random = 0.76
+scale_curve = SubResource( 2 )
+
+[sub_resource type="Environment" id=4]
+background_mode = 4
+glow_enabled = true
+glow_blend_mode = 0
+glow_bicubic_upscale = true
+
+[sub_resource type="Animation" id=5]
+resource_name = "01-boss"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Wave/Boss:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 964, 576 ), Vector2( 964, 464 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Polygon2D2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -112 ), Vector2( 0, -248 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Polygon2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 1016 ), Vector2( 0, 1160 ) ]
+}
+
+[node name="Level" type="Node2D"]
+script = ExtResource( 15 )
+__meta__ = {
+"_edit_vertical_guides_": [ 968.0 ]
+}
+background_music = ExtResource( 10 )
+
+[node name="Player" parent="." instance=ExtResource( 18 )]
+position = Vector2( 968, 1144 )
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+script = ExtResource( 16 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 1083.89, 1993.26 ],
+"_edit_vertical_guides_": [ 640.0 ]
+}
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0.3, 0.3 )
+motion_mirroring = Vector2( 0, 1080 )
+
+[node name="StarField" type="Particles2D" parent="ParallaxBackground/ParallaxLayer2"]
+modulate = Color( 1.1, 1.1, 1.1, 1 )
+position = Vector2( 960, 540 )
+amount = 16
+lifetime = 10.0
+preprocess = 10.0
+visibility_rect = Rect2( -960, -540, 1920, 1080 )
+process_material = SubResource( 3 )
+texture = ExtResource( 11 )
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0.5, 0.5 )
+motion_mirroring = Vector2( 0, 2000 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2( 1776, 1040 )
+rotation = 0.130087
+scale = Vector2( 2.50171, 2.50171 )
+texture = ExtResource( 6 )
+region_enabled = true
+region_rect = Rect2( 384, 320, 256, 257 )
+
+[node name="Sprite2" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2( 40, 2.86134e-06 )
+rotation = -0.203016
+scale = Vector2( 0.803108, 0.803108 )
+texture = ExtResource( 6 )
+region_enabled = true
+region_rect = Rect2( 756, 321, 256, 257 )
+
+[node name="Sprite3" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2( 1696, -400 )
+rotation = 0.126474
+scale = Vector2( 1.0512, 1.0512 )
+texture = ExtResource( 6 )
+region_enabled = true
+region_rect = Rect2( 16, 320, 256, 257 )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 4 )
+
+[node name="WaveSpawner2D" parent="." instance=ExtResource( 22 )]
+spawn_scene = ExtResource( 2 )
+
+[node name="SFX" type="AudioStreamPlayer2D" parent="."]
+position = Vector2( 960, 960 )
+stream = ExtResource( 23 )
+volume_db = -16.0
+bus = "SFX"
+
+[node name="EventsPlayer" type="AnimationPlayer" parent="."]
+autoplay = "00-player-arriving"
+anims/00-player-arriving = ExtResource( 1 )
+anims/01-boss = SubResource( 5 )
+
+[node name="Tween" type="Tween" parent="."]
+script = ExtResource( 17 )
+player_path = NodePath("../Player")
+target_position = Vector2( 960, 960 )
+duration = 2.0
+
+[node name="Wave" parent="." instance=ExtResource( 3 )]
+
+[node name="Boss" parent="Wave" instance=ExtResource( 4 )]
+position = Vector2( 964, 576 )
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+position = Vector2( 0, 1016 )
+z_index = 1
+color = Color( 0, 0, 0, 1 )
+polygon = PoolVector2Array( -64, 0, -64, 192, 2024, 200, 2016, 0 )
+
+[node name="Polygon2D2" type="Polygon2D" parent="."]
+position = Vector2( 0, -112 )
+color = Color( 0, 0, 0, 1 )
+polygon = PoolVector2Array( -64, 0, -64, 192, 2024, 200, 2016, 0 )
+[connection signal="spawned" from="WaveSpawner2D" to="." method="_on_WaveSpawner2D_spawned"]

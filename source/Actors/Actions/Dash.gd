@@ -8,7 +8,7 @@ var _player_speed := 600.0
 onready var _dash_time := $DashTime
 
 
-func _execute() -> void:
+func _execute() :
 	if player.replenish.is_processing():
 		return
 	if player.direction.is_equal_approx(Vector2.ZERO):
@@ -21,11 +21,11 @@ func _execute() -> void:
 	player.animator.play("dash")
 
 
-func _reset_player_speed() -> void:
+func _reset_player_speed() :
 	player.speed = _player_speed
 
 
-func cancel() -> void:
+func cancel() :
 	if _dash_time.is_stopped():
 		return
 	_dash_time.stop()
@@ -33,6 +33,6 @@ func cancel() -> void:
 	player.animator.play("cancel_dash")
 
 
-func _on_DashTime_timeout() -> void:
+func _on_DashTime_timeout() :
 	_reset_player_speed()
 	player.animator.play("cancel_dash")

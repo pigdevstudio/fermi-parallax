@@ -5,8 +5,8 @@ onready var _track_1 := $Track1
 onready var _track_2 := $Track2
 
 
-# crossfades to a new audio stream
-func crossfade_to(audio_stream: AudioStream) -> void:
+func crossfade_to(audio_stream: AudioStream):
+	return
 	if _track_1.playing and _track_2.playing:
 		return
 

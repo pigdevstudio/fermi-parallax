@@ -10,11 +10,11 @@ export(String, FILE, "*.tscn") var next_scene_path
 
 onready var _animator := $AnimationPlayer
 
-func _ready() -> void:
+func _ready() :
 	fade_in()
 
 
-func transit(to := next_scene_path) -> void:
+func transit(to := next_scene_path) :
 	fade_out()
 	emit_signal("transition_started")
 	yield(_animator, "animation_finished")

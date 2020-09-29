@@ -2,7 +2,7 @@ extends ResourceBar
 
 onready var animator = $AnimationPlayer
 
-func _on_Resource_value_changed(new_value: float) -> void:
+func _on_Resource_value_changed(new_value: float) :
 	if new_value < value:
 		animator.play("enemy_damaged")
 	._on_Resource_value_changed(new_value)

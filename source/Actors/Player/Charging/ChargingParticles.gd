@@ -3,11 +3,11 @@ extends Particles2D
 
 onready var animator := $AnimationPlayer
 
-func start() -> void:
+func start() :
 	emitting = true
 	animator.play("Charge")
 
 
-func stop() -> void:
+func stop() :
 	emitting = false
 	animator.stop()

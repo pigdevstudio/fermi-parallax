@@ -11,17 +11,17 @@ var current := max_amount setget set_current
 
 var depleted := false
 
-func _ready() -> void:
+func _ready() :
 	initialize()
 
 
-func set_max(new_max: float) -> void:
+func set_max(new_max: float) :
 	max_amount = new_max
 	max_amount = max(1, new_max)
 	emit_signal("max_changed", max_amount)
 
 
-func set_current(new_value: float) -> void:
+func set_current(new_value: float) :
 	if current == new_value:
 		return
 	current = new_value
@@ -33,7 +33,7 @@ func set_current(new_value: float) -> void:
 		emit_signal("depleted")
 
 
-func initialize() -> void:
+func initialize() :
 	current = max_amount
 	emit_signal("max_changed", max_amount)
 	emit_signal("changed", current)

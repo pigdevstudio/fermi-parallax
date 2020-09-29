@@ -34,7 +34,9 @@ margin_bottom = 518.0
 size_flags_horizontal = 3
 size_flags_vertical = 7
 custom_fonts/font = ExtResource( 1 )
-text = "Game Over"
+text = "Game Over
+
+Highscore: %d"
 align = 1
 valign = 1
 
@@ -63,6 +65,7 @@ __meta__ = {
 [node name="ButtonSFX" parent="MarginContainer/VBoxContainer/MarginContainer/RetryButton" instance=ExtResource( 5 )]
 
 [node name="SceneTransitionRect" parent="." instance=ExtResource( 3 )]
+visible = false
 next_scene_path = "res://Game.tscn"
 [connection signal="pressed" from="MarginContainer/VBoxContainer/MarginContainer/RetryButton" to="MarginContainer/VBoxContainer/MarginContainer/RetryButton/ButtonSFX" method="play"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/MarginContainer/RetryButton" to="." method="_on_RetryButton_pressed"]

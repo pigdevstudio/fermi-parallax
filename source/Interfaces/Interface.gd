@@ -21,6 +21,6 @@ func fade_hud_out():
 	_play_screen.fade_out()
 
 
-func link_player_resources(player: Player) -> void:
+func link_player_resources(player: Player) :
 	_play_screen.player_energybar.resource = player.energy
 	_play_screen.player_healthbar.resource = player.health

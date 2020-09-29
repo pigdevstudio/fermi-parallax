@@ -24,22 +24,22 @@ onready var asteroid_collision := $CollisionArea
 onready var replenish := $EnergyReplenish
 
 
-func _ready() -> void:
+func _ready() :
 	for action in $Actions.get_children():
 		action.player = self
 		action.resource = $Energy
 
 
-func _process(delta: float) -> void:
+func _process(delta: float) :
 	if Input.is_action_pressed("shoot") and is_processing_unhandled_input():
 		shoot.execute()
 
 
-func _unhandled_input(event: InputEvent) -> void:
+func _unhandled_input(event: InputEvent) :
 	handle_input(event)
 
 
-func handle_input(event: InputEvent) -> void:
+func handle_input(event: InputEvent) :
 	if not event.is_action_type():
 		return
 	update_direction()
@@ -50,7 +50,7 @@ func handle_input(event: InputEvent) -> void:
 		stop_dash()
 
 
-func update_direction() -> void:
+func update_direction() :
 	direction.x = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
 	direction.y = Input.get_action_strength("move_down") - Input.get_action_strength("move_up")
 	direction = direction.normalized()
@@ -61,30 +61,30 @@ func update_direction() -> void:
 		move.execute()
 
 
-func update_velocity() -> void:
+func update_velocity() :
 	velocity = direction * speed
 
 
-func die() -> void:
+func die() :
 	emit_signal("died")
 
 
-func dash() -> void:
+func dash() :
 	dash.execute()
 
 
-func stop_dash() -> void:
+func stop_dash() :
 	dash.cancel()
 
 
-func _on_HurtBox_damage_taken(damage: float) -> void:
+func _on_HurtBox_damage_taken(damage: float) :
 	health.current -= damage
 	sprite_anim.play("damage")
 
 
-func _on_EnergyReplenish_finished() -> void:
+func _on_EnergyReplenish_finished() :
 	charge_vfx.stop()
 
 
-func _on_EnergyReplenish_started() -> void:
+func _on_EnergyReplenish_started() :
 	charge_vfx.start()

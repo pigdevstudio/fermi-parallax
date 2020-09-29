@@ -10,7 +10,7 @@ onready var velocity := direction * speed
 onready var hitbox := $HitBox
 onready var animator := $AnimationPlayer
 
-func _ready() -> void:
+func _ready() :
 	var team := "player" if "player" in get_groups() else "enemy"
 	hitbox.add_to_group(team)
 	
@@ -20,16 +20,16 @@ func _ready() -> void:
 	rotate(direction.angle())
 
 
-func _process(delta: float) -> void:
+func _process(delta: float) :
 	velocity = direction * speed
 	translate(velocity * delta)
 
 
-func _on_VisibilityNotifier2D_screen_exited() -> void:
+func _on_VisibilityNotifier2D_screen_exited() :
 	queue_free()
 
 
-func _on_HitBox_area_entered(area: Area2D) -> void:
+func _on_HitBox_area_entered(area: Area2D) :
 	if not is_in_group(area.team):
 		set_process(false)
 		animator.play("explode")

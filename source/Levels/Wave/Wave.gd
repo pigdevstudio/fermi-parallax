@@ -2,7 +2,7 @@ extends Node2D
 
 signal finished
 
-func _ready() -> void:
+func _ready() :
 	for child in get_children():
 		child.connect("tree_exited", self, "_on_Child_tree_exited")
 

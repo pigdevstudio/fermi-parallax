@@ -9,7 +9,7 @@ export var duration := 1.0
 onready var player := get_node(player_path)
 
 
-func tween_player() -> void:
+func tween_player() :
 	interpolate_property(player, "position", player.position,
 			target_position, duration, Tween.TRANS_BACK, Tween.EASE_OUT)
 	interpolate_property(player, "rotation", player.rotation,

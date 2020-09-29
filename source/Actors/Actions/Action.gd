@@ -9,15 +9,15 @@ var player: Player
 
 var available := true
 
-func execute() -> void:
+func execute() :
 	if resource.current - cost >= 0.0:
 		_execute()
 
 
-func cancel() -> void:
+func cancel() :
 	pass
 
 
-func _execute() -> void:
+func _execute() :
 	pass
 

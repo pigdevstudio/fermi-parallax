@@ -128,7 +128,7 @@ custom_constants/separation = 14
 margin_right = 600.0
 margin_bottom = 40.0
 custom_fonts/font = ExtResource( 1 )
-text = "Score: %d"
+text = "Score: 0"
 
 [node name="EnemyInterface" type="VBoxContainer" parent="HBoxContainer/Right/VBoxContainer"]
 visible = false

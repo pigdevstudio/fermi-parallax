@@ -10,25 +10,25 @@ onready var animator := $AnimationPlayer
 onready var _velocity := speed * direction
 
 
-func _ready() -> void:
+func _ready() :
 	randomize()
 	$Timer.wait_time = rand_range(wait_min, wait_max)
 
 
-func _on_HurtBox_damage_taken(damage) -> void:
+func _on_HurtBox_damage_taken(damage) :
 	health.current -= damage
 	countdown()
 
 
-func _process(delta: float) -> void:
+func _process(delta: float) :
 	translate(_velocity * delta)
 
 
-func _on_SensorArea_area_entered(area: Area2D) -> void:
+func _on_SensorArea_area_entered(area: Area2D) :
 	countdown()
 
 
-func countdown() -> void:
+func countdown() :
 	if animator.current_animation == "explode":
 		return
 	if animator.current_animation == "countdown":
@@ -36,11 +36,11 @@ func countdown() -> void:
 	animator.play("countdown")
 
 
-func _on_Health_depleted() -> void:
+func _on_Health_depleted() :
 	set_process(false)
 	if not animator.current_animation == "explode":
 		animator.play("explode")
 
 
-func _on_Timer_timeout() -> void:
+func _on_Timer_timeout() :
 	set_process(false)

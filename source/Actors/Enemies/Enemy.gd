@@ -15,10 +15,11 @@ onready var weapon := $Weapon
 onready var score_pop_spawner := $ScoreLabelSpawner2D
 onready var damage_label_spawner := $DamageLabelSpawner2D
 
-func die() -> void:
+func die() :
 	animator.play("die")
 	
 	score_pop_spawner.value_to_display = score
+	ScoreSingleton.current_score += score
 	score_pop_spawner.spawn()
 	
 	explosion.set_as_toplevel(true)
@@ -28,7 +29,7 @@ func die() -> void:
 	emit_signal("died")
 
 
-func _on_HurtBox_damage_taken(damage) -> void:
+func _on_HurtBox_damage_taken(damage) :
 	damage_label_spawner.spawn()
 	damage_label_spawner.spawn.modulate = Color(0.984375, 0.388367, 0.388367)
 	damage_label_spawner.spawn.text = "-%s" % damage

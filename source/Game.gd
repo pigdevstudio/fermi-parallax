@@ -8,11 +8,11 @@ onready var _level := $Level
 onready var _transit_rect := $Interface/SceneTransitionRect
 onready var _interface_animator := $Interface/AnimationPlayer
 
-func _ready() -> void:
+func _ready() :
 	initialize_level()
 
 
-func initialize_level() -> void:
+func initialize_level() :
 	_level.player.connect("died", self, "_on_Player_died")
 	_interface.link_player_resources(_level.player)
 	_level.connect("finished", self, "_on_Level_finished")
@@ -23,11 +23,11 @@ func initialize_level() -> void:
 	start_cinematic()
 
 
-func _on_Player_died() -> void:
+func _on_Player_died() :
 	_transit_rect.transit(game_over_screen_path)
 
 
-func _on_Level_finished(next_level_path) -> void:
+func _on_Level_finished(next_level_path) :
 	_interface.fade_out()
 	yield(_interface.fade_animator, "animation_finished")
 	_level.queue_free()
