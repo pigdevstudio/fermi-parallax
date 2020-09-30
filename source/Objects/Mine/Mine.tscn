@@ -7,13 +7,13 @@
 [ext_resource path="res://Actors/Resources/Resource.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Objects/Explosion/Explosion.tscn" type="PackedScene" id=6]
 
+[sub_resource type="CircleShape2D" id=7]
+radius = 272.118
+
 [sub_resource type="CircleShape2D" id=1]
-radius = 264.121
+radius = 40.0
 
-[sub_resource type="CircleShape2D" id=2]
-radius = 24.0
-
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=2]
 resource_name = "countdown"
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite/Light:self_modulate")
@@ -42,7 +42,7 @@ tracks/1/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=3]
 length = 3.0
 tracks/0/type = "animation"
 tracks/0/path = NodePath("Explosion/AnimationPlayer")
@@ -153,7 +153,7 @@ tracks/8/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=4]
 resource_name = "idle"
 length = 6.0
 loop = true
@@ -182,7 +182,7 @@ tracks/1/keys = {
 "values": [ 0.0, -17.6842 ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=5]
 resource_name = "setup"
 tracks/0/type = "value"
 tracks/0/path = NodePath("HitBox2D:monitoring")
@@ -283,7 +283,7 @@ tracks/7/keys = {
 } ]
 }
 
-[sub_resource type="CircleShape2D" id=7]
+[sub_resource type="CircleShape2D" id=6]
 radius = 96.0
 
 [node name="Mine" type="Node2D"]
@@ -295,19 +295,17 @@ wait_max = 4.5
 [node name="HitBox2D" parent="." instance=ExtResource( 1 )]
 damage = 5.0
 
-[node name="CollisionShape2D" parent="HitBox2D" index="0"]
-shape = SubResource( 1 )
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox2D"]
+shape = SubResource( 7 )
 
 [node name="HurtBox" parent="." instance=ExtResource( 2 )]
-visible = false
 monitoring = false
 monitorable = false
 
-[node name="CollisionShape2D" parent="HurtBox" index="0"]
-shape = SubResource( 2 )
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
-visible = false
 texture = ExtResource( 3 )
 region_enabled = true
 region_rect = Rect2( 9, 32, 110, 94 )
@@ -320,10 +318,10 @@ region_rect = Rect2( 54, 5, 23, 23 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "setup"
-anims/countdown = SubResource( 3 )
-anims/explode = SubResource( 4 )
-anims/idle = SubResource( 5 )
-anims/setup = SubResource( 6 )
+anims/countdown = SubResource( 2 )
+anims/explode = SubResource( 3 )
+anims/idle = SubResource( 4 )
+anims/setup = SubResource( 5 )
 
 [node name="Health" parent="." instance=ExtResource( 5 )]
 max_amount = 3.0
@@ -335,7 +333,7 @@ collision_layer = 0
 collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SensorArea"]
-shape = SubResource( 7 )
+shape = SubResource( 6 )
 
 [node name="Explosion" parent="." instance=ExtResource( 6 )]
 scale = Vector2( 1.3, 1.3 )
@@ -353,5 +351,3 @@ scale = Vector2( 1.6, 1.6 )
 [connection signal="screen_entered" from="VisibilityNotifier2D" to="Timer" method="start"]
 
 [editable path="HitBox2D"]
-
-[editable path="HurtBox"]

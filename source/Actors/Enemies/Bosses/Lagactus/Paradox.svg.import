@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/lagactus.svg-18095ecaed02529c0c7c8701f9954c08.stex"
+path="res://.import/Paradox.svg-29b0fda9e01b0da9816ac88a0493de39.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Actors/Enemies/Bosses/Lagactus/lagactus.svg"
-dest_files=[ "res://.import/lagactus.svg-18095ecaed02529c0c7c8701f9954c08.stex" ]
+source_file="res://Actors/Enemies/Bosses/Lagactus/Paradox.svg"
+dest_files=[ "res://.import/Paradox.svg-29b0fda9e01b0da9816ac88a0493de39.stex" ]
 
 [params]
 

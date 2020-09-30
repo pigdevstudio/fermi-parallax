@@ -65,7 +65,6 @@ __meta__ = {
 [node name="ButtonSFX" parent="MarginContainer/VBoxContainer/MarginContainer/RetryButton" instance=ExtResource( 5 )]
 
 [node name="SceneTransitionRect" parent="." instance=ExtResource( 3 )]
-visible = false
 next_scene_path = "res://Game.tscn"
 [connection signal="pressed" from="MarginContainer/VBoxContainer/MarginContainer/RetryButton" to="MarginContainer/VBoxContainer/MarginContainer/RetryButton/ButtonSFX" method="play"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/MarginContainer/RetryButton" to="." method="_on_RetryButton_pressed"]

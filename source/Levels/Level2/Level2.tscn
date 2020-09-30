@@ -860,6 +860,7 @@ __meta__ = {
 "_edit_vertical_guides_": [ 968.0 ]
 }
 background_music = ExtResource( 15 )
+next_level_path = "res://Levels/Level3/Level3.tscn"
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 968, 966.775 )

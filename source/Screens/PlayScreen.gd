@@ -9,6 +9,11 @@ onready var animator := $AnimationPlayer
 onready var score_label := $HBoxContainer/Right/VBoxContainer/ScoreLabel
 
 func _ready():
+	for health in get_tree().get_nodes_in_group("enemy_health"):
+		enemy_healthbar.resource = health
+		enemy_interface.show()
+		health.connect("changed", self, "update_enemy_healthbar")
+		health.connect("depleted", self, "_on_Enemy_Health_depleted")
 	get_tree().connect("node_added", self, "_on_SceneTree_node_added")
 	ScoreSingleton.connect("scored", self, "_on_ScoreSingleton_scored")
 

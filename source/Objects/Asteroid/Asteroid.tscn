@@ -289,14 +289,14 @@ texture = ExtResource( 2 )
 ] instance=ExtResource( 4 )]
 team = "asteroid"
 
-[node name="CollisionShape2D" parent="HitBox2D" index="0"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox2D"]
 shape = SubResource( 8 )
 
 [node name="HurtBox" parent="." instance=ExtResource( 5 )]
 team = "asteroid"
 
-[node name="CollisionShape2D" parent="HurtBox" index="0"]
-shape = SubResource( 9 )
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+shape = SubResource( 8 )
 
 [node name="DestructionArea" type="Area2D" parent="."]
 position = Vector2( 0, -1 )

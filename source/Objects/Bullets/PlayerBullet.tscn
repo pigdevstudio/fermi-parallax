@@ -9,3 +9,5 @@ spread = 0.0
 
 [node name="HitBox" parent="." index="2"]
 team = "player"
+
+[editable path="HitBox"]

@@ -1,9 +1,239 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=36 format=2]
 
-[ext_resource path="res://Actors/Enemies/Bosses/Lagactus/lagactus.svg" type="Texture" id=2]
+[ext_resource path="res://Objects/HitBox/HitBox.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Actors/Enemies/Bosses/Lagactus/Paradox.svg" type="Texture" id=2]
+[ext_resource path="res://Actors/Enemies/Bosses/Lagactus/Paradox.gd" type="Script" id=3]
+[ext_resource path="res://Objects/HurtBox/HurtBox.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Actors/Resources/Resource.tscn" type="PackedScene" id=7]
 
-[sub_resource type="Animation" id=1]
-resource_name = "SETUP"
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+
+uniform bool damaged = false;
+
+void fragment(){
+	vec4 previous_color = texture(TEXTURE, UV);
+	vec4 white_color = vec4(1.0, 1.0, 1.0, previous_color.a);
+	vec4 new_color = previous_color;
+	
+	if (damaged == true){
+		new_color = white_color;
+	}
+	COLOR = new_color;
+}"
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 1 )
+shader_param/damaged = false
+
+[sub_resource type="CircleShape2D" id=3]
+radius = 120.266
+
+[sub_resource type="CapsuleShape2D" id=4]
+radius = 168.0
+height = 224.0
+
+[sub_resource type="Animation" id=5]
+resource_name = "LeftHandAttack"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("HandLeft:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.5, 1, 1.5 ),
+"transitions": PoolRealArray( 0.5, 0.5, 0.15, 0.5, 0.5 ),
+"update": 0,
+"values": [ Vector2( -512, 264 ), Vector2( -456, 264 ), Vector2( -776, 360 ), Vector2( -176, 504 ), Vector2( -512, 264 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("HandLeft:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3, 0.5, 1, 1.5 ),
+"transitions": PoolRealArray( 0.5, 0.5, 0.5, 1, 0.5 ),
+"update": 0,
+"values": [ 0.0, 15.0, -59.9999, -89.9999, 0.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("HandLeft:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.3, 0.5, 1, 1.5 ),
+"transitions": PoolRealArray( 0.5, 0.5, 0.5, 1, 0.5 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 0.775249, 0.775249 ), Vector2( 1.18392, 1.18392 ), Vector2( 1, 1 ), Vector2( 1, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Head/Eyes/SpriteNormal:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Head/Eyes/SpriteHurt:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Head/Eyes/SpriteAngry:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("../AnimationTree:parameters/conditions/left_attack")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 1.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("HandLeft/HitBox2D/CollisionShape2D:disabled")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "RightHandAttack"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("HandRight:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.5, 1, 1.5 ),
+"transitions": PoolRealArray( 0.5, 0.5, 0.15, 0.5, 0.5 ),
+"update": 0,
+"values": [ Vector2( 512, 264 ), Vector2( 408, 264 ), Vector2( 792, 264 ), Vector2( 176, 504 ), Vector2( 512, 264 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("HandRight:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3, 0.5, 1, 1.5 ),
+"transitions": PoolRealArray( 0.5, 0.5, 0.5, 1, 0.5 ),
+"update": 0,
+"values": [ 0.0, -15.0, 60.0, 90.0, 0.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("HandRight:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.3, 0.5, 1, 1.5 ),
+"transitions": PoolRealArray( 0.5, 0.5, 0.5, 1, 0.5 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 0.775249, 0.775249 ), Vector2( 1.18392, 1.18392 ), Vector2( 1, 1 ), Vector2( 1, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Head/Eyes/SpriteAngry:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Head/Eyes/SpriteHurt:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Head/Eyes/SpriteNormal:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("../AnimationTree:parameters/conditions/right_attack")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 1.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("HandRight/HitBox2D/CollisionShape2D:disabled")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true ]
+}
+
+[sub_resource type="Animation" id=7]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Head:position")
 tracks/0/interp = 1
@@ -400,9 +630,224 @@ tracks/32/keys = {
 "update": 0,
 "values": [ Color( 1.7, 1.7, 1.7, 1 ) ]
 }
+tracks/33/type = "value"
+tracks/33/path = NodePath("Head/Eyes/SpriteNormal:scale")
+tracks/33/interp = 1
+tracks/33/loop_wrap = true
+tracks/33/imported = false
+tracks/33/enabled = true
+tracks/33/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/34/type = "value"
+tracks/34/path = NodePath(".:scale")
+tracks/34/interp = 1
+tracks/34/loop_wrap = true
+tracks/34/imported = false
+tracks/34/enabled = true
+tracks/34/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/35/type = "value"
+tracks/35/path = NodePath("HandRight/HitBox2D:scale")
+tracks/35/interp = 1
+tracks/35/loop_wrap = true
+tracks/35/imported = false
+tracks/35/enabled = true
+tracks/35/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/36/type = "value"
+tracks/36/path = NodePath("Head/Eyes:scale")
+tracks/36/interp = 1
+tracks/36/loop_wrap = true
+tracks/36/imported = false
+tracks/36/enabled = true
+tracks/36/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/37/type = "value"
+tracks/37/path = NodePath("Head/Mouth:scale")
+tracks/37/interp = 1
+tracks/37/loop_wrap = true
+tracks/37/imported = false
+tracks/37/enabled = true
+tracks/37/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/38/type = "value"
+tracks/38/path = NodePath("HandRight:scale")
+tracks/38/interp = 1
+tracks/38/loop_wrap = true
+tracks/38/imported = false
+tracks/38/enabled = true
+tracks/38/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/39/type = "value"
+tracks/39/path = NodePath("HandLeft:scale")
+tracks/39/interp = 1
+tracks/39/loop_wrap = true
+tracks/39/imported = false
+tracks/39/enabled = true
+tracks/39/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/40/type = "value"
+tracks/40/path = NodePath("HandRight/OpenHandSprite:scale")
+tracks/40/interp = 1
+tracks/40/loop_wrap = true
+tracks/40/imported = false
+tracks/40/enabled = true
+tracks/40/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/41/type = "value"
+tracks/41/path = NodePath("Head:scale")
+tracks/41/interp = 1
+tracks/41/loop_wrap = true
+tracks/41/imported = false
+tracks/41/enabled = true
+tracks/41/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/42/type = "value"
+tracks/42/path = NodePath("HandRight/HitBox2D/CollisionShape2D:scale")
+tracks/42/interp = 1
+tracks/42/loop_wrap = true
+tracks/42/imported = false
+tracks/42/enabled = true
+tracks/42/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/43/type = "value"
+tracks/43/path = NodePath("Head/Mouth/SpriteNormal:scale")
+tracks/43/interp = 1
+tracks/43/loop_wrap = true
+tracks/43/imported = false
+tracks/43/enabled = true
+tracks/43/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/44/type = "value"
+tracks/44/path = NodePath("HandLeft/OpenHandSprite:scale")
+tracks/44/interp = 1
+tracks/44/loop_wrap = true
+tracks/44/imported = false
+tracks/44/enabled = true
+tracks/44/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/45/type = "value"
+tracks/45/path = NodePath("HandLeft/HitBox2D:scale")
+tracks/45/interp = 1
+tracks/45/loop_wrap = true
+tracks/45/imported = false
+tracks/45/enabled = true
+tracks/45/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/46/type = "value"
+tracks/46/path = NodePath("HandLeft/HitBox2D/CollisionShape2D:scale")
+tracks/46/interp = 1
+tracks/46/loop_wrap = true
+tracks/46/imported = false
+tracks/46/enabled = true
+tracks/46/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/47/type = "value"
+tracks/47/path = NodePath("Head/Sprite:scale")
+tracks/47/interp = 1
+tracks/47/loop_wrap = true
+tracks/47/imported = false
+tracks/47/enabled = true
+tracks/47/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/48/type = "value"
+tracks/48/path = NodePath("HandLeft/HitBox2D/CollisionShape2D:disabled")
+tracks/48/interp = 1
+tracks/48/loop_wrap = true
+tracks/48/imported = false
+tracks/48/enabled = true
+tracks/48/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/49/type = "value"
+tracks/49/path = NodePath("HandRight/HitBox2D/CollisionShape2D:disabled")
+tracks/49/interp = 1
+tracks/49/loop_wrap = true
+tracks/49/imported = false
+tracks/49/enabled = true
+tracks/49/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/50/type = "value"
+tracks/50/path = NodePath("Head/HurtBox/CollisionShape2D:disabled")
+tracks/50/interp = 1
+tracks/50/loop_wrap = true
+tracks/50/imported = false
+tracks/50/enabled = true
+tracks/50/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
 
-[sub_resource type="Animation" id=2]
-resource_name = "arrive"
+[sub_resource type="Animation" id=8]
 length = 3.3
 tracks/0/type = "value"
 tracks/0/path = NodePath("Head:position")
@@ -658,9 +1103,20 @@ tracks/20/keys = {
 "method": "play"
 } ]
 }
+tracks/21/type = "value"
+tracks/21/path = NodePath("Head/HurtBox/CollisionShape2D:disabled")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
 
-[sub_resource type="Animation" id=3]
-resource_name = "idle"
+[sub_resource type="Animation" id=9]
 length = 2.0
 loop = true
 tracks/0/type = "bezier"
@@ -715,24 +1171,229 @@ tracks/4/keys = {
 "update": 0,
 "values": [ Vector2( -3.56763, 3.56763 ), Vector2( -3.56763, 64.1806 ) ]
 }
-
-[node name="Boss" type="Node2D"]
-__meta__ = {
-"_edit_horizontal_guides_": [ 440.0 ]
+tracks/5/type = "value"
+tracks/5/path = NodePath("Head/Eyes/SpriteNormal:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Head/Eyes/SpriteHurt:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Head/Eyes/SpriteAngry:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Head/Mouth/SpriteNormal:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("Head/Mouth/SpriteCharge:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("Head/Mouth/SpriteShoot:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/11/type = "method"
+tracks/11/path = NodePath("..")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 2 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ "idle" ],
+"method": "_on_AnimationPlayer_animation_finished"
+} ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("Head/HurtBox/CollisionShape2D:disabled")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
 }
 
+[sub_resource type="AnimationNodeAnimation" id=10]
+animation = "Damage"
+
+[sub_resource type="AnimationNodeAnimation" id=11]
+animation = "LeftHandAttack"
+
+[sub_resource type="AnimationNodeAnimation" id=12]
+animation = "RightHandAttack"
+
+[sub_resource type="AnimationNodeAnimation" id=13]
+animation = "SETUP"
+
+[sub_resource type="AnimationNodeAnimation" id=14]
+animation = "arrive"
+
+[sub_resource type="AnimationNodeAnimation" id=15]
+animation = "idle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=16]
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=17]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=18]
+advance_condition = "left_attack"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=19]
+advance_condition = "right_attack"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=20]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=21]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=22]
+switch_mode = 2
+auto_advance = true
+priority = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=23]
+advance_condition = "idle_damaged"
+priority = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=24]
+advance_condition = "left_damaged"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=25]
+advance_condition = "right_damaged"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=26]
+advance_condition = "left_attack"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=27]
+advance_condition = "right_attack"
+
+[sub_resource type="AnimationNodeStateMachine" id=28]
+states/Damage/node = SubResource( 10 )
+states/Damage/position = Vector2( 549, 476 )
+states/LeftHandAttack/node = SubResource( 11 )
+states/LeftHandAttack/position = Vector2( 398, 390 )
+states/RightHandAttack/node = SubResource( 12 )
+states/RightHandAttack/position = Vector2( 722, 390 )
+states/SETUP/node = SubResource( 13 )
+states/SETUP/position = Vector2( 260, 170 )
+states/arrive/node = SubResource( 14 )
+states/arrive/position = Vector2( 549, 170 )
+states/idle/node = SubResource( 15 )
+states/idle/position = Vector2( 549, 259 )
+transitions = [ "SETUP", "arrive", SubResource( 16 ), "arrive", "idle", SubResource( 17 ), "idle", "LeftHandAttack", SubResource( 18 ), "idle", "RightHandAttack", SubResource( 19 ), "LeftHandAttack", "idle", SubResource( 20 ), "RightHandAttack", "idle", SubResource( 21 ), "Damage", "idle", SubResource( 22 ), "idle", "Damage", SubResource( 23 ), "LeftHandAttack", "Damage", SubResource( 24 ), "RightHandAttack", "Damage", SubResource( 25 ), "Damage", "LeftHandAttack", SubResource( 26 ), "Damage", "RightHandAttack", SubResource( 27 ) ]
+start_node = "SETUP"
+graph_offset = Vector2( -2, 150 )
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=29]
+
+[sub_resource type="Animation" id=30]
+length = 0.3
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprites:material:shader_param/damaged")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.15, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false, true, false ]
+}
+
+[node name="Boss" type="Node2D"]
+position = Vector2( 1016, 432 )
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 440.0 ],
+"_edit_vertical_guides_": [ 840.0, 1192.0, 1012.43 ]
+}
+
+[node name="Health" parent="." groups=[
+"enemy_health",
+] instance=ExtResource( 7 )]
+max_amount = 50.0
+
 [node name="Sprites" type="Node2D" parent="."]
+material = SubResource( 2 )
 
 [node name="HandLeft" type="Node2D" parent="Sprites"]
-position = Vector2( -512, 264 )
+use_parent_material = true
+position = Vector2( -412.15, 264.06 )
 
 [node name="OpenHandSprite" type="Sprite" parent="Sprites/HandLeft"]
+use_parent_material = true
 texture = ExtResource( 2 )
 region_enabled = true
 region_rect = Rect2( 0, 673, 324, 351 )
 
 [node name="ClosedHandSprite" type="Sprite" parent="Sprites/HandLeft"]
 visible = false
+use_parent_material = true
 texture = ExtResource( 2 )
 region_enabled = true
 region_rect = Rect2( 686, 710, 258, 287 )
@@ -740,17 +1401,28 @@ region_rect = Rect2( 686, 710, 258, 287 )
 [node name="LightSprite" type="Sprite" parent="Sprites/HandLeft/ClosedHandSprite"]
 visible = false
 self_modulate = Color( 1.5, 1.5, 1.5, 1 )
+use_parent_material = true
 position = Vector2( -8.91284, 43.3641 )
 rotation = 2.91166e-08
-scale = Vector2( 1.02355, 1.02355 )
 texture = ExtResource( 2 )
 region_enabled = true
 region_rect = Rect2( 462, 586, 101, 102 )
 
+[node name="HitBox2D" parent="Sprites/HandLeft" instance=ExtResource( 1 )]
+use_parent_material = true
+position = Vector2( -8, 64 )
+damage = 4.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprites/HandLeft/HitBox2D"]
+shape = SubResource( 3 )
+disabled = true
+
 [node name="HandRight" type="Node2D" parent="Sprites"]
-position = Vector2( 512, 264 )
+use_parent_material = true
+position = Vector2( 412.15, 299.942 )
 
 [node name="OpenHandSprite" type="Sprite" parent="Sprites/HandRight"]
+use_parent_material = true
 texture = ExtResource( 2 )
 flip_h = true
 region_enabled = true
@@ -758,6 +1430,7 @@ region_rect = Rect2( 0, 673, 324, 351 )
 
 [node name="ClosedHandSprite" type="Sprite" parent="Sprites/HandRight"]
 visible = false
+use_parent_material = true
 texture = ExtResource( 2 )
 flip_h = true
 region_enabled = true
@@ -766,18 +1439,28 @@ region_rect = Rect2( 686, 710, 258, 287 )
 [node name="LightSprite" type="Sprite" parent="Sprites/HandRight/ClosedHandSprite"]
 visible = false
 self_modulate = Color( 1.7, 1.7, 1.7, 1 )
+use_parent_material = true
 position = Vector2( 8.45972, 41.7022 )
-scale = Vector2( 1.02355, 1.02355 )
 texture = ExtResource( 2 )
 region_enabled = true
 region_rect = Rect2( 462, 586, 101, 102 )
 
+[node name="HitBox2D" parent="Sprites/HandRight" instance=ExtResource( 1 )]
+use_parent_material = true
+position = Vector2( 0, 64 )
+damage = 4.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprites/HandRight/HitBox2D"]
+shape = SubResource( 3 )
+disabled = true
+
 [node name="Head" type="Node2D" parent="Sprites"]
-position = Vector2( -3.56763, 3.56763 )
+use_parent_material = true
+position = Vector2( -3.56763, 31.8193 )
 
 [node name="Sprite" type="Sprite" parent="Sprites/Head"]
+use_parent_material = true
 position = Vector2( 0, -56 )
-scale = Vector2( 1.2, 1.2 )
 texture = ExtResource( 2 )
 flip_h = true
 region_enabled = true
@@ -785,11 +1468,11 @@ region_rect = Rect2( 0, 0, 572, 547 )
 
 [node name="Eyes" type="Node2D" parent="Sprites/Head"]
 modulate = Color( 1.2, 1.2, 1.2, 1 )
+use_parent_material = true
 position = Vector2( 0, 24 )
 
 [node name="SpriteNormal" type="Sprite" parent="Sprites/Head/Eyes"]
-visible = false
-scale = Vector2( 1.2, 1.2 )
+use_parent_material = true
 texture = ExtResource( 2 )
 flip_h = true
 region_enabled = true
@@ -797,24 +1480,26 @@ region_rect = Rect2( 680, 530, 280, 70 )
 
 [node name="SpriteHurt" type="Sprite" parent="Sprites/Head/Eyes"]
 visible = false
-scale = Vector2( 1.2, 1.2 )
+use_parent_material = true
 texture = ExtResource( 2 )
 flip_h = true
 region_enabled = true
 region_rect = Rect2( 680, 430, 280, 90 )
 
 [node name="SpriteAngry" type="Sprite" parent="Sprites/Head/Eyes"]
-scale = Vector2( 1.2, 1.2 )
+visible = false
+use_parent_material = true
 texture = ExtResource( 2 )
 flip_h = true
 region_enabled = true
 region_rect = Rect2( 680, 610, 280, 70 )
 
 [node name="Mouth" type="Node2D" parent="Sprites/Head"]
+use_parent_material = true
 position = Vector2( 0, 144 )
 
 [node name="SpriteNormal" type="Sprite" parent="Sprites/Head/Mouth"]
-scale = Vector2( 1.2, 1.2 )
+use_parent_material = true
 texture = ExtResource( 2 )
 flip_h = true
 region_enabled = true
@@ -822,7 +1507,7 @@ region_rect = Rect2( 711, 19, 229, 93 )
 
 [node name="SpriteCharge" type="Sprite" parent="Sprites/Head/Mouth"]
 visible = false
-scale = Vector2( 1.2, 1.2 )
+use_parent_material = true
 texture = ExtResource( 2 )
 flip_h = true
 region_enabled = true
@@ -830,14 +1515,42 @@ region_rect = Rect2( 711, 279, 229, 94 )
 
 [node name="SpriteShoot" type="Sprite" parent="Sprites/Head/Mouth"]
 visible = false
-scale = Vector2( 1.2, 1.2 )
+use_parent_material = true
 texture = ExtResource( 2 )
 flip_h = true
 region_enabled = true
 region_rect = Rect2( 711, 149, 229, 94 )
 
+[node name="HurtBox" parent="Sprites/Head" instance=ExtResource( 6 )]
+use_parent_material = true
+position = Vector2( 3.56763, -3.87173 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprites/Head/HurtBox"]
+position = Vector2( 0, -59.0988 )
+shape = SubResource( 4 )
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprites"]
-autoplay = "arrive"
-anims/SETUP = SubResource( 1 )
-anims/arrive = SubResource( 2 )
-anims/idle = SubResource( 3 )
+playback_process_mode = 0
+playback_default_blend_time = 0.1
+anims/LeftHandAttack = SubResource( 5 )
+anims/RightHandAttack = SubResource( 6 )
+anims/SETUP = SubResource( 7 )
+anims/arrive = SubResource( 8 )
+anims/idle = SubResource( 9 )
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource( 28 )
+anim_player = NodePath("../Sprites/AnimationPlayer")
+active = true
+process_mode = 0
+parameters/playback = SubResource( 29 )
+parameters/conditions/idle_damaged = false
+parameters/conditions/left_attack = false
+parameters/conditions/left_damaged = false
+parameters/conditions/right_attack = false
+parameters/conditions/right_damaged = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Damage = SubResource( 30 )
+[connection signal="damage_taken" from="Sprites/Head/HurtBox" to="." method="_on_HurtBox_damage_taken"]
+[connection signal="animation_finished" from="Sprites/AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
