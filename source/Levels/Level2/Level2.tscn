@@ -686,6 +686,18 @@ tracks/8/keys = {
 "method": "end_cinematic"
 } ]
 }
+tracks/9/type = "value"
+tracks/9/path = NodePath("Comet:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0, 4, 4.5 ),
+"transitions": PoolRealArray( 0.5, -2, 1 ),
+"update": 0,
+"values": [ Vector2( 960, 1072 ), Vector2( 960, 184 ), Vector2( 960, 320 ) ]
+}
 
 [sub_resource type="Animation" id=14]
 tracks/0/type = "value"
@@ -859,8 +871,9 @@ script = ExtResource( 4 )
 __meta__ = {
 "_edit_vertical_guides_": [ 968.0 ]
 }
-background_music = ExtResource( 15 )
+background_music = ExtResource( 24 )
 next_level_path = "res://Levels/Level3/Level3.tscn"
+current_event = 11
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 968, 966.775 )
@@ -918,10 +931,10 @@ region_rect = Rect2( 354, 22, 316, 256 )
 environment = SubResource( 4 )
 
 [node name="WaveSpawner2D" parent="." instance=ExtResource( 2 )]
-spawn_scene = ExtResource( 5 )
+spawn_scene = ExtResource( 20 )
 
 [node name="Comet" parent="." instance=ExtResource( 11 )]
-position = Vector2( 936, 2600 )
+position = Vector2( 960, 320 )
 
 [node name="SFX" type="AudioStreamPlayer2D" parent="."]
 position = Vector2( 960, 960 )
@@ -949,7 +962,6 @@ anims/13 = SubResource( 18 )
 [node name="Tween" type="Tween" parent="."]
 script = ExtResource( 10 )
 player_path = NodePath("../Player")
-target_position = Vector2( 960, 120 )
-target_rotation = 180.0
+target_position = Vector2( 264, 936 )
 duration = 2.0
 [connection signal="spawned" from="WaveSpawner2D" to="." method="_on_WaveSpawner2D_spawned"]

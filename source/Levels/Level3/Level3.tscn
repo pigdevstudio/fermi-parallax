@@ -3,7 +3,7 @@
 [ext_resource path="res://Levels/LevelsAnimations/player_arriving.tres" type="Animation" id=1]
 [ext_resource path="res://Levels/Level2/Waves/Wave5.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Levels/Wave/Wave.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Actors/Enemies/Bosses/Lagactus/Paradox.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Actors/Enemies/Bosses/Paradox/Paradox.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Areas/planets.svg" type="Texture" id=6]
 [ext_resource path="res://Levels/Level1/Juhani Junkala [Retro Game Music Pack] Ending.ogg" type="AudioStream" id=10]
 [ext_resource path="res://Areas/star.svg" type="Texture" id=11]
@@ -13,6 +13,7 @@
 [ext_resource path="res://Actors/Player/Player.tscn" type="PackedScene" id=18]
 [ext_resource path="res://Objects/Spawner/Spawner2D.tscn" type="PackedScene" id=22]
 [ext_resource path="res://Levels/Level1/sfx_sound_depressurizing.wav" type="AudioStream" id=23]
+
 
 [sub_resource type="Curve" id=1]
 _data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.5, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]

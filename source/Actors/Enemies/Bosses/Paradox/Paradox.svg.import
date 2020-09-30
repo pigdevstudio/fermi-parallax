@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/topdown-damaged-character.svg-eff8def05f1a9be7354b3358db7537cb.stex"
+path="res://.import/Paradox.svg-9412acd71c028bb7b1cad59091f13fc7.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Actors/topdown-damaged-character.svg"
-dest_files=[ "res://.import/topdown-damaged-character.svg-eff8def05f1a9be7354b3358db7537cb.stex" ]
+source_file="res://Actors/Enemies/Bosses/Paradox/Paradox.svg"
+dest_files=[ "res://.import/Paradox.svg-9412acd71c028bb7b1cad59091f13fc7.stex" ]
 
 [params]
 
