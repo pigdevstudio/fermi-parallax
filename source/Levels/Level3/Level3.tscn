@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://Levels/LevelsAnimations/player_arriving.tres" type="Animation" id=1]
 [ext_resource path="res://Levels/Level2/Waves/Wave5.tscn" type="PackedScene" id=2]
@@ -14,14 +14,13 @@
 [ext_resource path="res://Objects/Spawner/Spawner2D.tscn" type="PackedScene" id=22]
 [ext_resource path="res://Levels/Level1/sfx_sound_depressurizing.wav" type="AudioStream" id=23]
 
-
-[sub_resource type="Curve" id=1]
+[sub_resource type="Curve" id=10]
 _data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.5, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
 
-[sub_resource type="CurveTexture" id=2]
-curve = SubResource( 1 )
+[sub_resource type="CurveTexture" id=11]
+curve = SubResource( 10 )
 
-[sub_resource type="ParticlesMaterial" id=3]
+[sub_resource type="ParticlesMaterial" id=12]
 emission_shape = 2
 emission_box_extents = Vector3( 960, 540, 1 )
 flag_disable_z = true
@@ -33,16 +32,18 @@ angle = 360.0
 angle_random = 1.0
 scale = 0.5
 scale_random = 0.76
-scale_curve = SubResource( 2 )
+scale_curve = SubResource( 11 )
 
-[sub_resource type="Environment" id=4]
+[sub_resource type="Environment" id=13]
 background_mode = 4
 glow_enabled = true
 glow_blend_mode = 0
 glow_bicubic_upscale = true
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=14]
 resource_name = "01-boss"
+length = 5.0
+step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("Wave/Boss:position")
 tracks/0/interp = 1
@@ -50,34 +51,76 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0, 0.05, 3, 4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 964, 576 ), Vector2( 964, 464 ) ]
+"values": [ Vector2( 964, 576 ), Vector2( 964, 616 ), Vector2( 964, 616 ), Vector2( 964, 464 ) ]
 }
-tracks/1/type = "value"
-tracks/1/path = NodePath("Polygon2D2:position")
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 1 ),
+"times": PoolRealArray( 0, 5 ),
 "transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 0, -112 ), Vector2( 0, -248 ) ]
+"values": [ {
+"args": [  ],
+"method": "start_cinematic"
+}, {
+"args": [  ],
+"method": "end_cinematic"
+} ]
 }
-tracks/2/type = "value"
-tracks/2/path = NodePath("Polygon2D:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0, 1 ),
+
+[sub_resource type="Shader" id=9]
+code = "shader_type canvas_item;
+
+uniform bool damaged = false;
+
+void fragment(){
+	vec4 previous_color = texture(TEXTURE, UV);
+	vec4 white_color = vec4(1.0, 1.0, 1.0, previous_color.a);
+	vec4 new_color = previous_color;
+	
+	if (damaged == true){
+		new_color = white_color;
+	}
+	COLOR = new_color;
+}"
+
+[sub_resource type="ShaderMaterial" id=15]
+resource_local_to_scene = true
+shader = SubResource( 9 )
+shader_param/damaged = false
+
+[sub_resource type="Animation" id=16]
+resource_name = "cinematic"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("BottomBlackBar:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 0, 1016 ), Vector2( 0, 1160 ) ]
+"values": [ Vector2( 0, 1152 ), Vector2( 0, 1088 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("TopBlackBar:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 64 ) ]
 }
 
 [node name="Level" type="Node2D"]
@@ -108,7 +151,7 @@ amount = 16
 lifetime = 10.0
 preprocess = 10.0
 visibility_rect = Rect2( -960, -540, 1920, 1080 )
-process_material = SubResource( 3 )
+process_material = SubResource( 12 )
 texture = ExtResource( 11 )
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
@@ -140,7 +183,7 @@ region_enabled = true
 region_rect = Rect2( 16, 320, 256, 257 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource( 4 )
+environment = SubResource( 13 )
 
 [node name="WaveSpawner2D" parent="." instance=ExtResource( 22 )]
 spawn_scene = ExtResource( 2 )
@@ -152,9 +195,9 @@ volume_db = -16.0
 bus = "SFX"
 
 [node name="EventsPlayer" type="AnimationPlayer" parent="."]
-autoplay = "00-player-arriving"
+autoplay = "01-boss"
 anims/00-player-arriving = ExtResource( 1 )
-anims/01-boss = SubResource( 5 )
+anims/01-boss = SubResource( 14 )
 
 [node name="Tween" type="Tween" parent="."]
 script = ExtResource( 17 )
@@ -165,16 +208,20 @@ duration = 2.0
 [node name="Wave" parent="." instance=ExtResource( 3 )]
 
 [node name="Boss" parent="Wave" instance=ExtResource( 4 )]
+material = SubResource( 15 )
 position = Vector2( 964, 576 )
 
-[node name="Polygon2D" type="Polygon2D" parent="."]
-position = Vector2( 0, 1016 )
-z_index = 1
+[node name="BottomBlackBar" type="Polygon2D" parent="."]
+position = Vector2( 0, 1152 )
+z_index = 2
 color = Color( 0, 0, 0, 1 )
-polygon = PoolVector2Array( -64, 0, -64, 192, 2024, 200, 2016, 0 )
+polygon = PoolVector2Array( 0, 0, 0, -64, 1920, -64, 1920, 0 )
 
-[node name="Polygon2D2" type="Polygon2D" parent="."]
-position = Vector2( 0, -112 )
+[node name="TopBlackBar" type="Polygon2D" parent="."]
+z_index = 2
 color = Color( 0, 0, 0, 1 )
-polygon = PoolVector2Array( -64, 0, -64, 192, 2024, 200, 2016, 0 )
+polygon = PoolVector2Array( 0, 0, 0, -64, 1920, -64, 1920, 0 )
+
+[node name="CinematicPlayer" type="AnimationPlayer" parent="."]
+anims/cinematic = SubResource( 16 )
 [connection signal="spawned" from="WaveSpawner2D" to="." method="_on_WaveSpawner2D_spawned"]

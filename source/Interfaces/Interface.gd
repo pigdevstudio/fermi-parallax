@@ -5,19 +5,12 @@ onready var fade_animator := $SceneTransitionRect/AnimationPlayer
 onready var _play_screen := $PlayScreen
 onready var _scene_transition_rect := $SceneTransitionRect
 
+
 func fade_in():
-	fade_animator.play_backwards("Fade")
-
-
-func fade_out():
-	fade_animator.play("Fade")
-
-
-func fade_hud_in():
 	_play_screen.fade_in()
 
 
-func fade_hud_out():
+func fade_out():
 	_play_screen.fade_out()
 
 

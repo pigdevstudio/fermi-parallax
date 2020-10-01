@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://Actors/Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Objects/Spawner/Spawner2D.tscn" type="PackedScene" id=2]
@@ -372,6 +372,34 @@ tracks/1/keys = {
 } ]
 }
 
+[sub_resource type="Animation" id=16]
+resource_name = "cinematic"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("BottomBlackBar:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 1152 ), Vector2( 0, 1088 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("TopBlackBar:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 64 ) ]
+}
+
 [node name="Level" type="Node2D"]
 script = ExtResource( 4 )
 background_music = ExtResource( 15 )
@@ -411,4 +439,19 @@ bus = "SFX"
 script = ExtResource( 16 )
 player_path = NodePath("../Player")
 target_position = Vector2( 960, 960 )
+
+[node name="TopBlackBar" type="Polygon2D" parent="."]
+position = Vector2( 0, 64 )
+z_index = 2
+color = Color( 0, 0, 0, 1 )
+polygon = PoolVector2Array( 0, 0, 0, -64, 1920, -64, 1920, 0 )
+
+[node name="BottomBlackBar" type="Polygon2D" parent="."]
+position = Vector2( 0, 1088 )
+z_index = 2
+color = Color( 0, 0, 0, 1 )
+polygon = PoolVector2Array( 0, 0, 0, -64, 1920, -64, 1920, 0 )
+
+[node name="CinematicPlayer" type="AnimationPlayer" parent="."]
+anims/cinematic = SubResource( 16 )
 [connection signal="spawned" from="WaveSpawner2D" to="." method="_on_WaveSpawner2D_spawned"]

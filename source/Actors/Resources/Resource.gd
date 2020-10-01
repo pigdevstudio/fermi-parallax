@@ -6,8 +6,9 @@ signal changed(new_amount)
 signal depleted
 
 
-export var max_amount := 10.0 setget set_max
-var current := max_amount setget set_current
+export var max_amount = 10.0 setget set_max
+export var invulnerable = false
+var current = max_amount setget set_current
 
 var depleted := false
 
@@ -22,6 +23,8 @@ func set_max(new_max: float) :
 
 
 func set_current(new_value: float) :
+	if invulnerable:
+		return
 	if current == new_value:
 		return
 	current = new_value

@@ -1,18 +1,26 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Interfaces/title_font.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Interfaces/label_font.tres" type="DynamicFont" id=2]
 [ext_resource path="res://Interfaces/SceneTransitionRect.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Screens/GameOverScreen.gd" type="Script" id=4]
 [ext_resource path="res://Interfaces/ButtonSFX.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Screens/main_screen_background.png" type="Texture" id=6]
+[ext_resource path="res://Screens/main_theme.tres" type="Theme" id=7]
 
 [node name="GameOverScreen" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+theme = ExtResource( 7 )
 script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 6 )
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchor_right = 1.0
@@ -65,6 +73,7 @@ __meta__ = {
 [node name="ButtonSFX" parent="MarginContainer/VBoxContainer/MarginContainer/RetryButton" instance=ExtResource( 5 )]
 
 [node name="SceneTransitionRect" parent="." instance=ExtResource( 3 )]
+visible = false
 next_scene_path = "res://Game.tscn"
 [connection signal="pressed" from="MarginContainer/VBoxContainer/MarginContainer/RetryButton" to="MarginContainer/VBoxContainer/MarginContainer/RetryButton/ButtonSFX" method="play"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/MarginContainer/RetryButton" to="." method="_on_RetryButton_pressed"]

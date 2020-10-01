@@ -293,6 +293,7 @@ wait_max = 4.5
 
 [node name="HitBox2D" parent="." instance=ExtResource( 1 )]
 damage = 5.0
+team = "mine"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox2D"]
 shape = SubResource( 1 )
@@ -300,6 +301,7 @@ shape = SubResource( 1 )
 [node name="HurtBox" parent="." instance=ExtResource( 2 )]
 monitoring = false
 monitorable = false
+team = "mine"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
 shape = SubResource( 2 )

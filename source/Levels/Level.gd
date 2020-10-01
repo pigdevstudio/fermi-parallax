@@ -1,14 +1,13 @@
 extends Node2D
 class_name Level
 
-signal cinematic_started
-signal cinematic_ended
 signal finished(next_level_path)
 
 export(AudioStream) var background_music
 export(String, FILE, "*.tscn") var next_level_path
 
 onready var player = $Player
+onready var _cinematic_animator = $CinematicPlayer
 onready var _events_player = $EventsPlayer
 
 export(int) var current_event = 0
@@ -45,8 +44,10 @@ func finish():
 
 
 func start_cinematic():
-	emit_signal("cinematic_started")
+	player.set_process_unhandled_input(false)
+	_cinematic_animator.play("cinematic")
 
 
 func end_cinematic():
-	emit_signal("cinematic_ended")
+	player.set_process_unhandled_input(true)
+	_cinematic_animator.play_backwards("cinematic")

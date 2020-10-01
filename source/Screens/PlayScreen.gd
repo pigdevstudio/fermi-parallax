@@ -18,6 +18,7 @@ func _ready():
 	ScoreSingleton.connect("scored", self, "_on_ScoreSingleton_scored")
 
 
+
 func update_enemy_healthbar(new_value):
 	enemy_interface.show()
 

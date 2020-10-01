@@ -1370,7 +1370,7 @@ use_parent_material = true
 
 [node name="HandLeft" type="Node2D" parent="Sprites"]
 use_parent_material = true
-position = Vector2( -511.468, 264.219 )
+position = Vector2( -417.203, 268.007 )
 
 [node name="OpenHandSprite" type="Sprite" parent="Sprites/HandLeft"]
 use_parent_material = true
@@ -1406,7 +1406,7 @@ disabled = true
 
 [node name="HandRight" type="Node2D" parent="Sprites"]
 use_parent_material = true
-position = Vector2( 511.468, 299.764 )
+position = Vector2( 417.203, 297.198 )
 
 [node name="OpenHandSprite" type="Sprite" parent="Sprites/HandRight"]
 use_parent_material = true
@@ -1443,7 +1443,7 @@ disabled = true
 
 [node name="Head" type="Node2D" parent="Sprites"]
 use_parent_material = true
-position = Vector2( -3.56763, 37.7832 )
+position = Vector2( -3.56763, 21.381 )
 
 [node name="Sprite" type="Sprite" parent="Sprites/Head"]
 use_parent_material = true
@@ -1528,6 +1528,7 @@ anims/idle = SubResource( 36 )
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource( 28 )
 anim_player = NodePath("../Sprites/AnimationPlayer")
+active = true
 process_mode = 0
 parameters/playback = SubResource( 37 )
 parameters/conditions/idle_damaged = false
