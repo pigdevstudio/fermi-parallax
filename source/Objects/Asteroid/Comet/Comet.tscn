@@ -134,7 +134,7 @@ void fragment(){
 [sub_resource type="ShaderMaterial" id=26]
 resource_local_to_scene = true
 shader = SubResource( 9 )
-shader_param/damaged = false
+shader_param/damaged = true
 
 [sub_resource type="Gradient" id=27]
 offsets = PoolRealArray( 0.728395, 1 )
