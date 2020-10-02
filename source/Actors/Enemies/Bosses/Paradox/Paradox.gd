@@ -1,12 +1,12 @@
 extends Node2D
 
 const PARAM_PATH = "parameters/conditions/"
-const DEFAULT_ATTACKS = ["left_attack", "right_attack"]
+const DEFAULT_DIRECTIONS = ["left", "right"]
 
-var _available_attacks = DEFAULT_ATTACKS.duplicate()
+var _available_directions = DEFAULT_DIRECTIONS.duplicate()
 
 var _idle_count = 0
-var _rand_attack = _available_attacks[0]
+var _damage_count = 0
 
 onready var health = $Health
 onready var anim_tree = $AnimationTree
@@ -18,23 +18,32 @@ func _ready():
 
 
 func attack():
-	if _available_attacks.size() < 1:
-		_available_attacks = DEFAULT_ATTACKS.duplicate()
-	
-	_rand_attack = randi() % _available_attacks.size()
-	anim_tree[PARAM_PATH + _available_attacks[_rand_attack]] = true
-	_idle_count = 0
-	_available_attacks.remove(_rand_attack)
+	if _available_directions.size() < 1:
+		_available_directions = DEFAULT_DIRECTIONS.duplicate()
+
+	var attack = ""
+	var rand_index = randi() % _available_directions.size()
+	var direction = _available_directions[rand_index]
+	_available_directions.remove(rand_index)
+
+	if _damage_count > 2:
+		_damage_count = 0
+		attack = "_laser"
+	elif _idle_count > 3:
+		_idle_count = 0
+		attack = "_attack"
+	if attack:
+		anim_tree[PARAM_PATH + direction + attack] = true
 
 
 func _on_AnimationPlayer_animation_finished(anim_name):
 	match anim_name:
 		"idle":
 			_idle_count += 1
-			if _idle_count > 3:
-				attack()
+			attack()
 
 
 func _on_HurtBox_damage_taken(damage):
+	_damage_count += 1
 	health.current -= damage
 	animator.play("Damage")

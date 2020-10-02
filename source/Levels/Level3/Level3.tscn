@@ -14,13 +14,13 @@
 [ext_resource path="res://Objects/Spawner/Spawner2D.tscn" type="PackedScene" id=22]
 [ext_resource path="res://Levels/Level1/sfx_sound_depressurizing.wav" type="AudioStream" id=23]
 
-[sub_resource type="Curve" id=10]
+[sub_resource type="Curve" id=1]
 _data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.5, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
 
-[sub_resource type="CurveTexture" id=11]
-curve = SubResource( 10 )
+[sub_resource type="CurveTexture" id=2]
+curve = SubResource( 1 )
 
-[sub_resource type="ParticlesMaterial" id=12]
+[sub_resource type="ParticlesMaterial" id=3]
 emission_shape = 2
 emission_box_extents = Vector3( 960, 540, 1 )
 flag_disable_z = true
@@ -32,15 +32,15 @@ angle = 360.0
 angle_random = 1.0
 scale = 0.5
 scale_random = 0.76
-scale_curve = SubResource( 11 )
+scale_curve = SubResource( 2 )
 
-[sub_resource type="Environment" id=13]
+[sub_resource type="Environment" id=4]
 background_mode = 4
 glow_enabled = true
 glow_blend_mode = 0
 glow_bicubic_upscale = true
 
-[sub_resource type="Animation" id=14]
+[sub_resource type="Animation" id=5]
 resource_name = "01-boss"
 length = 5.0
 step = 0.05
@@ -74,7 +74,7 @@ tracks/1/keys = {
 } ]
 }
 
-[sub_resource type="Shader" id=9]
+[sub_resource type="Shader" id=6]
 code = "shader_type canvas_item;
 
 uniform bool damaged = false;
@@ -90,12 +90,12 @@ void fragment(){
 	COLOR = new_color;
 }"
 
-[sub_resource type="ShaderMaterial" id=15]
+[sub_resource type="ShaderMaterial" id=7]
 resource_local_to_scene = true
-shader = SubResource( 9 )
+shader = SubResource( 6 )
 shader_param/damaged = false
 
-[sub_resource type="Animation" id=16]
+[sub_resource type="Animation" id=8]
 resource_name = "cinematic"
 length = 0.5
 tracks/0/type = "value"
@@ -151,7 +151,7 @@ amount = 16
 lifetime = 10.0
 preprocess = 10.0
 visibility_rect = Rect2( -960, -540, 1920, 1080 )
-process_material = SubResource( 12 )
+process_material = SubResource( 3 )
 texture = ExtResource( 11 )
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
@@ -183,7 +183,7 @@ region_enabled = true
 region_rect = Rect2( 16, 320, 256, 257 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource( 13 )
+environment = SubResource( 4 )
 
 [node name="WaveSpawner2D" parent="." instance=ExtResource( 22 )]
 spawn_scene = ExtResource( 2 )
@@ -197,7 +197,7 @@ bus = "SFX"
 [node name="EventsPlayer" type="AnimationPlayer" parent="."]
 autoplay = "01-boss"
 anims/00-player-arriving = ExtResource( 1 )
-anims/01-boss = SubResource( 14 )
+anims/01-boss = SubResource( 5 )
 
 [node name="Tween" type="Tween" parent="."]
 script = ExtResource( 17 )
@@ -208,7 +208,7 @@ duration = 2.0
 [node name="Wave" parent="." instance=ExtResource( 3 )]
 
 [node name="Boss" parent="Wave" instance=ExtResource( 4 )]
-material = SubResource( 15 )
+material = SubResource( 7 )
 position = Vector2( 964, 576 )
 
 [node name="BottomBlackBar" type="Polygon2D" parent="."]
@@ -223,5 +223,5 @@ color = Color( 0, 0, 0, 1 )
 polygon = PoolVector2Array( 0, 0, 0, -64, 1920, -64, 1920, 0 )
 
 [node name="CinematicPlayer" type="AnimationPlayer" parent="."]
-anims/cinematic = SubResource( 16 )
+anims/cinematic = SubResource( 8 )
 [connection signal="spawned" from="WaveSpawner2D" to="." method="_on_WaveSpawner2D_spawned"]
