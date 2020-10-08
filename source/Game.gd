@@ -2,6 +2,7 @@ extends Node
 
 
 export(String, FILE, "*.tscn") var game_over_screen_path
+export(String, FILE, "*.tscn") var end_screen_path
 
 onready var _interface := $Interface
 onready var _level := $Level
@@ -23,7 +24,10 @@ func _on_Player_died() :
 	_transit_rect.transit(game_over_screen_path)
 
 
-func _on_Level_finished(next_level_path) :
+func _on_Level_finished(next_level_path):
+	if next_level_path == end_screen_path:
+		_transit_rect.transit(end_screen_path)
+		return
 	_interface.fade_out()
 	yield(_interface.fade_animator, "animation_finished")
 	_level.queue_free()

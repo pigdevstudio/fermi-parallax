@@ -6,7 +6,6 @@ onready var _track_2 := $Track2
 
 
 func crossfade_to(audio_stream: AudioStream):
-	return
 	if _track_1.playing and _track_2.playing:
 		return
 

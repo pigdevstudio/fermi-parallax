@@ -9,6 +9,10 @@ onready var _hit_box = $HitBox2D
 onready var _timer = $Timer
 
 
+func _ready():
+	_hit_collision_shape.disabled = true
+
+
 func _physics_process(delta):
 	_hit_box.position = _beam_particles.position
 	_hit_shape.extents.x = _beam_material.emission_box_extents.x

@@ -10,6 +10,7 @@
 [node name="Game" type="Node"]
 script = ExtResource( 3 )
 game_over_screen_path = "res://Screens/GameOverScreen.tscn"
+end_screen_path = "res://Screens/EndScreen.tscn"
 
 [node name="Level" parent="." instance=ExtResource( 2 )]
 
@@ -21,4 +22,3 @@ script = ExtResource( 6 )
 [node name="PauseMenu" parent="Interface" instance=ExtResource( 5 )]
 
 [node name="SceneTransitionRect" parent="Interface" instance=ExtResource( 4 )]
-visible = false

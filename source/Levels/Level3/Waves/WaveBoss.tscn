@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Levels/Wave/Wave.gd" type="Script" id=1]
+[ext_resource path="res://Actors/Enemies/Bosses/Paradox/Paradox.tscn" type="PackedScene" id=2]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+
+uniform bool damaged = false;
+
+void fragment(){
+	vec4 previous_color = texture(TEXTURE, UV);
+	vec4 white_color = vec4(1.0, 1.0, 1.0, previous_color.a);
+	vec4 new_color = previous_color;
+	
+	if (damaged == true){
+		new_color = white_color;
+	}
+	COLOR = new_color;
+}"
+
+[sub_resource type="ShaderMaterial" id=2]
+resource_local_to_scene = true
+shader = SubResource( 1 )
+shader_param/damaged = false
+
+[node name="Wave" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Boss" parent="." instance=ExtResource( 2 )]
+material = SubResource( 2 )

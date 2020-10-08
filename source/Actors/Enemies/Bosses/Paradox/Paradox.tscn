@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=2]
+[gd_scene load_steps=54 format=2]
 
 [ext_resource path="res://Objects/HitBox/HitBox.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Actors/Enemies/Bosses/Paradox/Paradox.svg" type="Texture" id=2]
@@ -7,6 +7,9 @@
 [ext_resource path="res://Objects/Weapons/LaserWeapon.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Objects/HurtBox/HurtBox.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Actors/Resources/Resource.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Objects/Weapons/white_glowing_circle.png" type="Texture" id=8]
+[ext_resource path="res://Objects/Explosion/Explosion.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Objects/Explosion/random_pitch_explosion_sfx.tres" type="AudioStream" id=10]
 
 [sub_resource type="Animation" id=1]
 length = 0.3
@@ -24,15 +27,580 @@ tracks/0/keys = {
 "values": [ false, true, false, true, false ]
 }
 
-[sub_resource type="CircleShape2D" id=2]
+[sub_resource type="Animation" id=2]
+resource_name = "Move"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 0.5, 1 ),
+"update": 0,
+"values": [ Vector2( 948, 656 ), Vector2( 1016, 408 ) ]
+}
+
+[sub_resource type="Curve" id=3]
+_data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.493213, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=4]
+curve = SubResource( 3 )
+
+[sub_resource type="Curve" id=5]
+min_value = -200.0
+max_value = 200.0
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=6]
+curve = SubResource( 5 )
+
+[sub_resource type="ParticlesMaterial" id=7]
+emission_shape = 1
+emission_sphere_radius = 120.0
+flag_disable_z = true
+gravity = Vector3( 0, 0, 0 )
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+radial_accel = -80.0
+radial_accel_random = 0.3
+tangential_accel = 100.0
+tangential_accel_random = 0.5
+tangential_accel_curve = SubResource( 6 )
+scale_random = 0.3
+scale_curve = SubResource( 4 )
+color = Color( 0.890196, 0.411765, 0.337255, 1 )
+
+[sub_resource type="CircleShape2D" id=8]
 radius = 120.266
 
-[sub_resource type="CapsuleShape2D" id=3]
+[sub_resource type="CapsuleShape2D" id=9]
 radius = 168.0
 height = 224.0
 
-[sub_resource type="Animation" id=4]
-resource_name = "LeftHandAttack"
+[sub_resource type="Animation" id=10]
+length = 3.0
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("FireBurstParticles2D:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("SparkleParticles2D:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("SmokeParticles2D:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("FireTrails/FireTrailParticles2D5:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("FireTrails/FireTrailParticles2D4:emitting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.05, 0.25 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("FireTrails/FireTrailParticles2D3:emitting")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0.1, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("FireTrails/FireTrailParticles2D2:emitting")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0.15, 0.35 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("FireTrails/FireTrailParticles2D:emitting")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/8/type = "audio"
+tracks/8/path = NodePath("SFX")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 10 )
+} ],
+"times": PoolRealArray( 0 )
+}
+
+[sub_resource type="Animation" id=11]
+length = 3.0
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("FireBurstParticles2D:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("SparkleParticles2D:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("SmokeParticles2D:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("FireTrails/FireTrailParticles2D5:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("FireTrails/FireTrailParticles2D4:emitting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.05, 0.25 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("FireTrails/FireTrailParticles2D3:emitting")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0.1, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("FireTrails/FireTrailParticles2D2:emitting")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0.15, 0.35 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("FireTrails/FireTrailParticles2D:emitting")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/8/type = "audio"
+tracks/8/path = NodePath("SFX")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 10 )
+} ],
+"times": PoolRealArray( 0 )
+}
+
+[sub_resource type="Animation" id=12]
+length = 3.0
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("FireBurstParticles2D:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("SparkleParticles2D:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("SmokeParticles2D:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("FireTrails/FireTrailParticles2D5:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("FireTrails/FireTrailParticles2D4:emitting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.05, 0.25 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("FireTrails/FireTrailParticles2D3:emitting")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0.1, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("FireTrails/FireTrailParticles2D2:emitting")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0.15, 0.35 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("FireTrails/FireTrailParticles2D:emitting")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/8/type = "audio"
+tracks/8/path = NodePath("SFX")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 10 )
+} ],
+"times": PoolRealArray( 0 )
+}
+
+[sub_resource type="Animation" id=13]
+resource_name = "Die"
+length = 5.0
+tracks/0/type = "animation"
+tracks/0/path = NodePath("Head/Explosion/AnimationPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"clips": PoolStringArray( "Explode", "Explode" ),
+"times": PoolRealArray( 0.2, 3.5 )
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../AnimationTree:active")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/2/type = "animation"
+tracks/2/path = NodePath("Head/Explosion2/AnimationPlayer")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"clips": PoolStringArray( "Explode" ),
+"times": PoolRealArray( 1.5 )
+}
+tracks/3/type = "animation"
+tracks/3/path = NodePath("Head/Explosion3/AnimationPlayer")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"clips": PoolStringArray( "Explode", "Explode" ),
+"times": PoolRealArray( 0.5, 3.5 )
+}
+tracks/4/type = "animation"
+tracks/4/path = NodePath("Head/Explosion4/AnimationPlayer")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"clips": PoolStringArray( "Explode" ),
+"times": PoolRealArray( 2.2 )
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Head/HurtBox/CollisionShape2D:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Head/Eyes/SpriteNormal:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Head/Eyes/SpriteHurt:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Head/Eyes/SpriteAngry:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("Head/Sprite:self_modulate")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0, 3.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("Head/Eyes:modulate")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0, 3.8, 4.1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1.2, 1.2, 1.2, 1 ), Color( 1.2, 1.2, 1.2, 1 ), Color( 1.2, 1.2, 1.2, 0 ) ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("Head/Mouth:modulate")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0, 4, 4.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/12/type = "method"
+tracks/12/path = NodePath("..")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "queue_free"
+} ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("HandLeft:modulate")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0, 2.4, 3.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/14/type = "value"
+tracks/14/path = NodePath("HandRight:modulate")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"times": PoolRealArray( 0, 2.9, 3.7 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=14]
 length = 0.7
 step = 0.05
 tracks/0/type = "value"
@@ -132,7 +700,7 @@ tracks/7/keys = {
 "values": [ true, false, true ]
 }
 
-[sub_resource type="Animation" id=29]
+[sub_resource type="Animation" id=15]
 resource_name = "LeftHandLaser"
 length = 4.0
 tracks/0/type = "value"
@@ -166,10 +734,10 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 0.5, 3, 3.5, 4 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.5, 1.5, 1.6, 1.7, 1.9, 3, 3.5, 4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 0, 0 ), Vector2( -96, -160 ), Vector2( -96, -160 ), Vector2( -96, -160 ), Vector2( 0, 0 ) ]
+"values": [ Vector2( 0, 0 ), Vector2( -96, -160 ), Vector2( -105, -175 ), Vector2( -120, -200 ), Vector2( -104, -176 ), Vector2( -96, -160 ), Vector2( -96, -160 ), Vector2( -96, -160 ), Vector2( 0, 0 ) ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("HandLeft/ClosedHandSprite:rotation_degrees")
@@ -178,10 +746,10 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 0.5, 1.5, 3, 3.5, 4 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.5, 1.5, 1.6, 1.7, 1.9, 3, 3.5, 4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ 0.0, -15.4632, -15.4632, -74.0497, -74.0497, 0.0 ]
+"values": [ 0.0, -15.4632, -15.4632, -15.4632, -15.4632, -15.4632, -74.0497, -74.0497, 0.0 ]
 }
 tracks/4/type = "value"
 tracks/4/path = NodePath("HandLeft/ClosedHandSprite/LightSprite:modulate")
@@ -202,7 +770,7 @@ tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PoolRealArray( 1.5, 3 ),
+"times": PoolRealArray( 1.6, 3 ),
 "transitions": PoolRealArray( 1, 1 ),
 "values": [ {
 "args": [  ],
@@ -260,9 +828,197 @@ tracks/9/keys = {
 "update": 1,
 "values": [ true, false ]
 }
+tracks/10/type = "value"
+tracks/10/path = NodePath("HandLeft/ClosedHandSprite/LightSprite/ChargingParticles:emitting")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0, 0.5, 1.2, 4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false, false ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("HandLeft/ClosedHandSprite/LightSprite/ChargingParticles:speed_scale")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0, 0.5, 1.2, 4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, 4.0, 0.0 ]
+}
 
-[sub_resource type="Animation" id=5]
-resource_name = "RightHandAttack"
+[sub_resource type="Animation" id=16]
+resource_name = "MouthAttack"
+length = 4.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Head/Mouth/ChargingParticles:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.9, 1.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Head:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.9, 1.8, 1.9, 2.1, 4, 4.5 ),
+"transitions": PoolRealArray( 0.5, 1, 1, 1, 1, 2, 0.5 ),
+"update": 0,
+"values": [ Vector2( -3.56763, 46.3672 ), Vector2( 0, -96 ), Vector2( 0, -96 ), Vector2( 0, -96 ), Vector2( 0, -96 ), Vector2( 0, -96 ), Vector2( -3.56763, 46.3672 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Head:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.9, 1.8, 1.9, 2.4, 2.9, 3.4, 3.9, 4 ),
+"transitions": PoolRealArray( 1, 1, 0.5, 1, 0.5, 1, 0.5, 0.5 ),
+"update": 0,
+"values": [ 0.0, 0.0, 0.0, 30.0, 0.0, -30.0, 5.0, 0.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Head/Mouth/ChargingParticles:speed_scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.9, 1.7, 3.9, 4 ),
+"transitions": PoolRealArray( 1, 0, 0, 1 ),
+"update": 0,
+"values": [ 0.0, 4.0, 4.0, 0.0 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Head/Mouth/SpriteNormal:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.9, 1.9, 3.9 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, false, true ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Head/Mouth/SpriteCharge:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0.9, 1.9, 3.9 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, false ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Head/Mouth/SpriteShoot:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0.9, 1.9, 3.9 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, true ]
+}
+tracks/7/type = "method"
+tracks/7/path = NodePath("Head/Mouth/LaserWeapon")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 1.9, 3.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "fire"
+}, {
+"args": [  ],
+"method": "stop"
+} ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Head/Eyes/SpriteHurt:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0.9, 1.9, 3.9 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, false, false ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("Head/Eyes/SpriteAngry:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0.9, 1.9, 3.9 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("Head/Eyes/SpriteNormal:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0.9, 1.9, 3.9 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("../AnimationTree:parameters/conditions/mouth_attack")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 4.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("Head/Mouth/ChargingParticles:modulate")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0.9, 1.8 ),
+"transitions": PoolRealArray( 0.5, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1.6, 1.6, 1.6, 1 ) ]
+}
+
+[sub_resource type="Animation" id=17]
 length = 0.7
 step = 0.05
 tracks/0/type = "value"
@@ -362,7 +1118,7 @@ tracks/7/keys = {
 "values": [ true, false, true ]
 }
 
-[sub_resource type="Animation" id=33]
+[sub_resource type="Animation" id=18]
 resource_name = "RightHandLaser"
 length = 4.0
 tracks/0/type = "value"
@@ -396,10 +1152,10 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 0.5, 3, 3.5, 4 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.5, 1.5, 1.6, 1.7, 1.9, 3, 3.5, 4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 0, 0 ), Vector2( 96, -160 ), Vector2( 96, -160 ), Vector2( 96, -160 ), Vector2( 0, 0 ) ]
+"values": [ Vector2( 0, 0 ), Vector2( 96, -160 ), Vector2( 105, -175 ), Vector2( 120, -200 ), Vector2( 105, -175 ), Vector2( 103.615, -172.692 ), Vector2( 96, -160 ), Vector2( 96, -160 ), Vector2( 0, 0 ) ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("HandRight/ClosedHandSprite:rotation_degrees")
@@ -408,10 +1164,10 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 0.5, 1.5, 3, 3.5, 4 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.5, 1.5, 1.6, 1.7, 1.9, 3, 3.5, 4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ 0.0, 15.5, 15.5, 74.0, 74.0, 0.0 ]
+"values": [ 0.0, 15.5, 15.5, 15.5, 15.5, 15.5, 74.0, 74.0, 0.0 ]
 }
 tracks/4/type = "value"
 tracks/4/path = NodePath("HandRight/ClosedHandSprite/LightSprite:modulate")
@@ -432,7 +1188,7 @@ tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PoolRealArray( 1.5, 3 ),
+"times": PoolRealArray( 1.6, 3 ),
 "transitions": PoolRealArray( 1, 1 ),
 "values": [ {
 "args": [  ],
@@ -490,8 +1246,32 @@ tracks/9/keys = {
 "update": 1,
 "values": [ true, false ]
 }
+tracks/10/type = "value"
+tracks/10/path = NodePath("HandRight/ClosedHandSprite/LightSprite/ChargingParticles:emitting")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0, 0.5, 1.2, 4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false, false ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("HandRight/ClosedHandSprite/LightSprite/ChargingParticles:speed_scale")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0, 0.5, 1.2, 4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, 4.0, 0.0 ]
+}
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=19]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Head:position")
 tracks/0/interp = 1
@@ -1104,9 +1884,81 @@ tracks/50/keys = {
 "update": 1,
 "values": [ true ]
 }
+tracks/51/type = "value"
+tracks/51/path = NodePath("Head/Sprite:self_modulate")
+tracks/51/interp = 1
+tracks/51/loop_wrap = true
+tracks/51/imported = false
+tracks/51/enabled = true
+tracks/51/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/52/type = "value"
+tracks/52/path = NodePath("Head/Eyes:modulate")
+tracks/52/interp = 1
+tracks/52/loop_wrap = true
+tracks/52/imported = false
+tracks/52/enabled = true
+tracks/52/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1.2, 1.2, 1.2, 1 ) ]
+}
+tracks/53/type = "value"
+tracks/53/path = NodePath("Head/Mouth:modulate")
+tracks/53/interp = 1
+tracks/53/loop_wrap = true
+tracks/53/imported = false
+tracks/53/enabled = true
+tracks/53/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/54/type = "value"
+tracks/54/path = NodePath("HandLeft:modulate")
+tracks/54/interp = 1
+tracks/54/loop_wrap = true
+tracks/54/imported = false
+tracks/54/enabled = true
+tracks/54/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/55/type = "value"
+tracks/55/path = NodePath("HandRight:modulate")
+tracks/55/interp = 1
+tracks/55/loop_wrap = true
+tracks/55/imported = false
+tracks/55/enabled = true
+tracks/55/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/56/type = "value"
+tracks/56/path = NodePath("../AnimationTree:active")
+tracks/56/interp = 1
+tracks/56/loop_wrap = true
+tracks/56/imported = false
+tracks/56/enabled = true
+tracks/56/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
 
-[sub_resource type="Animation" id=7]
-length = 3.3
+[sub_resource type="Animation" id=20]
+length = 3.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Head:position")
 tracks/0/interp = 1
@@ -1347,34 +2199,34 @@ tracks/19/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 1.7, 1.7, 1.7, 1 ), Color( 1, 1, 1, 1 ) ]
 }
-tracks/20/type = "method"
-tracks/20/path = NodePath("AnimationPlayer")
+tracks/20/type = "value"
+tracks/20/path = NodePath("Head/HurtBox/CollisionShape2D:disabled")
 tracks/20/interp = 1
 tracks/20/loop_wrap = true
 tracks/20/imported = false
 tracks/20/enabled = true
 tracks/20/keys = {
-"times": PoolRealArray( 3.3 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [ "idle" ],
-"method": "play"
-} ]
-}
-tracks/21/type = "value"
-tracks/21/path = NodePath("Head/HurtBox/CollisionShape2D:disabled")
-tracks/21/interp = 1
-tracks/21/loop_wrap = true
-tracks/21/imported = false
-tracks/21/enabled = true
-tracks/21/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ true ]
 }
+tracks/21/type = "method"
+tracks/21/path = NodePath("../AnimationPlayer")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/keys = {
+"times": PoolRealArray( 3 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ "Move" ],
+"method": "play"
+} ]
+}
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=21]
 length = 2.0
 loop = true
 tracks/0/type = "bezier"
@@ -1479,47 +2331,44 @@ tracks/8/keys = {
 "update": 1,
 "values": [ false ]
 }
+tracks/9/type = "value"
+tracks/9/path = NodePath("Head/Mouth/SpriteNormal:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
 
-[sub_resource type="AnimationNodeAnimation" id=10]
+[sub_resource type="AnimationNodeAnimation" id=22]
 animation = "LeftHandAttack"
 
-[sub_resource type="AnimationNodeAnimation" id=30]
+[sub_resource type="AnimationNodeAnimation" id=23]
 animation = "LeftHandLaser"
 
-[sub_resource type="AnimationNodeAnimation" id=11]
+[sub_resource type="AnimationNodeAnimation" id=24]
+animation = "MouthAttack"
+
+[sub_resource type="AnimationNodeAnimation" id=25]
 animation = "RightHandAttack"
 
-[sub_resource type="AnimationNodeAnimation" id=34]
+[sub_resource type="AnimationNodeAnimation" id=26]
 animation = "RightHandLaser"
 
-[sub_resource type="AnimationNodeAnimation" id=12]
+[sub_resource type="AnimationNodeAnimation" id=27]
 animation = "SETUP"
 
-[sub_resource type="AnimationNodeAnimation" id=13]
+[sub_resource type="AnimationNodeAnimation" id=28]
 animation = "arrive"
 
-[sub_resource type="AnimationNodeAnimation" id=14]
+[sub_resource type="AnimationNodeAnimation" id=29]
 animation = "idle"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=15]
-auto_advance = true
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=16]
-switch_mode = 2
-auto_advance = true
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=17]
-advance_condition = "left_attack"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=18]
-advance_condition = "right_attack"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=19]
-switch_mode = 2
-auto_advance = true
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=20]
-switch_mode = 2
+[sub_resource type="AnimationNodeStateMachineTransition" id=30]
 auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=31]
@@ -1527,39 +2376,66 @@ switch_mode = 2
 auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=32]
-advance_condition = "left_laser"
+advance_condition = "left_attack"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=33]
+advance_condition = "right_attack"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=34]
+switch_mode = 2
+auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=35]
 switch_mode = 2
 auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=36]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=37]
+advance_condition = "left_laser"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=38]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=39]
 advance_condition = "right_laser"
 
-[sub_resource type="AnimationNodeStateMachine" id=27]
-states/LeftHandAttack/node = SubResource( 10 )
-states/LeftHandAttack/position = Vector2( 346, 259 )
-states/LeftHandLaser/node = SubResource( 30 )
-states/LeftHandLaser/position = Vector2( 364, 418 )
-states/RightHandAttack/node = SubResource( 11 )
-states/RightHandAttack/position = Vector2( 816, 259 )
-states/RightHandLaser/node = SubResource( 34 )
-states/RightHandLaser/position = Vector2( 731, 418 )
-states/SETUP/node = SubResource( 12 )
-states/SETUP/position = Vector2( 260, 170 )
-states/arrive/node = SubResource( 13 )
-states/arrive/position = Vector2( 549, 170 )
-states/idle/node = SubResource( 14 )
-states/idle/position = Vector2( 549, 259 )
-transitions = [ "SETUP", "arrive", SubResource( 15 ), "arrive", "idle", SubResource( 16 ), "idle", "LeftHandAttack", SubResource( 17 ), "idle", "RightHandAttack", SubResource( 18 ), "LeftHandAttack", "idle", SubResource( 19 ), "RightHandAttack", "idle", SubResource( 20 ), "LeftHandLaser", "idle", SubResource( 31 ), "idle", "LeftHandLaser", SubResource( 32 ), "RightHandLaser", "idle", SubResource( 35 ), "idle", "RightHandLaser", SubResource( 36 ) ]
-start_node = "SETUP"
-graph_offset = Vector2( -90, 140 )
+[sub_resource type="AnimationNodeStateMachineTransition" id=40]
+switch_mode = 2
+auto_advance = true
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=28]
+[sub_resource type="AnimationNodeStateMachineTransition" id=41]
+advance_condition = "mouth_attack"
+
+[sub_resource type="AnimationNodeStateMachine" id=42]
+states/LeftHandAttack/node = SubResource( 22 )
+states/LeftHandAttack/position = Vector2( 346, 259 )
+states/LeftHandLaser/node = SubResource( 23 )
+states/LeftHandLaser/position = Vector2( 364, 418 )
+states/MouthAttack/node = SubResource( 24 )
+states/MouthAttack/position = Vector2( 549, 511 )
+states/RightHandAttack/node = SubResource( 25 )
+states/RightHandAttack/position = Vector2( 816, 259 )
+states/RightHandLaser/node = SubResource( 26 )
+states/RightHandLaser/position = Vector2( 731, 418 )
+states/SETUP/node = SubResource( 27 )
+states/SETUP/position = Vector2( 260, 170 )
+states/arrive/node = SubResource( 28 )
+states/arrive/position = Vector2( 549, 170 )
+states/idle/node = SubResource( 29 )
+states/idle/position = Vector2( 549, 259 )
+transitions = [ "SETUP", "arrive", SubResource( 30 ), "arrive", "idle", SubResource( 31 ), "idle", "LeftHandAttack", SubResource( 32 ), "idle", "RightHandAttack", SubResource( 33 ), "LeftHandAttack", "idle", SubResource( 34 ), "RightHandAttack", "idle", SubResource( 35 ), "LeftHandLaser", "idle", SubResource( 36 ), "idle", "LeftHandLaser", SubResource( 37 ), "RightHandLaser", "idle", SubResource( 38 ), "idle", "RightHandLaser", SubResource( 39 ), "MouthAttack", "idle", SubResource( 40 ), "idle", "MouthAttack", SubResource( 41 ) ]
+start_node = "SETUP"
+graph_offset = Vector2( 75, 156 )
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=43]
 
 [node name="Boss" type="Node2D"]
 material = ExtResource( 4 )
-position = Vector2( 1016, 432 )
+position = Vector2( 948, 656 )
 script = ExtResource( 3 )
 __meta__ = {
 "_edit_horizontal_guides_": [ 440.0 ],
@@ -1568,18 +2444,19 @@ __meta__ = {
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Damage = SubResource( 1 )
+anims/Move = SubResource( 2 )
 
 [node name="Health" parent="." groups=[
 "enemy_health",
 ] instance=ExtResource( 7 )]
-max_amount = 50.0
+max_amount = 80.0
 
 [node name="Sprites" type="Node2D" parent="."]
 use_parent_material = true
 
 [node name="HandLeft" type="Node2D" parent="Sprites"]
 use_parent_material = true
-position = Vector2( -502.494, 269.807 )
+position = Vector2( -412, 264 )
 
 [node name="OpenHandSprite" type="Sprite" parent="Sprites/HandLeft"]
 use_parent_material = true
@@ -1605,18 +2482,29 @@ region_rect = Rect2( 462, 586, 101, 102 )
 
 [node name="LaserWeapon" parent="Sprites/HandLeft/ClosedHandSprite/LightSprite" instance=ExtResource( 5 )]
 
+[node name="ChargingParticles" type="Particles2D" parent="Sprites/HandLeft/ClosedHandSprite/LightSprite"]
+self_modulate = Color( 1.125, 1.125, 1.125, 1 )
+position = Vector2( -43.364, -8.91312 )
+rotation = -1.57079
+emitting = false
+amount = 32
+speed_scale = 0.0
+local_coords = false
+process_material = SubResource( 7 )
+texture = ExtResource( 8 )
+
 [node name="HitBox2D" parent="Sprites/HandLeft" instance=ExtResource( 1 )]
 use_parent_material = true
 position = Vector2( -8, 64 )
-damage = 4.0
+damage = 2.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprites/HandLeft/HitBox2D"]
-shape = SubResource( 2 )
+shape = SubResource( 8 )
 disabled = true
 
 [node name="HandRight" type="Node2D" parent="Sprites"]
 use_parent_material = true
-position = Vector2( 502.494, 289.349 )
+position = Vector2( 412, 300 )
 
 [node name="OpenHandSprite" type="Sprite" parent="Sprites/HandRight"]
 use_parent_material = true
@@ -1644,18 +2532,29 @@ region_rect = Rect2( 462, 586, 101, 102 )
 [node name="LaserWeapon" parent="Sprites/HandRight/ClosedHandSprite/LightSprite" instance=ExtResource( 5 )]
 rotation = 1.5708
 
+[node name="ChargingParticles" type="Particles2D" parent="Sprites/HandRight/ClosedHandSprite/LightSprite"]
+self_modulate = Color( 1.125, 1.125, 1.125, 1 )
+position = Vector2( -43.364, -8.91312 )
+rotation = -1.57079
+emitting = false
+amount = 32
+speed_scale = 4.0
+local_coords = false
+process_material = SubResource( 7 )
+texture = ExtResource( 8 )
+
 [node name="HitBox2D" parent="Sprites/HandRight" instance=ExtResource( 1 )]
 use_parent_material = true
 position = Vector2( 0, 64 )
-damage = 4.0
+damage = 2.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprites/HandRight/HitBox2D"]
-shape = SubResource( 2 )
+shape = SubResource( 8 )
 disabled = true
 
 [node name="Head" type="Node2D" parent="Sprites"]
 use_parent_material = true
-position = Vector2( -3.56763, 17.0382 )
+position = Vector2( -3.56763, 33.8738 )
 
 [node name="Sprite" type="Sprite" parent="Sprites/Head"]
 use_parent_material = true
@@ -1720,34 +2619,94 @@ flip_h = true
 region_enabled = true
 region_rect = Rect2( 711, 149, 229, 94 )
 
+[node name="LaserWeapon" parent="Sprites/Head/Mouth" instance=ExtResource( 5 )]
+modulate = Color( 1.6, 1.6, 1.6, 1 )
+position = Vector2( 0, 49.6328 )
+rotation = 1.57079
+
+[node name="ChargingParticles" type="Particles2D" parent="Sprites/Head/Mouth"]
+modulate = Color( 1.6, 1.6, 1.6, 1 )
+position = Vector2( 0, 9.63278 )
+rotation = -1.57079
+emitting = false
+amount = 32
+speed_scale = 0.0
+local_coords = false
+process_material = SubResource( 7 )
+texture = ExtResource( 8 )
+
 [node name="HurtBox" parent="Sprites/Head" instance=ExtResource( 6 )]
 use_parent_material = true
 position = Vector2( 3.56763, -3.87173 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprites/Head/HurtBox"]
 position = Vector2( 0, -59.0988 )
-shape = SubResource( 3 )
+shape = SubResource( 9 )
+
+[node name="Explosion" parent="Sprites/Head" instance=ExtResource( 9 )]
+position = Vector2( 115.568, -91.5676 )
+
+[node name="SFX" parent="Sprites/Head/Explosion" index="5"]
+stream = ExtResource( 10 )
+
+[node name="Explosion2" parent="Sprites/Head" instance=ExtResource( 9 )]
+position = Vector2( -156.432, 12.4324 )
+
+[node name="AnimationPlayer" parent="Sprites/Head/Explosion2" index="4"]
+anims/Explode = SubResource( 10 )
+
+[node name="SFX" parent="Sprites/Head/Explosion2" index="5"]
+stream = ExtResource( 10 )
+
+[node name="Explosion3" parent="Sprites/Head" instance=ExtResource( 9 )]
+position = Vector2( -148.432, -235.568 )
+
+[node name="AnimationPlayer" parent="Sprites/Head/Explosion3" index="4"]
+anims/Explode = SubResource( 11 )
+
+[node name="SFX" parent="Sprites/Head/Explosion3" index="5"]
+stream = ExtResource( 10 )
+
+[node name="Explosion4" parent="Sprites/Head" instance=ExtResource( 9 )]
+position = Vector2( 147.568, 124.432 )
+
+[node name="AnimationPlayer" parent="Sprites/Head/Explosion4" index="4"]
+anims/Explode = SubResource( 12 )
+
+[node name="SFX" parent="Sprites/Head/Explosion4" index="5"]
+stream = ExtResource( 10 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprites"]
 playback_process_mode = 0
 playback_default_blend_time = 0.1
-anims/LeftHandAttack = SubResource( 4 )
-anims/LeftHandLaser = SubResource( 29 )
-anims/RightHandAttack = SubResource( 5 )
-anims/RightHandLaser = SubResource( 33 )
-anims/SETUP = SubResource( 6 )
-anims/arrive = SubResource( 7 )
-anims/idle = SubResource( 8 )
+anims/Die = SubResource( 13 )
+anims/LeftHandAttack = SubResource( 14 )
+anims/LeftHandLaser = SubResource( 15 )
+anims/MouthAttack = SubResource( 16 )
+anims/RightHandAttack = SubResource( 17 )
+anims/RightHandLaser = SubResource( 18 )
+anims/SETUP = SubResource( 19 )
+anims/arrive = SubResource( 20 )
+anims/idle = SubResource( 21 )
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource( 27 )
+tree_root = SubResource( 42 )
 anim_player = NodePath("../Sprites/AnimationPlayer")
 active = true
 process_mode = 0
-parameters/playback = SubResource( 28 )
+parameters/playback = SubResource( 43 )
 parameters/conditions/left_attack = false
 parameters/conditions/left_laser = false
+parameters/conditions/mouth_attack = false
 parameters/conditions/right_attack = false
 parameters/conditions/right_laser = false
 [connection signal="damage_taken" from="Sprites/Head/HurtBox" to="." method="_on_HurtBox_damage_taken"]
 [connection signal="animation_finished" from="Sprites/AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+
+[editable path="Sprites/Head/Explosion"]
+
+[editable path="Sprites/Head/Explosion2"]
+
+[editable path="Sprites/Head/Explosion3"]
+
+[editable path="Sprites/Head/Explosion4"]
