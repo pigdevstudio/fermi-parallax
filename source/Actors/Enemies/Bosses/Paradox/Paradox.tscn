@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=2]
+[gd_scene load_steps=56 format=2]
 
 [ext_resource path="res://Objects/HitBox/HitBox.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Actors/Enemies/Bosses/Paradox/Paradox.svg" type="Texture" id=2]
@@ -10,6 +10,8 @@
 [ext_resource path="res://Objects/Weapons/white_glowing_circle.png" type="Texture" id=8]
 [ext_resource path="res://Objects/Explosion/Explosion.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Objects/Explosion/random_pitch_explosion_sfx.tres" type="AudioStream" id=10]
+[ext_resource path="res://Levels/Level1/sfx_sound_depressurizing.wav" type="AudioStream" id=11]
+[ext_resource path="res://Actors/Enemies/sfx_sound_shutdown1.wav" type="AudioStream" id=12]
 
 [sub_resource type="Animation" id=1]
 length = 0.3
@@ -599,6 +601,32 @@ tracks/14/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
+tracks/15/type = "audio"
+tracks/15/path = NodePath("SFX")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 12 )
+} ],
+"times": PoolRealArray( 0 )
+}
+tracks/16/type = "value"
+tracks/16/path = NodePath("SFX:pitch_scale")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/keys = {
+"times": PoolRealArray( 0, 2.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.1, 0.3 ]
+}
 
 [sub_resource type="Animation" id=14]
 length = 0.7
@@ -852,6 +880,20 @@ tracks/11/keys = {
 "update": 0,
 "values": [ 0.0, 0.0, 4.0, 0.0 ]
 }
+tracks/12/type = "audio"
+tracks/12/path = NodePath("SFX")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 11 )
+} ],
+"times": PoolRealArray( 1.6 )
+}
 
 [sub_resource type="Animation" id=16]
 resource_name = "MouthAttack"
@@ -1016,6 +1058,20 @@ tracks/12/keys = {
 "transitions": PoolRealArray( 0.5, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 1.6, 1.6, 1.6, 1 ) ]
+}
+tracks/13/type = "audio"
+tracks/13/path = NodePath("SFX")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 11 )
+} ],
+"times": PoolRealArray( 1.8 )
 }
 
 [sub_resource type="Animation" id=17]
@@ -1269,6 +1325,20 @@ tracks/11/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
 "values": [ 0.0, 0.0, 4.0, 0.0 ]
+}
+tracks/12/type = "audio"
+tracks/12/path = NodePath("SFX")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 11 )
+} ],
+"times": PoolRealArray( 1.6 )
 }
 
 [sub_resource type="Animation" id=19]
@@ -2456,7 +2526,8 @@ use_parent_material = true
 
 [node name="HandLeft" type="Node2D" parent="Sprites"]
 use_parent_material = true
-position = Vector2( -412, 264 )
+position = Vector2( -512, 264 )
+scale = Vector2( 1e-05, 1e-05 )
 
 [node name="OpenHandSprite" type="Sprite" parent="Sprites/HandLeft"]
 use_parent_material = true
@@ -2467,6 +2538,8 @@ region_rect = Rect2( 0, 673, 324, 351 )
 [node name="ClosedHandSprite" type="Sprite" parent="Sprites/HandLeft"]
 visible = false
 use_parent_material = true
+position = Vector2( -38.4, -64 )
+rotation = -0.516964
 texture = ExtResource( 2 )
 region_enabled = true
 region_rect = Rect2( 686, 710, 258, 287 )
@@ -2488,7 +2561,7 @@ position = Vector2( -43.364, -8.91312 )
 rotation = -1.57079
 emitting = false
 amount = 32
-speed_scale = 0.0
+speed_scale = 0.285714
 local_coords = false
 process_material = SubResource( 7 )
 texture = ExtResource( 8 )
@@ -2504,7 +2577,8 @@ disabled = true
 
 [node name="HandRight" type="Node2D" parent="Sprites"]
 use_parent_material = true
-position = Vector2( 412, 300 )
+position = Vector2( 512, 264 )
+scale = Vector2( 1e-05, 1e-05 )
 
 [node name="OpenHandSprite" type="Sprite" parent="Sprites/HandRight"]
 use_parent_material = true
@@ -2516,6 +2590,8 @@ region_rect = Rect2( 0, 673, 324, 351 )
 [node name="ClosedHandSprite" type="Sprite" parent="Sprites/HandRight"]
 visible = false
 use_parent_material = true
+position = Vector2( 120, -200 )
+rotation = 0.270526
 texture = ExtResource( 2 )
 flip_h = true
 region_enabled = true
@@ -2523,6 +2599,7 @@ region_rect = Rect2( 686, 710, 258, 287 )
 
 [node name="LightSprite" type="Sprite" parent="Sprites/HandRight/ClosedHandSprite"]
 visible = false
+modulate = Color( 1.7, 1.7, 1.7, 1 )
 self_modulate = Color( 1.7, 1.7, 1.7, 1 )
 position = Vector2( 8.45972, 41.7022 )
 texture = ExtResource( 2 )
@@ -2538,7 +2615,7 @@ position = Vector2( -43.364, -8.91312 )
 rotation = -1.57079
 emitting = false
 amount = 32
-speed_scale = 4.0
+speed_scale = 3.42857
 local_coords = false
 process_material = SubResource( 7 )
 texture = ExtResource( 8 )
@@ -2554,7 +2631,8 @@ disabled = true
 
 [node name="Head" type="Node2D" parent="Sprites"]
 use_parent_material = true
-position = Vector2( -3.56763, 33.8738 )
+position = Vector2( -3.56763, 3.56763 )
+scale = Vector2( 1e-05, 1e-05 )
 
 [node name="Sprite" type="Sprite" parent="Sprites/Head"]
 use_parent_material = true
@@ -2597,6 +2675,7 @@ use_parent_material = true
 position = Vector2( 0, 144 )
 
 [node name="SpriteNormal" type="Sprite" parent="Sprites/Head/Mouth"]
+visible = false
 use_parent_material = true
 texture = ExtResource( 2 )
 flip_h = true
@@ -2604,7 +2683,6 @@ region_enabled = true
 region_rect = Rect2( 711, 19, 229, 93 )
 
 [node name="SpriteCharge" type="Sprite" parent="Sprites/Head/Mouth"]
-visible = false
 use_parent_material = true
 texture = ExtResource( 2 )
 flip_h = true
@@ -2630,7 +2708,7 @@ position = Vector2( 0, 9.63278 )
 rotation = -1.57079
 emitting = false
 amount = 32
-speed_scale = 0.0
+speed_scale = 4.0
 local_coords = false
 process_material = SubResource( 7 )
 texture = ExtResource( 8 )
@@ -2642,6 +2720,7 @@ position = Vector2( 3.56763, -3.87173 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprites/Head/HurtBox"]
 position = Vector2( 0, -59.0988 )
 shape = SubResource( 9 )
+disabled = true
 
 [node name="Explosion" parent="Sprites/Head" instance=ExtResource( 9 )]
 position = Vector2( 115.568, -91.5676 )
@@ -2677,6 +2756,7 @@ anims/Explode = SubResource( 12 )
 stream = ExtResource( 10 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprites"]
+autoplay = "SETUP"
 playback_process_mode = 0
 playback_default_blend_time = 0.1
 anims/Die = SubResource( 13 )
@@ -2689,10 +2769,14 @@ anims/SETUP = SubResource( 19 )
 anims/arrive = SubResource( 20 )
 anims/idle = SubResource( 21 )
 
+[node name="SFX" type="AudioStreamPlayer2D" parent="Sprites"]
+stream = ExtResource( 12 )
+pitch_scale = 0.1
+bus = "SFX"
+
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource( 42 )
 anim_player = NodePath("../Sprites/AnimationPlayer")
-active = true
 process_mode = 0
 parameters/playback = SubResource( 43 )
 parameters/conditions/left_attack = false
