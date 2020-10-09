@@ -1,6 +1,7 @@
 
 # Godot-specific ignores
 assets/Promo/
+releases/
 .import/
 export.cfg
 export_presets.cfg
