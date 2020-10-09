@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Interfaces/ResourceBar.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Interfaces/ResourceBars/PlayerEnergy/player_energy_flatbox.tres" type="StyleBox" id=2]
+[ext_resource path="res://Interfaces/ResourceBars/PlayerHealth/BlueFlatBox.tres" type="StyleBox" id=2]
 [ext_resource path="res://Interfaces/ResourceBars/PlayerEnergy/PlayerEnergyBar.gd" type="Script" id=3]
 
 [sub_resource type="Animation" id=1]
@@ -41,6 +41,6 @@ custom_styles/fg = ExtResource( 2 )
 value = 80.0
 script = ExtResource( 3 )
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="0"]
+[node name="AnimationPlayer" parent="." index="0"]
 anims/depleted = SubResource( 1 )
 anims/flashing = SubResource( 2 )

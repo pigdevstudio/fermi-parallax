@@ -24,13 +24,25 @@ tracks/0/keys = {
 "values": [ 0.0, 0.769231, 0.769231, 1.0 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("MarginContainer/VBoxContainer/MarginContainer/RetryButton:modulate")
+tracks/1/path = NodePath("MarginContainer/VBoxContainer/MarginContainer/ReplayButton:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 2, 3 ),
+"times": PoolRealArray( 0, 3.6, 4.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("MarginContainer/VBoxContainer/MarginContainer/CreditsButton:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 3.8, 4.8 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
@@ -44,6 +56,8 @@ script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+credits_scene_path = "res://Screens/CreditsScreen.tscn"
+replay_scene_path = "res://Game.tscn"
 
 [node name="TextureRect" type="TextureRect" parent="."]
 anchor_right = 1.0
@@ -76,11 +90,13 @@ margin_bottom = 518.0
 size_flags_horizontal = 3
 size_flags_vertical = 7
 custom_fonts/font = ExtResource( 5 )
-text = "Congratulations you've defeated Paradox.
+text = "Congratulations! 
+You've defeated 
+Paradox.
 
 Highscore: %d"
 align = 1
-valign = 1
+valign = 2
 
 [node name="MarginContainer" type="Control" parent="MarginContainer/VBoxContainer"]
 margin_top = 522.0
@@ -89,7 +105,7 @@ margin_bottom = 1040.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="RetryButton" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer"]
+[node name="ReplayButton" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -104,12 +120,32 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ButtonSFX" parent="MarginContainer/VBoxContainer/MarginContainer/RetryButton" instance=ExtResource( 7 )]
+[node name="ButtonSFX" parent="MarginContainer/VBoxContainer/MarginContainer/ReplayButton" instance=ExtResource( 7 )]
+
+[node name="CreditsButton" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -200.0
+margin_top = 103.0
+margin_right = 199.0
+margin_bottom = 213.0
+custom_fonts/font = ExtResource( 3 )
+text = "Credits"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ButtonSFX" parent="MarginContainer/VBoxContainer/MarginContainer/CreditsButton" instance=ExtResource( 7 )]
 
 [node name="SceneTransitionRect" parent="." instance=ExtResource( 4 )]
+visible = false
 next_scene_path = "res://Game.tscn"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/AnimateText = SubResource( 1 )
-[connection signal="pressed" from="MarginContainer/VBoxContainer/MarginContainer/RetryButton" to="MarginContainer/VBoxContainer/MarginContainer/RetryButton/ButtonSFX" method="play"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/MarginContainer/RetryButton" to="." method="_on_RetryButton_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/MarginContainer/ReplayButton" to="." method="_on_ReplayButton_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/MarginContainer/ReplayButton" to="MarginContainer/VBoxContainer/MarginContainer/ReplayButton/ButtonSFX" method="play"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/MarginContainer/CreditsButton" to="." method="_on_CreditsButton_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/MarginContainer/CreditsButton" to="MarginContainer/VBoxContainer/MarginContainer/CreditsButton/ButtonSFX" method="play"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Interfaces/SceneTransitionRect.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Interfaces/title_font.tres" type="DynamicFont" id=2]
@@ -7,11 +7,22 @@
 [ext_resource path="res://Screens/OptionsScreen.gd" type="Script" id=5]
 [ext_resource path="res://Interfaces/FullscreenButton.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Interfaces/CancelShortcut.tres" type="ShortCut" id=7]
+[ext_resource path="res://Screens/main_theme.tres" type="Theme" id=8]
+[ext_resource path="res://Screens/main_screen_background.png" type="Texture" id=9]
 
 [node name="OptionsScreen" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+theme = ExtResource( 8 )
 script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 9 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -155,7 +166,7 @@ bus = "UI"
 [node name="FullscreenButton" parent="MarginContainer/HBoxContainer/CenterColumn/VBoxContainer4" instance=ExtResource( 6 )]
 margin_top = 288.0
 margin_right = 624.0
-margin_bottom = 336.0
+margin_bottom = 328.0
 
 [node name="RightColumn" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
 margin_left = 1256.0

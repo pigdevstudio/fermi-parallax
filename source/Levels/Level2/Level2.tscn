@@ -970,12 +970,12 @@ region_enabled = true
 region_rect = Rect2( 16, 320, 256, 257 )
 
 [node name="Sprite3" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2( 1696, -400 )
-rotation = 0.126474
+position = Vector2( 1808, -368 )
+rotation = 0.273656
 scale = Vector2( 0.803108, 0.803108 )
 texture = ExtResource( 23 )
 region_enabled = true
-region_rect = Rect2( 354, 22, 316, 256 )
+region_rect = Rect2( 384, 320, 256, 257 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 18 )

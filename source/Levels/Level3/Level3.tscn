@@ -83,7 +83,7 @@ tracks/2/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=6]
 resource_name = "02-ending"
 tracks/0/type = "method"
 tracks/0/path = NodePath(".")
@@ -100,7 +100,7 @@ tracks/0/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=7]
 resource_name = "cinematic"
 length = 0.5
 tracks/0/type = "value"
@@ -204,7 +204,7 @@ bus = "SFX"
 autoplay = "00-player-arriving"
 anims/00-player-arriving = ExtResource( 1 )
 anims/01-boss = SubResource( 5 )
-anims/02-ending = SubResource( 9 )
+anims/02-ending = SubResource( 6 )
 
 [node name="Tween" type="Tween" parent="."]
 script = ExtResource( 17 )
@@ -213,17 +213,16 @@ target_position = Vector2( 960, 960 )
 duration = 2.0
 
 [node name="BottomBlackBar" type="Polygon2D" parent="."]
-position = Vector2( 0, 1088 )
+position = Vector2( 0, 1152 )
 z_index = 2
 color = Color( 0, 0, 0, 1 )
 polygon = PoolVector2Array( 0, 0, 0, -64, 1920, -64, 1920, 0 )
 
 [node name="TopBlackBar" type="Polygon2D" parent="."]
-position = Vector2( 0, 64 )
 z_index = 2
 color = Color( 0, 0, 0, 1 )
 polygon = PoolVector2Array( 0, 0, 0, -64, 1920, -64, 1920, 0 )
 
 [node name="CinematicPlayer" type="AnimationPlayer" parent="."]
-anims/cinematic = SubResource( 8 )
+anims/cinematic = SubResource( 7 )
 [connection signal="spawned" from="WaveSpawner2D" to="." method="_on_WaveSpawner2D_spawned"]
