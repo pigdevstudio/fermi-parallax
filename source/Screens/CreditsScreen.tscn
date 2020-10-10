@@ -95,18 +95,18 @@ align = 1
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 margin_top = 100.0
 margin_right = 1880.0
-margin_bottom = 398.0
+margin_bottom = 570.0
 
 [node name="LeftPad" type="Control" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 margin_right = 624.0
-margin_bottom = 298.0
+margin_bottom = 470.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 margin_left = 628.0
 margin_right = 1252.0
-margin_bottom = 298.0
+margin_bottom = 470.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = ExtResource( 3 )
@@ -114,7 +114,11 @@ text = "A game by Henrique \"Pigdev\" Campos
 ---
 Some graphics by GDQuest Art Guidelines
 ---
-Audio by Juhani Junkala"
+Audio by Juhani Junkala
+---
+Contributors:
+
+Luan \"Keyaki777\" Lemes"
 align = 1
 valign = 2
 autowrap = true
@@ -123,12 +127,12 @@ percent_visible = 0.0
 [node name="RightPad" type="Control" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 margin_left = 1256.0
 margin_right = 1880.0
-margin_bottom = 298.0
+margin_bottom = 470.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="MarginContainer" type="Control" parent="MarginContainer/VBoxContainer"]
-margin_top = 402.0
+margin_top = 574.0
 margin_right = 1880.0
 margin_bottom = 1040.0
 size_flags_horizontal = 3

@@ -904,12 +904,11 @@ script = ExtResource( 4 )
 __meta__ = {
 "_edit_vertical_guides_": [ 968.0 ]
 }
-background_music = ExtResource( 24 )
+background_music = ExtResource( 15 )
 next_level_path = "res://Levels/Level3/Level3.tscn"
-current_event = 4
 
 [node name="EventsPlayer" type="AnimationPlayer" parent="."]
-autoplay = "04"
+autoplay = "00"
 anims/00 = SubResource( 1 )
 anims/01 = SubResource( 2 )
 anims/02 = SubResource( 3 )
@@ -981,10 +980,10 @@ region_rect = Rect2( 384, 320, 256, 257 )
 environment = SubResource( 18 )
 
 [node name="WaveSpawner2D" parent="." instance=ExtResource( 2 )]
-spawn_scene = ExtResource( 18 )
+spawn_scene = ExtResource( 5 )
 
 [node name="Comet" parent="." instance=ExtResource( 11 )]
-position = Vector2( 960, 193.99 )
+position = Vector2( 936, 2600 )
 
 [node name="Sprite" parent="Comet" index="1"]
 material = SubResource( 20 )

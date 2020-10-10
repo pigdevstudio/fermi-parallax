@@ -43,7 +43,7 @@ glow_enabled = true
 glow_blend_mode = 0
 glow_bicubic_upscale = true
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=5]
 resource_name = "01-wave"
 length = 0.5
 tracks/0/type = "value"
@@ -73,8 +73,8 @@ tracks/1/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=9]
-resource_name = "02-wave"
+[sub_resource type="Animation" id=6]
+resource_name = "02-asteroid-cloud"
 length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("WaveSpawner2D:spawn_scene")
@@ -103,7 +103,7 @@ tracks/1/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=7]
 resource_name = "03-wave"
 length = 0.5
 tracks/0/type = "value"
@@ -133,8 +133,8 @@ tracks/1/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=11]
-resource_name = "04-wave"
+[sub_resource type="Animation" id=8]
+resource_name = "04-right-asteroid-rain"
 length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("WaveSpawner2D:spawn_scene")
@@ -163,8 +163,8 @@ tracks/1/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=12]
-resource_name = "05-wave"
+[sub_resource type="Animation" id=9]
+resource_name = "05-left-asteroid-rain"
 length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("WaveSpawner2D:spawn_scene")
@@ -193,8 +193,8 @@ tracks/1/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=13]
-resource_name = "06-wave"
+[sub_resource type="Animation" id=10]
+resource_name = "06-asteroid-cloud"
 length = 3.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("WaveSpawner2D:spawn_scene")
@@ -235,7 +235,7 @@ tracks/2/keys = {
 "values": [ 100.0, 5000.0 ]
 }
 
-[sub_resource type="Animation" id=14]
+[sub_resource type="Animation" id=11]
 resource_name = "07-transit"
 length = 3.0
 tracks/0/type = "value"
@@ -265,8 +265,7 @@ tracks/1/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=5]
-resource_name = "x-boss"
+[sub_resource type="Animation" id=12]
 length = 5.0
 step = 0.05
 tracks/0/type = "method"
@@ -313,8 +312,7 @@ tracks/2/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=6]
-resource_name = "z-ending"
+[sub_resource type="Animation" id=13]
 tracks/0/type = "method"
 tracks/0/path = NodePath(".")
 tracks/0/interp = 1
@@ -330,8 +328,7 @@ tracks/0/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=7]
-resource_name = "cinematic"
+[sub_resource type="Animation" id=14]
 length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("BottomBlackBar:position")
@@ -375,7 +372,6 @@ __meta__ = {
 "_edit_horizontal_guides_": [ 1083.89, 1993.26 ],
 "_edit_vertical_guides_": [ 640.0 ]
 }
-speed = 100.0
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_scale = Vector2( 0.3, 0.3 )
@@ -423,7 +419,7 @@ region_rect = Rect2( 16, 320, 256, 257 )
 environment = SubResource( 4 )
 
 [node name="WaveSpawner2D" parent="." instance=ExtResource( 22 )]
-spawn_scene = ExtResource( 4 )
+spawn_scene = ExtResource( 7 )
 
 [node name="SFX" type="AudioStreamPlayer2D" parent="."]
 position = Vector2( 960, 960 )
@@ -434,15 +430,15 @@ bus = "SFX"
 [node name="EventsPlayer" type="AnimationPlayer" parent="."]
 autoplay = "00-player-arriving"
 anims/00-player-arriving = ExtResource( 1 )
-anims/01-wave = SubResource( 8 )
-anims/02-wave = SubResource( 9 )
-anims/03-wave = SubResource( 10 )
-anims/04-wave = SubResource( 11 )
-anims/05-wave = SubResource( 12 )
-anims/06-wave = SubResource( 13 )
-anims/07-transit = SubResource( 14 )
-anims/x-boss = SubResource( 5 )
-anims/z-ending = SubResource( 6 )
+anims/01-wave = SubResource( 5 )
+anims/02-asteroid-cloud = SubResource( 6 )
+anims/03-wave = SubResource( 7 )
+anims/04-right-asteroid-rain = SubResource( 8 )
+anims/05-left-asteroid-rain = SubResource( 9 )
+anims/06-asteroid-cloud = SubResource( 10 )
+anims/07-transit = SubResource( 11 )
+anims/x-boss = SubResource( 12 )
+anims/z-ending = SubResource( 13 )
 
 [node name="Tween" type="Tween" parent="."]
 script = ExtResource( 17 )
@@ -451,17 +447,16 @@ target_position = Vector2( 960, 960 )
 duration = 2.0
 
 [node name="BottomBlackBar" type="Polygon2D" parent="."]
-position = Vector2( 0, 1088 )
+position = Vector2( 0, 1152 )
 z_index = 2
 color = Color( 0, 0, 0, 1 )
 polygon = PoolVector2Array( 0, 0, 0, -64, 1920, -64, 1920, 0 )
 
 [node name="TopBlackBar" type="Polygon2D" parent="."]
-position = Vector2( 0, 64 )
 z_index = 2
 color = Color( 0, 0, 0, 1 )
 polygon = PoolVector2Array( 0, 0, 0, -64, 1920, -64, 1920, 0 )
 
 [node name="CinematicPlayer" type="AnimationPlayer" parent="."]
-anims/cinematic = SubResource( 7 )
+anims/cinematic = SubResource( 14 )
 [connection signal="spawned" from="WaveSpawner2D" to="." method="_on_WaveSpawner2D_spawned"]

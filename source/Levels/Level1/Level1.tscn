@@ -372,7 +372,7 @@ tracks/1/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=16]
+[sub_resource type="Animation" id=11]
 resource_name = "cinematic"
 length = 0.5
 tracks/0/type = "value"
@@ -402,7 +402,7 @@ tracks/1/keys = {
 
 [node name="Level" type="Node2D"]
 script = ExtResource( 4 )
-background_music = ExtResource( 15 )
+background_music = ExtResource( 13 )
 next_level_path = "res://Levels/Level2/Level2.tscn"
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
@@ -414,10 +414,10 @@ position = Vector2( 960, 1230.19 )
 environment = SubResource( 1 )
 
 [node name="WaveSpawner2D" parent="." instance=ExtResource( 2 )]
-spawn_scene = ExtResource( 5 )
+spawn_scene = ExtResource( 12 )
 
 [node name="EventsPlayer" type="AnimationPlayer" parent="."]
-autoplay = "00"
+autoplay = "08"
 anims/00 = ExtResource( 17 )
 anims/01 = SubResource( 2 )
 anims/02 = SubResource( 3 )
@@ -453,5 +453,5 @@ color = Color( 0, 0, 0, 1 )
 polygon = PoolVector2Array( 0, 0, 0, -64, 1920, -64, 1920, 0 )
 
 [node name="CinematicPlayer" type="AnimationPlayer" parent="."]
-anims/cinematic = SubResource( 16 )
+anims/cinematic = SubResource( 11 )
 [connection signal="spawned" from="WaveSpawner2D" to="." method="_on_WaveSpawner2D_spawned"]
