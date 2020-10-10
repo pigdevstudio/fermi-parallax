@@ -6,7 +6,7 @@ signal changed(new_amount)
 signal depleted
 
 
-export var max_amount = 10.0 setget set_max
+export var max_amount = 10 setget set_max
 export var invulnerable = false
 var current = max_amount setget set_current
 
