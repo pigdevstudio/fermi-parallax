@@ -273,7 +273,7 @@ tracks/0/path = NodePath(".")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
-tracks/0/enabled = true
+tracks/0/enabled = false
 tracks/0/keys = {
 "times": PoolRealArray( 0, 5 ),
 "transitions": PoolRealArray( 1, 1 ),
@@ -419,7 +419,7 @@ region_rect = Rect2( 16, 320, 256, 257 )
 environment = SubResource( 4 )
 
 [node name="WaveSpawner2D" parent="." instance=ExtResource( 22 )]
-spawn_scene = ExtResource( 7 )
+spawn_scene = ExtResource( 2 )
 
 [node name="SFX" type="AudioStreamPlayer2D" parent="."]
 position = Vector2( 960, 960 )
@@ -428,7 +428,7 @@ volume_db = -16.0
 bus = "SFX"
 
 [node name="EventsPlayer" type="AnimationPlayer" parent="."]
-autoplay = "00-player-arriving"
+autoplay = "x-boss"
 anims/00-player-arriving = ExtResource( 1 )
 anims/01-wave = SubResource( 5 )
 anims/02-asteroid-cloud = SubResource( 6 )

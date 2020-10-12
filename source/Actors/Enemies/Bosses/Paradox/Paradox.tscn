@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=2]
+[gd_scene load_steps=66 format=2]
 
 [ext_resource path="res://Objects/HitBox/HitBox.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Actors/Enemies/Bosses/Paradox/Paradox.svg" type="Texture" id=2]
@@ -12,8 +12,9 @@
 [ext_resource path="res://Objects/Explosion/random_pitch_explosion_sfx.tres" type="AudioStream" id=10]
 [ext_resource path="res://Levels/Level1/sfx_sound_depressurizing.wav" type="AudioStream" id=11]
 [ext_resource path="res://Actors/Enemies/sfx_sound_shutdown1.wav" type="AudioStream" id=12]
+[ext_resource path="res://Actors/damage-shader-animation.tres" type="Animation" id=13]
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=54]
 resource_name = "Arrive"
 length = 3.0
 tracks/0/type = "value"
@@ -269,8 +270,22 @@ tracks/20/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=1]
-resource_name = "Die"
+[sub_resource type="Animation" id=50]
+resource_name = "CenterToScreen"
+tracks/0/type = "value"
+tracks/0/path = NodePath("..:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 0.5, 1 ),
+"update": 0,
+"values": [ Vector2( 948, 656 ), Vector2( 948, 376 ) ]
+}
+
+[sub_resource type="Animation" id=55]
 length = 5.0
 tracks/0/type = "animation"
 tracks/0/path = NodePath("Head/Explosion/AnimationPlayer")
@@ -461,7 +476,7 @@ tracks/15/keys = {
 "values": [ 0.1, 0.3 ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=56]
 resource_name = "Idle"
 length = 2.0
 loop = true
@@ -580,7 +595,7 @@ tracks/9/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=57]
 length = 0.7
 step = 0.05
 tracks/0/type = "value"
@@ -680,8 +695,7 @@ tracks/7/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=3]
-resource_name = "LeftHandLaser"
+[sub_resource type="Animation" id=58]
 length = 4.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("HandLeft/OpenHandSprite:visible")
@@ -847,8 +861,7 @@ tracks/12/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=4]
-resource_name = "MouthAttack"
+[sub_resource type="Animation" id=59]
 length = 4.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("Head/Mouth/ChargingParticles:emitting")
@@ -1026,7 +1039,7 @@ tracks/13/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=60]
 length = 0.7
 step = 0.05
 tracks/0/type = "value"
@@ -1126,8 +1139,7 @@ tracks/7/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=6]
-resource_name = "RightHandLaser"
+[sub_resource type="Animation" id=8]
 length = 4.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("HandRight/OpenHandSprite:visible")
@@ -1293,7 +1305,7 @@ tracks/12/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=9]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Head:position")
 tracks/0/interp = 1
@@ -1966,6 +1978,18 @@ tracks/55/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
+tracks/56/type = "value"
+tracks/56/path = NodePath("..:position")
+tracks/56/interp = 1
+tracks/56/loop_wrap = true
+tracks/56/imported = false
+tracks/56/enabled = true
+tracks/56/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 948, 656 ) ]
+}
 
 [sub_resource type="Curve" id=10]
 _data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.493213, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
@@ -2349,50 +2373,49 @@ tracks/8/keys = {
 [sub_resource type="AnimationNodeAnimation" id=20]
 animation = "Arrive"
 
-[sub_resource type="AnimationNodeAnimation" id=43]
-animation = "Die"
+[sub_resource type="AnimationNodeAnimation" id=51]
+animation = "CenterToScreen"
 
 [sub_resource type="AnimationNodeAnimation" id=21]
-animation = "Idle"
+animation = "Die"
 
 [sub_resource type="AnimationNodeAnimation" id=22]
-animation = "LeftHandAttack"
-
-[sub_resource type="AnimationNodeAnimation" id=34]
-animation = "LeftHandLaser"
-
-[sub_resource type="AnimationNodeAnimation" id=40]
-animation = "MouthAttack"
+animation = "Idle"
 
 [sub_resource type="AnimationNodeAnimation" id=23]
-animation = "RightHandAttack"
-
-[sub_resource type="AnimationNodeAnimation" id=37]
-animation = "RightHandLaser"
+animation = "LeftHandAttack"
 
 [sub_resource type="AnimationNodeAnimation" id=24]
+animation = "LeftHandLaser"
+
+[sub_resource type="AnimationNodeAnimation" id=25]
+animation = "MouthAttack"
+
+[sub_resource type="AnimationNodeAnimation" id=26]
+animation = "RightHandAttack"
+
+[sub_resource type="AnimationNodeAnimation" id=27]
+animation = "RightHandLaser"
+
+[sub_resource type="AnimationNodeAnimation" id=28]
 animation = "SETUP"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=25]
+[sub_resource type="AnimationNodeStateMachineTransition" id=29]
 auto_advance = true
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=26]
-switch_mode = 2
-auto_advance = true
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=27]
+[sub_resource type="AnimationNodeStateMachineTransition" id=31]
 switch_mode = 2
 advance_condition = "left_slap"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=28]
+[sub_resource type="AnimationNodeStateMachineTransition" id=32]
 switch_mode = 2
 advance_condition = "right_slap"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=32]
+[sub_resource type="AnimationNodeStateMachineTransition" id=33]
 switch_mode = 2
 auto_advance = true
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=33]
+[sub_resource type="AnimationNodeStateMachineTransition" id=34]
 switch_mode = 2
 auto_advance = true
 
@@ -2404,64 +2427,74 @@ advance_condition = "left_laser"
 switch_mode = 2
 auto_advance = true
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=38]
+[sub_resource type="AnimationNodeStateMachineTransition" id=37]
 advance_condition = "right_laser"
 
+[sub_resource type="AnimationNodeStateMachineTransition" id=38]
+switch_mode = 2
+auto_advance = true
+
 [sub_resource type="AnimationNodeStateMachineTransition" id=39]
+advance_condition = "mouth_attack"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=40]
 switch_mode = 2
 auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=41]
-advance_condition = "mouth_attack"
+advance_condition = "dead"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=42]
-switch_mode = 2
-auto_advance = true
+advance_condition = "dead"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=43]
+advance_condition = "de"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=44]
 advance_condition = "dead"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=45]
-advance_condition = "dead"
+advance_condition = "de"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=46]
-advance_condition = "de"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=47]
 advance_condition = "dead"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=48]
-advance_condition = "de"
+[sub_resource type="AnimationNodeStateMachineTransition" id=52]
+switch_mode = 2
+auto_advance = true
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=49]
-advance_condition = "dead"
+[sub_resource type="AnimationNodeStateMachineTransition" id=53]
+switch_mode = 2
+auto_advance = true
 
-[sub_resource type="AnimationNodeStateMachine" id=29]
+[sub_resource type="AnimationNodeStateMachine" id=47]
 states/Arrive/node = SubResource( 20 )
-states/Arrive/position = Vector2( 602, 90 )
-states/Die/node = SubResource( 43 )
-states/Die/position = Vector2( 845, 410 )
-states/Idle/node = SubResource( 21 )
+states/Arrive/position = Vector2( 335, 90 )
+states/CenterToScreen/node = SubResource( 51 )
+states/CenterToScreen/position = Vector2( 557, 90 )
+states/Die/node = SubResource( 21 )
+states/Die/position = Vector2( 1237, 90 )
+states/Idle/node = SubResource( 22 )
 states/Idle/position = Vector2( 845, 90 )
-states/LeftHandAttack/node = SubResource( 22 )
+states/LeftHandAttack/node = SubResource( 23 )
 states/LeftHandAttack/position = Vector2( 711, 234 )
-states/LeftHandLaser/node = SubResource( 34 )
-states/LeftHandLaser/position = Vector2( 727, -85 )
-states/MouthAttack/node = SubResource( 40 )
-states/MouthAttack/position = Vector2( 1402, 90 )
-states/RightHandAttack/node = SubResource( 23 )
+states/LeftHandLaser/node = SubResource( 24 )
+states/LeftHandLaser/position = Vector2( 717, -85 )
+states/MouthAttack/node = SubResource( 25 )
+states/MouthAttack/position = Vector2( 845, -205 )
+states/RightHandAttack/node = SubResource( 26 )
 states/RightHandAttack/position = Vector2( 1002, 234 )
-states/RightHandLaser/node = SubResource( 37 )
-states/RightHandLaser/position = Vector2( 973, -76 )
-states/SETUP/node = SubResource( 24 )
-states/SETUP/position = Vector2( 372, 90 )
-transitions = [ "SETUP", "Arrive", SubResource( 25 ), "Arrive", "Idle", SubResource( 26 ), "Idle", "LeftHandAttack", SubResource( 27 ), "Idle", "RightHandAttack", SubResource( 28 ), "LeftHandAttack", "Idle", SubResource( 32 ), "RightHandAttack", "Idle", SubResource( 33 ), "Idle", "LeftHandLaser", SubResource( 35 ), "LeftHandLaser", "Idle", SubResource( 36 ), "Idle", "RightHandLaser", SubResource( 38 ), "RightHandLaser", "Idle", SubResource( 39 ), "Idle", "MouthAttack", SubResource( 41 ), "MouthAttack", "Idle", SubResource( 42 ), "Idle", "Die", SubResource( 44 ), "LeftHandAttack", "Die", SubResource( 45 ), "RightHandAttack", "Die", SubResource( 46 ), "RightHandLaser", "Die", SubResource( 47 ), "LeftHandLaser", "Die", SubResource( 48 ), "MouthAttack", "Die", SubResource( 49 ) ]
+states/RightHandLaser/node = SubResource( 27 )
+states/RightHandLaser/position = Vector2( 974, -85 )
+states/SETUP/node = SubResource( 28 )
+states/SETUP/position = Vector2( 104, 90 )
+transitions = [ "SETUP", "Arrive", SubResource( 29 ), "Idle", "LeftHandAttack", SubResource( 31 ), "Idle", "RightHandAttack", SubResource( 32 ), "LeftHandAttack", "Idle", SubResource( 33 ), "RightHandAttack", "Idle", SubResource( 34 ), "Idle", "LeftHandLaser", SubResource( 35 ), "LeftHandLaser", "Idle", SubResource( 36 ), "Idle", "RightHandLaser", SubResource( 37 ), "RightHandLaser", "Idle", SubResource( 38 ), "Idle", "MouthAttack", SubResource( 39 ), "MouthAttack", "Idle", SubResource( 40 ), "Idle", "Die", SubResource( 41 ), "LeftHandAttack", "Die", SubResource( 42 ), "RightHandAttack", "Die", SubResource( 43 ), "RightHandLaser", "Die", SubResource( 44 ), "LeftHandLaser", "Die", SubResource( 45 ), "MouthAttack", "Die", SubResource( 46 ), "Arrive", "CenterToScreen", SubResource( 52 ), "CenterToScreen", "Idle", SubResource( 53 ) ]
 start_node = "SETUP"
-graph_offset = Vector2( 249, -45 )
+graph_offset = Vector2( -26, -281 )
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=30]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=48]
 
-[sub_resource type="GDScript" id=31]
+[sub_resource type="GDScript" id=49]
 script/source = "extends AnimationTree
 
 func set_condition(condition, value):
@@ -2470,7 +2503,7 @@ func set_condition(condition, value):
 
 [node name="Boss" type="Node2D"]
 material = ExtResource( 4 )
-position = Vector2( 948, 656 )
+position = Vector2( 948, 376 )
 script = ExtResource( 3 )
 __meta__ = {
 "_edit_horizontal_guides_": [ 440.0 ],
@@ -2482,27 +2515,28 @@ root_node = NodePath("../Sprites")
 autoplay = "SETUP"
 playback_process_mode = 0
 playback_default_blend_time = 0.1
-anims/Arrive = SubResource( 8 )
-anims/Die = SubResource( 1 )
-anims/Idle = SubResource( 9 )
-anims/LeftHandAttack = SubResource( 2 )
-anims/LeftHandLaser = SubResource( 3 )
-anims/MouthAttack = SubResource( 4 )
-anims/RightHandAttack = SubResource( 5 )
-anims/RightHandLaser = SubResource( 6 )
-anims/SETUP = SubResource( 7 )
+anims/Arrive = SubResource( 54 )
+anims/CenterToScreen = SubResource( 50 )
+anims/Die = SubResource( 55 )
+anims/Idle = SubResource( 56 )
+anims/LeftHandAttack = SubResource( 57 )
+anims/LeftHandLaser = SubResource( 58 )
+anims/MouthAttack = SubResource( 59 )
+anims/RightHandAttack = SubResource( 60 )
+anims/RightHandLaser = SubResource( 8 )
+anims/SETUP = SubResource( 9 )
 
 [node name="Health" parent="." groups=[
 "enemy_health",
 ] instance=ExtResource( 7 )]
+max_amount = 120
 
 [node name="Sprites" type="Node2D" parent="."]
 use_parent_material = true
 
 [node name="HandLeft" type="Node2D" parent="Sprites"]
 use_parent_material = true
-position = Vector2( -414.102, 265.18 )
-scale = Vector2( 0.240043, 0.240043 )
+position = Vector2( -466.643, 296.23 )
 
 [node name="OpenHandSprite" type="Sprite" parent="Sprites/HandLeft"]
 use_parent_material = true
@@ -2550,8 +2584,7 @@ disabled = true
 
 [node name="HandRight" type="Node2D" parent="Sprites"]
 use_parent_material = true
-position = Vector2( 414.102, 299.018 )
-scale = Vector2( 1e-05, 1e-05 )
+position = Vector2( 466.643, 264.851 )
 
 [node name="OpenHandSprite" type="Sprite" parent="Sprites/HandRight"]
 use_parent_material = true
@@ -2601,8 +2634,7 @@ disabled = true
 
 [node name="Head" type="Node2D" parent="Sprites"]
 use_parent_material = true
-position = Vector2( -3.56763, 25.991 )
-scale = Vector2( 1e-05, 1e-05 )
+position = Vector2( -3.56763, 64.0334 )
 
 [node name="Sprite" type="Sprite" parent="Sprites/Head"]
 use_parent_material = true
@@ -2634,7 +2666,6 @@ region_enabled = true
 region_rect = Rect2( 680, 430, 280, 90 )
 
 [node name="SpriteAngry" type="Sprite" parent="Sprites/Head/Eyes"]
-self_modulate = Color( 1.60908, 1.60908, 1.60908, 1 )
 use_parent_material = true
 texture = ExtResource( 2 )
 flip_h = true
@@ -2731,10 +2762,10 @@ pitch_scale = 0.3
 bus = "SFX"
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource( 29 )
+tree_root = SubResource( 47 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
-parameters/playback = SubResource( 30 )
+parameters/playback = SubResource( 48 )
 parameters/conditions/de = false
 parameters/conditions/dead = false
 parameters/conditions/left_laser = false
@@ -2742,9 +2773,13 @@ parameters/conditions/left_slap = false
 parameters/conditions/mouth_attack = false
 parameters/conditions/right_laser = false
 parameters/conditions/right_slap = false
-script = SubResource( 31 )
+script = SubResource( 49 )
+
+[node name="DamageAnimationPlayer" type="AnimationPlayer" parent="."]
+anims/damaged = ExtResource( 13 )
 [connection signal="changed" from="Health" to="." method="_on_Health_changed"]
 [connection signal="depleted" from="Health" to="." method="_on_Health_depleted"]
+[connection signal="damage_taken" from="Sprites/Head/HurtBox" to="." method="_on_HurtBox_damage_taken"]
 
 [editable path="Sprites/Head/Explosion"]
 

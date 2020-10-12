@@ -2,7 +2,7 @@ extends Node2D
 
 
 const ATTACK_THRESHOLD = 2
-const HURT_THRESHOLD = 5
+const HURT_THRESHOLD = 10
 const HEALTH_THREHOLD = 0.3
 const SLAPS = ["left_slap", "right_slap"]
 const LASERS = ["left_laser", "right_laser"]
@@ -13,6 +13,7 @@ var _hurt_count = 0
 var _idle_repetitions = 0
 
 onready var _anim_tree = $AnimationTree
+onready var _damage_animator = $DamageAnimationPlayer
 onready var _health = $Health
 
 func _ready():
@@ -45,3 +46,8 @@ func _on_Health_changed(new_amount):
 
 func _on_Health_depleted():
 	_anim_tree.set_condition("dead", true)
+
+
+func _on_HurtBox_damage_taken(damage) -> void:
+	_health.current -= damage
+	_damage_animator.play("damaged")
