@@ -20,7 +20,7 @@ func _ready() :
 	rotate(direction.angle())
 
 
-func _process(delta: float) :
+func _physics_process(delta: float) :
 	velocity = direction * speed
 	translate(velocity * delta)
 

@@ -125,6 +125,7 @@ z_index = 1
 script = ExtResource( 6 )
 
 [node name="Sprite" type="Sprite" parent="."]
+visible = false
 material = ExtResource( 12 )
 texture = ExtResource( 1 )
 
@@ -144,6 +145,7 @@ texture = ExtResource( 9 )
 [node name="Health" parent="." groups=[
 "enemy_health",
 ] instance=ExtResource( 4 )]
+max_amount = 3
 
 [node name="HurtBox" parent="." instance=ExtResource( 2 )]
 monitoring = false
@@ -156,6 +158,7 @@ shape = SubResource( 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "setup"
+playback_process_mode = 0
 anims/die = SubResource( 2 )
 anims/setup = SubResource( 3 )
 

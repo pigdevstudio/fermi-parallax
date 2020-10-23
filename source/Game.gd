@@ -11,6 +11,7 @@ onready var _transit_rect := $Interface/SceneTransitionRect
 
 func _ready() :
 	initialize_level()
+	_interface.fade_in()
 
 
 func initialize_level() :
@@ -29,10 +30,15 @@ func _on_Level_finished(next_level_path):
 		_transit_rect.transit(end_screen_path)
 		return
 	_interface.fade_out()
-	yield(_interface.fade_animator, "animation_finished")
+	yield(_interface, "faded")
+	_transit_rect.fade_out()
+	yield(_transit_rect.get_node("AnimationPlayer"), "animation_finished")
 	_level.queue_free()
 	yield(_level, "tree_exited")
 	_level = load(next_level_path).instance()
 	add_child(_level)
 	move_child(_level, 0)
 	initialize_level()
+	_transit_rect.fade_in()
+	yield(_transit_rect.get_node("AnimationPlayer"), "animation_finished")
+	_interface.fade_in()

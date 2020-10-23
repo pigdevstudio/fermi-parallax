@@ -29,13 +29,15 @@ func die() :
 	emit_signal("died")
 
 
-func _on_HurtBox_damage_taken(damage) :
+func _on_HurtBox_damage_taken(damage):
+	print("%s: %s damage"%[name, damage])
+	health.current -= damage
+	sprite_animator.play("damage")
+	emit_signal("damaged", health)
+	
 	damage_label_spawner.spawn()
 	damage_label_spawner.spawn.modulate = Color(0.984375, 0.388367, 0.388367)
 	damage_label_spawner.spawn.text = "-%s" % damage
 	damage_label_spawner.spawn.rect_global_position.x += 64
 	
 	
-	health.current -= damage
-	sprite_animator.play("damage")
-	emit_signal("damaged", health)
