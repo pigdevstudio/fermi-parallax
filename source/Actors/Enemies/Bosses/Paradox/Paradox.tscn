@@ -14,7 +14,7 @@
 [ext_resource path="res://Actors/Enemies/sfx_sound_shutdown1.wav" type="AudioStream" id=12]
 [ext_resource path="res://Actors/damage-shader-animation.tres" type="Animation" id=13]
 
-[sub_resource type="Animation" id=54]
+[sub_resource type="Animation" id=1]
 resource_name = "Arrive"
 length = 3.0
 tracks/0/type = "value"
@@ -270,7 +270,7 @@ tracks/20/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=50]
+[sub_resource type="Animation" id=2]
 resource_name = "CenterToScreen"
 tracks/0/type = "value"
 tracks/0/path = NodePath("..:position")
@@ -285,7 +285,7 @@ tracks/0/keys = {
 "values": [ Vector2( 948, 656 ), Vector2( 948, 376 ) ]
 }
 
-[sub_resource type="Animation" id=55]
+[sub_resource type="Animation" id=3]
 length = 5.0
 tracks/0/type = "animation"
 tracks/0/path = NodePath("Head/Explosion/AnimationPlayer")
@@ -476,7 +476,7 @@ tracks/15/keys = {
 "values": [ 0.1, 0.3 ]
 }
 
-[sub_resource type="Animation" id=56]
+[sub_resource type="Animation" id=4]
 resource_name = "Idle"
 length = 2.0
 loop = true
@@ -595,7 +595,7 @@ tracks/9/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=57]
+[sub_resource type="Animation" id=5]
 length = 0.7
 step = 0.05
 tracks/0/type = "value"
@@ -695,7 +695,7 @@ tracks/7/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=58]
+[sub_resource type="Animation" id=6]
 length = 4.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("HandLeft/OpenHandSprite:visible")
@@ -861,7 +861,7 @@ tracks/12/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=59]
+[sub_resource type="Animation" id=7]
 length = 4.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("Head/Mouth/ChargingParticles:emitting")
@@ -1039,7 +1039,7 @@ tracks/13/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=60]
+[sub_resource type="Animation" id=8]
 length = 0.7
 step = 0.05
 tracks/0/type = "value"
@@ -1139,7 +1139,7 @@ tracks/7/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=9]
 length = 4.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("HandRight/OpenHandSprite:visible")
@@ -1305,7 +1305,7 @@ tracks/12/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=10]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Head:position")
 tracks/0/interp = 1
@@ -1991,21 +1991,21 @@ tracks/56/keys = {
 "values": [ Vector2( 948, 656 ) ]
 }
 
-[sub_resource type="Curve" id=10]
+[sub_resource type="Curve" id=11]
 _data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.493213, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
 
-[sub_resource type="CurveTexture" id=11]
-curve = SubResource( 10 )
+[sub_resource type="CurveTexture" id=12]
+curve = SubResource( 11 )
 
-[sub_resource type="Curve" id=12]
+[sub_resource type="Curve" id=13]
 min_value = -200.0
 max_value = 200.0
 _data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
 
-[sub_resource type="CurveTexture" id=13]
-curve = SubResource( 12 )
+[sub_resource type="CurveTexture" id=14]
+curve = SubResource( 13 )
 
-[sub_resource type="ParticlesMaterial" id=14]
+[sub_resource type="ParticlesMaterial" id=15]
 emission_shape = 1
 emission_sphere_radius = 120.0
 flag_disable_z = true
@@ -2016,131 +2016,17 @@ radial_accel = -80.0
 radial_accel_random = 0.3
 tangential_accel = 100.0
 tangential_accel_random = 0.5
-tangential_accel_curve = SubResource( 13 )
+tangential_accel_curve = SubResource( 14 )
 scale_random = 0.3
-scale_curve = SubResource( 11 )
+scale_curve = SubResource( 12 )
 color = Color( 0.890196, 0.411765, 0.337255, 1 )
 
-[sub_resource type="CircleShape2D" id=15]
+[sub_resource type="CircleShape2D" id=16]
 radius = 120.266
 
-[sub_resource type="CapsuleShape2D" id=16]
+[sub_resource type="CapsuleShape2D" id=17]
 radius = 168.0
 height = 224.0
-
-[sub_resource type="Animation" id=17]
-length = 3.0
-step = 0.05
-tracks/0/type = "value"
-tracks/0/path = NodePath("FireBurstParticles2D:emitting")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ true, false ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("SparkleParticles2D:emitting")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.2 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ true, false ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("SmokeParticles2D:emitting")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0, 0.2 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ true, false ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("FireTrails/FireTrailParticles2D5:emitting")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0, 0.2 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ true, false ]
-}
-tracks/4/type = "value"
-tracks/4/path = NodePath("FireTrails/FireTrailParticles2D4:emitting")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"times": PoolRealArray( 0.05, 0.25 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ true, false ]
-}
-tracks/5/type = "value"
-tracks/5/path = NodePath("FireTrails/FireTrailParticles2D3:emitting")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/keys = {
-"times": PoolRealArray( 0.1, 0.3 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ true, false ]
-}
-tracks/6/type = "value"
-tracks/6/path = NodePath("FireTrails/FireTrailParticles2D2:emitting")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/keys = {
-"times": PoolRealArray( 0.15, 0.35 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ true, false ]
-}
-tracks/7/type = "value"
-tracks/7/path = NodePath("FireTrails/FireTrailParticles2D:emitting")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/keys = {
-"times": PoolRealArray( 0, 0.2 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ true, false ]
-}
-tracks/8/type = "audio"
-tracks/8/path = NodePath("SFX")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/keys = {
-"clips": [ {
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource( 10 )
-} ],
-"times": PoolRealArray( 0 )
-}
 
 [sub_resource type="Animation" id=18]
 length = 3.0
@@ -2370,50 +2256,160 @@ tracks/8/keys = {
 "times": PoolRealArray( 0 )
 }
 
-[sub_resource type="AnimationNodeAnimation" id=20]
-animation = "Arrive"
-
-[sub_resource type="AnimationNodeAnimation" id=51]
-animation = "CenterToScreen"
+[sub_resource type="Animation" id=20]
+length = 3.0
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("FireBurstParticles2D:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("SparkleParticles2D:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("SmokeParticles2D:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("FireTrails/FireTrailParticles2D5:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("FireTrails/FireTrailParticles2D4:emitting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.05, 0.25 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("FireTrails/FireTrailParticles2D3:emitting")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0.1, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("FireTrails/FireTrailParticles2D2:emitting")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0.15, 0.35 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("FireTrails/FireTrailParticles2D:emitting")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/8/type = "audio"
+tracks/8/path = NodePath("SFX")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 10 )
+} ],
+"times": PoolRealArray( 0 )
+}
 
 [sub_resource type="AnimationNodeAnimation" id=21]
-animation = "Die"
+animation = "Arrive"
 
 [sub_resource type="AnimationNodeAnimation" id=22]
-animation = "Idle"
+animation = "CenterToScreen"
 
 [sub_resource type="AnimationNodeAnimation" id=23]
-animation = "LeftHandAttack"
+animation = "Die"
 
 [sub_resource type="AnimationNodeAnimation" id=24]
-animation = "LeftHandLaser"
+animation = "Idle"
 
 [sub_resource type="AnimationNodeAnimation" id=25]
-animation = "MouthAttack"
+animation = "LeftHandAttack"
 
 [sub_resource type="AnimationNodeAnimation" id=26]
-animation = "RightHandAttack"
+animation = "LeftHandLaser"
 
 [sub_resource type="AnimationNodeAnimation" id=27]
-animation = "RightHandLaser"
+animation = "MouthAttack"
 
 [sub_resource type="AnimationNodeAnimation" id=28]
+animation = "RightHandAttack"
+
+[sub_resource type="AnimationNodeAnimation" id=29]
+animation = "RightHandLaser"
+
+[sub_resource type="AnimationNodeAnimation" id=30]
 animation = "SETUP"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=29]
-auto_advance = true
-
 [sub_resource type="AnimationNodeStateMachineTransition" id=31]
-switch_mode = 2
-advance_condition = "left_slap"
+auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=32]
 switch_mode = 2
-advance_condition = "right_slap"
+advance_condition = "left_slap"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=33]
 switch_mode = 2
-auto_advance = true
+advance_condition = "right_slap"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=34]
 switch_mode = 2
@@ -2421,80 +2417,84 @@ auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=35]
 switch_mode = 2
-advance_condition = "left_laser"
+auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=36]
 switch_mode = 2
-auto_advance = true
+advance_condition = "left_laser"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=37]
-advance_condition = "right_laser"
+switch_mode = 2
+auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=38]
-switch_mode = 2
-auto_advance = true
+advance_condition = "right_laser"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=39]
-advance_condition = "mouth_attack"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=40]
 switch_mode = 2
 auto_advance = true
 
+[sub_resource type="AnimationNodeStateMachineTransition" id=40]
+advance_condition = "mouth_attack"
+
 [sub_resource type="AnimationNodeStateMachineTransition" id=41]
-advance_condition = "dead"
+switch_mode = 2
+auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=42]
 advance_condition = "dead"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=43]
-advance_condition = "de"
+advance_condition = "dead"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=44]
-advance_condition = "dead"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=45]
 advance_condition = "de"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=46]
+[sub_resource type="AnimationNodeStateMachineTransition" id=45]
 advance_condition = "dead"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=52]
+[sub_resource type="AnimationNodeStateMachineTransition" id=46]
+advance_condition = "de"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=47]
+advance_condition = "dead"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=48]
 switch_mode = 2
 auto_advance = true
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=53]
+[sub_resource type="AnimationNodeStateMachineTransition" id=49]
 switch_mode = 2
 auto_advance = true
 
-[sub_resource type="AnimationNodeStateMachine" id=47]
-states/Arrive/node = SubResource( 20 )
+[sub_resource type="AnimationNodeStateMachine" id=50]
+states/Arrive/node = SubResource( 21 )
 states/Arrive/position = Vector2( 335, 90 )
-states/CenterToScreen/node = SubResource( 51 )
+states/CenterToScreen/node = SubResource( 22 )
 states/CenterToScreen/position = Vector2( 557, 90 )
-states/Die/node = SubResource( 21 )
+states/Die/node = SubResource( 23 )
 states/Die/position = Vector2( 1237, 90 )
-states/Idle/node = SubResource( 22 )
+states/Idle/node = SubResource( 24 )
 states/Idle/position = Vector2( 845, 90 )
-states/LeftHandAttack/node = SubResource( 23 )
+states/LeftHandAttack/node = SubResource( 25 )
 states/LeftHandAttack/position = Vector2( 711, 234 )
-states/LeftHandLaser/node = SubResource( 24 )
+states/LeftHandLaser/node = SubResource( 26 )
 states/LeftHandLaser/position = Vector2( 717, -85 )
-states/MouthAttack/node = SubResource( 25 )
+states/MouthAttack/node = SubResource( 27 )
 states/MouthAttack/position = Vector2( 845, -205 )
-states/RightHandAttack/node = SubResource( 26 )
+states/RightHandAttack/node = SubResource( 28 )
 states/RightHandAttack/position = Vector2( 1002, 234 )
-states/RightHandLaser/node = SubResource( 27 )
+states/RightHandLaser/node = SubResource( 29 )
 states/RightHandLaser/position = Vector2( 974, -85 )
-states/SETUP/node = SubResource( 28 )
+states/SETUP/node = SubResource( 30 )
 states/SETUP/position = Vector2( 104, 90 )
-transitions = [ "SETUP", "Arrive", SubResource( 29 ), "Idle", "LeftHandAttack", SubResource( 31 ), "Idle", "RightHandAttack", SubResource( 32 ), "LeftHandAttack", "Idle", SubResource( 33 ), "RightHandAttack", "Idle", SubResource( 34 ), "Idle", "LeftHandLaser", SubResource( 35 ), "LeftHandLaser", "Idle", SubResource( 36 ), "Idle", "RightHandLaser", SubResource( 37 ), "RightHandLaser", "Idle", SubResource( 38 ), "Idle", "MouthAttack", SubResource( 39 ), "MouthAttack", "Idle", SubResource( 40 ), "Idle", "Die", SubResource( 41 ), "LeftHandAttack", "Die", SubResource( 42 ), "RightHandAttack", "Die", SubResource( 43 ), "RightHandLaser", "Die", SubResource( 44 ), "LeftHandLaser", "Die", SubResource( 45 ), "MouthAttack", "Die", SubResource( 46 ), "Arrive", "CenterToScreen", SubResource( 52 ), "CenterToScreen", "Idle", SubResource( 53 ) ]
+transitions = [ "SETUP", "Arrive", SubResource( 31 ), "Idle", "LeftHandAttack", SubResource( 32 ), "Idle", "RightHandAttack", SubResource( 33 ), "LeftHandAttack", "Idle", SubResource( 34 ), "RightHandAttack", "Idle", SubResource( 35 ), "Idle", "LeftHandLaser", SubResource( 36 ), "LeftHandLaser", "Idle", SubResource( 37 ), "Idle", "RightHandLaser", SubResource( 38 ), "RightHandLaser", "Idle", SubResource( 39 ), "Idle", "MouthAttack", SubResource( 40 ), "MouthAttack", "Idle", SubResource( 41 ), "Idle", "Die", SubResource( 42 ), "LeftHandAttack", "Die", SubResource( 43 ), "RightHandAttack", "Die", SubResource( 44 ), "RightHandLaser", "Die", SubResource( 45 ), "LeftHandLaser", "Die", SubResource( 46 ), "MouthAttack", "Die", SubResource( 47 ), "Arrive", "CenterToScreen", SubResource( 48 ), "CenterToScreen", "Idle", SubResource( 49 ) ]
 start_node = "SETUP"
 graph_offset = Vector2( -26, -281 )
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=48]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=51]
 
-[sub_resource type="GDScript" id=49]
+[sub_resource type="GDScript" id=52]
 script/source = "extends AnimationTree
 
 func set_condition(condition, value):
@@ -2515,16 +2515,16 @@ root_node = NodePath("../Sprites")
 autoplay = "SETUP"
 playback_process_mode = 0
 playback_default_blend_time = 0.1
-anims/Arrive = SubResource( 54 )
-anims/CenterToScreen = SubResource( 50 )
-anims/Die = SubResource( 55 )
-anims/Idle = SubResource( 56 )
-anims/LeftHandAttack = SubResource( 57 )
-anims/LeftHandLaser = SubResource( 58 )
-anims/MouthAttack = SubResource( 59 )
-anims/RightHandAttack = SubResource( 60 )
-anims/RightHandLaser = SubResource( 8 )
-anims/SETUP = SubResource( 9 )
+anims/Arrive = SubResource( 1 )
+anims/CenterToScreen = SubResource( 2 )
+anims/Die = SubResource( 3 )
+anims/Idle = SubResource( 4 )
+anims/LeftHandAttack = SubResource( 5 )
+anims/LeftHandLaser = SubResource( 6 )
+anims/MouthAttack = SubResource( 7 )
+anims/RightHandAttack = SubResource( 8 )
+anims/RightHandLaser = SubResource( 9 )
+anims/SETUP = SubResource( 10 )
 
 [node name="Health" parent="." groups=[
 "enemy_health",
@@ -2536,7 +2536,7 @@ use_parent_material = true
 
 [node name="HandLeft" type="Node2D" parent="Sprites"]
 use_parent_material = true
-position = Vector2( -466.643, 296.23 )
+position = Vector2( -476.104, 291.053 )
 
 [node name="OpenHandSprite" type="Sprite" parent="Sprites/HandLeft"]
 use_parent_material = true
@@ -2570,7 +2570,7 @@ emitting = false
 amount = 32
 speed_scale = 0.0
 local_coords = false
-process_material = SubResource( 14 )
+process_material = SubResource( 15 )
 texture = ExtResource( 8 )
 
 [node name="HitBox2D" parent="Sprites/HandLeft" instance=ExtResource( 1 )]
@@ -2579,12 +2579,12 @@ position = Vector2( -8, 64 )
 damage = 2.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprites/HandLeft/HitBox2D"]
-shape = SubResource( 15 )
+shape = SubResource( 16 )
 disabled = true
 
 [node name="HandRight" type="Node2D" parent="Sprites"]
 use_parent_material = true
-position = Vector2( 466.643, 264.851 )
+position = Vector2( 476.104, 264.009 )
 
 [node name="OpenHandSprite" type="Sprite" parent="Sprites/HandRight"]
 use_parent_material = true
@@ -2620,7 +2620,7 @@ emitting = false
 amount = 32
 speed_scale = 0.0
 local_coords = false
-process_material = SubResource( 14 )
+process_material = SubResource( 15 )
 texture = ExtResource( 8 )
 
 [node name="HitBox2D" parent="Sprites/HandRight" instance=ExtResource( 1 )]
@@ -2629,12 +2629,12 @@ position = Vector2( 0, 64 )
 damage = 2.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprites/HandRight/HitBox2D"]
-shape = SubResource( 15 )
+shape = SubResource( 16 )
 disabled = true
 
 [node name="Head" type="Node2D" parent="Sprites"]
 use_parent_material = true
-position = Vector2( -3.56763, 64.0334 )
+position = Vector2( -3.56763, 62.8019 )
 
 [node name="Sprite" type="Sprite" parent="Sprites/Head"]
 use_parent_material = true
@@ -2712,7 +2712,7 @@ emitting = false
 amount = 32
 speed_scale = 0.0
 local_coords = false
-process_material = SubResource( 14 )
+process_material = SubResource( 15 )
 texture = ExtResource( 8 )
 
 [node name="HurtBox" parent="Sprites/Head" instance=ExtResource( 6 )]
@@ -2721,7 +2721,7 @@ position = Vector2( 3.56763, -3.87173 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprites/Head/HurtBox"]
 position = Vector2( 0, -59.0988 )
-shape = SubResource( 16 )
+shape = SubResource( 17 )
 
 [node name="Explosion" parent="Sprites/Head" instance=ExtResource( 9 )]
 position = Vector2( 115.568, -91.5676 )
@@ -2733,7 +2733,7 @@ stream = ExtResource( 10 )
 position = Vector2( -156.432, 12.4324 )
 
 [node name="AnimationPlayer" parent="Sprites/Head/Explosion2" index="4"]
-anims/Explode = SubResource( 17 )
+anims/Explode = SubResource( 18 )
 
 [node name="SFX" parent="Sprites/Head/Explosion2" index="5"]
 stream = ExtResource( 10 )
@@ -2742,7 +2742,7 @@ stream = ExtResource( 10 )
 position = Vector2( -148.432, -235.568 )
 
 [node name="AnimationPlayer" parent="Sprites/Head/Explosion3" index="4"]
-anims/Explode = SubResource( 18 )
+anims/Explode = SubResource( 19 )
 
 [node name="SFX" parent="Sprites/Head/Explosion3" index="5"]
 stream = ExtResource( 10 )
@@ -2751,7 +2751,7 @@ stream = ExtResource( 10 )
 position = Vector2( 147.568, 124.432 )
 
 [node name="AnimationPlayer" parent="Sprites/Head/Explosion4" index="4"]
-anims/Explode = SubResource( 19 )
+anims/Explode = SubResource( 20 )
 
 [node name="SFX" parent="Sprites/Head/Explosion4" index="5"]
 stream = ExtResource( 10 )
@@ -2762,10 +2762,10 @@ pitch_scale = 0.3
 bus = "SFX"
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource( 47 )
+tree_root = SubResource( 50 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
-parameters/playback = SubResource( 48 )
+parameters/playback = SubResource( 51 )
 parameters/conditions/de = false
 parameters/conditions/dead = false
 parameters/conditions/left_laser = false
@@ -2773,7 +2773,7 @@ parameters/conditions/left_slap = false
 parameters/conditions/mouth_attack = false
 parameters/conditions/right_laser = false
 parameters/conditions/right_slap = false
-script = SubResource( 49 )
+script = SubResource( 52 )
 
 [node name="DamageAnimationPlayer" type="AnimationPlayer" parent="."]
 anims/damaged = ExtResource( 13 )
